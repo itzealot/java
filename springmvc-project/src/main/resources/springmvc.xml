@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 配置自定扫描的包。To set the auto scan package -->
+	<context:component-scan base-package="com.zt" />
+
+	<!-- 默认的注解映射的支持 -->
+	<context:annotation-config />
+
+	<!-- Enables the Spring Task @Scheduled programming model -->
+	<task:executor id="executor" pool-size="5" />
+	<task:scheduler id="scheduler" pool-size="10" />
+	<task:annotation-driven executor="executor"
+		scheduler="scheduler" />
+
+	<!--启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- 配置视图解析器：如何把handler方法返回值值解析为实际的物理视图 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀/WEB-INF/views/ -->
+		<property name="prefix" value="/WEB-INF/views/"></property>
+
+		<!-- 后缀.jsp -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<!-- To add mvc:default-servlet-handler. mvc:default-servlet-handler 将在SpringMVC 
+		上下文中定义一个 DefaultServletHttpRequestHandler，它会对进入DispatcherServlet 的请求进行筛查，如果发现是没有经过映射的请求，就将该请求交由WEB 
+		应用 服务器默认的Servlet 处理，如果不是静态基于的请求，才由DispatcherServlet 继续处理 一般Web 应用服务器默认的Servlet的名称是default。若所使用的WEB服务器默认 
+		Servlet名称不是default，则需要提供default-servlet-name属性显示指定。 -->
+	<mvc:default-servlet-handler />
+
+	<!-- To add the mvc:annotation-driven. 当有@DateTimeFormat注解或其他转换注解时，不能使用conversion-service -->
+	<!-- <mvc:annotation-driven></mvc:annotation-driven> -->
+
+
+	<!-- To add the conversion-service into mvc:annotation-driven -->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+
+	<!-- 自定义类型转换器.To set the converters about mine.To set FormattingConversionServiceFactoryBean 
+		and named conversionService. -->
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<!-- To set the property where the name attribute is converters -->
+		<property name="converters">
+			<set>
+				<!-- To add the converter Bean mine -->
+				<ref bean="employeeConverter" />
+			</set>
+		</property>
+	</bean>
+
+
+	<!-- 自定义类型转换器.To set the converters about mine.To set ConversionServiceFactoryBean 
+		and named conversionService2. -->
+	<bean id="conversionService2"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<!-- To set the property where the name attribute is converters -->
+		<property name="converters">
+			<set>
+				<!-- To add the converter Bean mine -->
+				<ref bean="employeeConverter" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- To set the i18n's properties file -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n"></property>
+	</bean>
+
+
+	<!-- To set the CommonsMultipartResolver bean to use for file uploading -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- To set the encoding -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+
+		<!--To set the max size -->
+		<property name="maxUploadSize" value="102400"></property>
+	</bean>
+
+	<!-- To realize forward by mvc:view-controller -->
+	<mvc:view-controller path="toFileUploadPage"
+		view-name="files" />
+</beans>
