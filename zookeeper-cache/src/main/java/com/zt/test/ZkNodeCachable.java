@@ -1,7 +1,5 @@
 package com.zt.test;
 
-import java.util.Collection;
-
 import com.zt.test.entity.Node;
 
 /**
@@ -10,21 +8,6 @@ import com.zt.test.entity.Node;
  * @author zt
  *
  */
-public interface ZkNodeCachable extends ZkCachable<String, Node> {
+public interface ZkNodeCachable extends ZkDirCachable<Node> {
 
-	/**
-	 * 根据给予的节点获取父节点
-	 * 
-	 * @param t
-	 * @return
-	 */
-	public Node getParent(Node node);
-
-	/**
-	 * 根据给予的节点获取所有的孩子节点
-	 * 
-	 * @param t
-	 * @return
-	 */
-	public Collection<Node> getChildren(Node node);
 }

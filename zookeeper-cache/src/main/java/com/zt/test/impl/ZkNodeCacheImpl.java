@@ -1,9 +1,7 @@
 package com.zt.test.impl;
 
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
 
-import com.zt.test.ZkCachable;
 import com.zt.test.ZkNodeCachable;
 import com.zt.test.entity.Node;
 
@@ -13,13 +11,9 @@ import com.zt.test.entity.Node;
  * @author zt
  *
  */
-public class ZkNodeCacheImpl implements ZkNodeCachable {
+public class ZkNodeCacheImpl extends ZkCacheImpl<String, Node> implements ZkNodeCachable {
 
-	private static ZkCachable<String, Node> nodes = null;
-
-	private static ZkNodeCachable instance = null;
-
-	private static Object lock = new Object();
+	private static ZkNodeCacheImpl instance = null;
 
 	private ZkNodeCacheImpl() {
 	}
@@ -32,43 +26,11 @@ public class ZkNodeCacheImpl implements ZkNodeCachable {
 	public static ZkNodeCachable getInstance() {
 		if (instance == null) {
 			synchronized (lock) {
-				nodes = new ZkCacheImpl<String, Node>();
-
 				instance = new ZkNodeCacheImpl();
 			}
 		}
 
 		return instance;
-	}
-
-	@Override
-	public Node delete(String key) {
-		return nodes.delete(key);
-	}
-
-	@Override
-	public Node update(String key, Node value) {
-		return nodes.update(key, value);
-	}
-
-	@Override
-	public void add(String key, Node value) {
-		nodes.add(key, value);
-	}
-
-	@Override
-	public Node get(String key) {
-		return nodes.get(key);
-	}
-
-	@Override
-	public Collection<Node> getAll() {
-		return nodes.getAll();
-	}
-
-	@Override
-	public void init(ConcurrentHashMap<String, Node> cache) {
-		nodes.init(cache);
 	}
 
 	@Override

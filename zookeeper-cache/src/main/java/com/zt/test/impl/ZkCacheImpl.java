@@ -16,7 +16,8 @@ import com.zt.test.ZkCachable;
  */
 public class ZkCacheImpl<K, V> implements ZkCachable<K, V> {
 
-	private Map<K, V> cache;
+	protected Map<K, V> cache;
+	protected static Object lock = new Object();
 
 	ZkCacheImpl() {
 	}
