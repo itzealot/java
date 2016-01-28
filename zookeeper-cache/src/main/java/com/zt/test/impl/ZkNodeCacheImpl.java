@@ -19,7 +19,7 @@ public class ZkNodeCacheImpl extends ZkCacheImpl<String, Node> implements ZkNode
 	}
 
 	/**
-	 * 获取节点缓存的实例对象
+	 * 获取节点缓存的实例
 	 * 
 	 * @return
 	 */

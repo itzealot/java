@@ -3,7 +3,7 @@ package com.zt.test;
 import java.util.Collection;
 
 /**
- * 有关获取父对象和子对象的缓存接口
+ * 有关获取父目录和子目录的缓存接口
  * 
  * @author zt
  *
@@ -11,7 +11,7 @@ import java.util.Collection;
 public interface ZkDirCachable<T> {
 
 	/**
-	 * 获取父对象
+	 * 获取父目录
 	 * 
 	 * @param t
 	 * @return
@@ -19,7 +19,7 @@ public interface ZkDirCachable<T> {
 	public T getParent(T t);
 
 	/**
-	 * 获取所有的子对象
+	 * 获取所有的子目录
 	 * 
 	 * @param t
 	 * @return

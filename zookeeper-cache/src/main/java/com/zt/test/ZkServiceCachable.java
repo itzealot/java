@@ -2,7 +2,6 @@ package com.zt.test;
 
 import java.util.Collection;
 
-import com.zt.test.entity.Node;
 import com.zt.test.entity.Service;
 
 /**
@@ -19,6 +18,6 @@ public interface ZkServiceCachable {
 	 * @param node
 	 * @return
 	 */
-	public Collection<Service> getVisibleServicesByNode(Node node);
+	public Collection<Service> getVisibleServicesByNode(Service service);
 
 }

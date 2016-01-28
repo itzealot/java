@@ -19,7 +19,7 @@ public class ZkOrganizationCacheImpl extends ZkCacheImpl<String, Organization> i
 	}
 
 	/**
-	 * 获取组织机构缓存的实例对象
+	 * 获取组织机构缓存的实例
 	 * 
 	 * @return
 	 */

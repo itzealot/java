@@ -17,7 +17,7 @@ public class ZkTagCacheImpl extends ZkCacheImpl<String, TagCatalog> implements Z
 	}
 
 	/**
-	 * 获取组织机构缓存的实例对象
+	 * 获取服务分类缓存的实例
 	 * 
 	 * @return
 	 */
