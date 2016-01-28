@@ -3,7 +3,7 @@ package com.zt.test;
 import java.util.Collection;
 
 /**
- * 有关获取父目录和子目录的缓存接口
+ * 有关获取父对象和子对象的缓存接口
  * 
  * @author zt
  *

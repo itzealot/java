@@ -23,7 +23,7 @@ public class ZkNodeCacheImpl extends ZkCacheImpl<String, Node> implements ZkNode
 	 * 
 	 * @return
 	 */
-	public static ZkNodeCachable getInstance() {
+	public static ZkNodeCacheImpl getInstance() {
 		if (instance == null) {
 			synchronized (lock) {
 				instance = new ZkNodeCacheImpl();
