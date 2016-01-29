@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zt.springmvc</groupId>
+	<artifactId>springmvc-project</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springmve-project Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- To add junit start -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- To add junit end -->
+
+		<!-- To import spring-context start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.0.7.RELEASE</version>
+		</dependency>
+		<!-- To import spring-context start -->
+
+		<!-- To import spring-core start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.0.7.RELEASE</version>
+		</dependency>
+		<!-- To import spring-core end -->
+
+		<!-- To import spring-web start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.0.7.RELEASE</version>
+		</dependency>
+		<!-- To import spring-web end -->
+
+		<!-- To import spring-webmvc start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.7.RELEASE</version>
+		</dependency>
+		<!-- To import spring-webmvc end -->
+
+		<!-- To add jstl start -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<!-- To add jstl end -->
+
+		<!-- To import commons-io jar start -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<!-- To import commons-io jar end -->
+
+		<!-- To import commons-fileupload jar start -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<!-- To import commons-fileupload jar end -->
+
+		<!-- To add hibernate validator start -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
+		<!-- To add hibernate validator end -->
+
+		<!-- To import the json jar start -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<!-- To import the json jar end -->
+
+	</dependencies>
+	<build>
+		<finalName>springmve-project</finalName>
+	</build>
+</project>
