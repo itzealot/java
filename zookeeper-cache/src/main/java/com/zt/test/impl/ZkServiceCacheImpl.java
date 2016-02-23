@@ -3,6 +3,7 @@ package com.zt.test.impl;
 import java.util.Collection;
 
 import com.zt.test.ZkServiceCachable;
+import com.zt.test.entity.Node;
 import com.zt.test.entity.Service;
 
 /**
@@ -34,7 +35,7 @@ public class ZkServiceCacheImpl extends ZkCacheImpl<String, Service> implements 
 	}
 
 	@Override
-	public Collection<Service> getVisibleServicesByNode(Service service) {
+	public Collection<Service> getVisibleServicesByNode(Node node) {
 		return null;
 	}
 
