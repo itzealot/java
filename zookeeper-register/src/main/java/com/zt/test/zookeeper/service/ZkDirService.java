@@ -3,7 +3,7 @@ package com.zt.test.zookeeper.service;
 import java.util.Collection;
 
 /**
- * 
+ * 目录接口
  * 
  * @author zt
  *

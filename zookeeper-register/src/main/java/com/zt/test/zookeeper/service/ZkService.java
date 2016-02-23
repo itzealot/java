@@ -3,7 +3,7 @@ package com.zt.test.zookeeper.service;
 import java.util.Collection;
 
 /**
- * 
+ * 基于 Zookeeper 的crud接口
  * 
  * @author zt
  *

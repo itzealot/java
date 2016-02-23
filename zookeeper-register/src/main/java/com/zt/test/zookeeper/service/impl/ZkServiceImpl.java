@@ -4,6 +4,13 @@ import java.util.Collection;
 
 import com.zt.test.zookeeper.service.ZkService;
 
+/**
+ * Zookeeper crud操作的实现类
+ * 
+ * @author zt
+ *
+ * @param <T>
+ */
 public class ZkServiceImpl<T> implements ZkService<T> {
 
 	@Override
@@ -13,7 +20,7 @@ public class ZkServiceImpl<T> implements ZkService<T> {
 
 	@Override
 	public void update(T t) {
-		
+
 	}
 
 	@Override
