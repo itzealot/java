@@ -1,4 +1,4 @@
-package com.zt.test.zookeeper_register;
+package com.zt.test.zookeeper;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

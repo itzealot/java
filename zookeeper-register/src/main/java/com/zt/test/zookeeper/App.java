@@ -1,4 +1,4 @@
-package com.zt.test.zookeeper_register;
+package com.zt.test.zookeeper;
 
 /**
  * Hello world!
