@@ -11,7 +11,21 @@ import java.util.Collection;
  */
 public interface ZkDirService<T> {
 
-	public T getParent(T t);
+	/**
+	 * 获取父节点数据
+	 * 
+	 * @param t
+	 * @param paths
+	 * @return
+	 */
+	public T getParent(T t, String... paths);
 
-	public Collection<T> getChildren(T t);
+	/**
+	 * 获取所有子节点数据
+	 * 
+	 * @param t
+	 * @param paths
+	 * @return
+	 */
+	public Collection<T> getChildren(T t, String... paths);
 }

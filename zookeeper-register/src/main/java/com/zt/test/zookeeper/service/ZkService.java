@@ -11,14 +11,52 @@ import java.util.Collection;
  */
 public interface ZkService<T> {
 
-	public void add(T t);
+	/**
+	 * 添加数据
+	 * 
+	 * @param t
+	 * @param paths
+	 */
+	public void add(T t, String... paths);
 
-	public void update(T t);
+	/**
+	 * 更新数据
+	 * 
+	 * @param t
+	 * @param paths
+	 */
+	public void update(T t, String... paths);
 
-	public void delete(T t);
+	/**
+	 * 删除数据
+	 * 
+	 * @param t
+	 * @param paths
+	 */
+	public void delete(T t, String... paths);
 
+	/**
+	 * 根据路径获取数据
+	 * 
+	 * @param path
+	 * @return
+	 */
 	public T get(String path);
 
-	Collection<T> findAll();
+	/**
+	 * 获取数据
+	 * 
+	 * @param paths
+	 * @return
+	 */
+	public T get(String... paths);
+
+	/**
+	 * 查询所有数据
+	 * 
+	 * @param paths
+	 * @return
+	 */
+	Collection<T> findAll(String... paths);
 
 }
