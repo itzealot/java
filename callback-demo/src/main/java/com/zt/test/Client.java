@@ -11,9 +11,15 @@ public class Client implements CSCallBack {
 	// 服务器实例
 	private Server server;
 
+	/**
+	 * 客户端发送信息给服务端
+	 * 
+	 * @param msg
+	 */
 	public void sendMsg(final String msg) {
 		System.out.println("客户端：发送的消息为：" + msg);
 
+		// 使用线程来完成异步发送信息
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {

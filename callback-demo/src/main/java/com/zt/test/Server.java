@@ -27,7 +27,7 @@ public class Server {
 		System.out.println("服务端:数据处理成功，返回成功状态 200");
 		String status = "200";
 
-		// 回调给客户端
+		// 执行回调函数
 		csCallBack.process(status);
 	}
 }
