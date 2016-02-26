@@ -14,32 +14,29 @@ import com.zt.test.zookeeper.service.ZkService;
 public class ZkServiceImpl<T> implements ZkService<T> {
 
 	@Override
-	public void add(T t, String... paths) {
+	public void add(T t, String path) {
 
 	}
 
 	@Override
-	public void update(T t, String... paths) {
+	public void update(T t, String path) {
 
 	}
 
 	@Override
-	public void delete(T t, String... paths) {
+	public void delete(T t, String path) {
 
 	}
 
 	@Override
 	public T get(String path) {
+
 		return null;
 	}
 
 	@Override
-	public T get(String... paths) {
-		return null;
-	}
+	public Collection<T> findAll(String path) {
 
-	@Override
-	public Collection<T> findAll(String... paths) {
 		return null;
 	}
 

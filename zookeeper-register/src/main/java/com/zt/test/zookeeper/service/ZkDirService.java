@@ -15,17 +15,17 @@ public interface ZkDirService<T> {
 	 * 获取父节点数据
 	 * 
 	 * @param t
-	 * @param paths
+	 * @param path
 	 * @return
 	 */
-	public T getParent(T t, String... paths);
+	public T getParent(T t, String path);
 
 	/**
 	 * 获取所有子节点数据
 	 * 
 	 * @param t
-	 * @param paths
+	 * @param path
 	 * @return
 	 */
-	public Collection<T> getChildren(T t, String... paths);
+	public Collection<T> getChildren(T t, String path);
 }

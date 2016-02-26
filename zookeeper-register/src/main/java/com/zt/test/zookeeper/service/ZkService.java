@@ -15,25 +15,25 @@ public interface ZkService<T> {
 	 * 添加数据
 	 * 
 	 * @param t
-	 * @param paths
+	 * @param path
 	 */
-	public void add(T t, String... paths);
+	public void add(T t, String path);
 
 	/**
 	 * 更新数据
 	 * 
 	 * @param t
-	 * @param paths
+	 * @param path
 	 */
-	public void update(T t, String... paths);
+	public void update(T t, String path);
 
 	/**
 	 * 删除数据
 	 * 
 	 * @param t
-	 * @param paths
+	 * @param path
 	 */
-	public void delete(T t, String... paths);
+	public void delete(T t, String path);
 
 	/**
 	 * 根据路径获取数据
@@ -44,19 +44,11 @@ public interface ZkService<T> {
 	public T get(String path);
 
 	/**
-	 * 获取数据
-	 * 
-	 * @param paths
-	 * @return
-	 */
-	public T get(String... paths);
-
-	/**
 	 * 查询所有数据
 	 * 
-	 * @param paths
+	 * @param path
 	 * @return
 	 */
-	Collection<T> findAll(String... paths);
+	Collection<T> findAll(String path);
 
 }
