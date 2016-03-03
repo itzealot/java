@@ -17,7 +17,7 @@ import com.apusic.distribute.message.listener.MessageEventListener;
 import com.apusic.distribute.message.model.MessageEvent;
 
 /**
- * Kafka事件处理实现类
+ * Kafka 事件处理实现类
  * 
  * @author zt
  *
@@ -30,6 +30,12 @@ public class KafkaMessageEventBus implements MessageEventBus {
 		log.info("create KafkaMessageEventBus.");
 	}
 
+	/**
+	 * 根据 groupId 获取 Kafka 消费者
+	 * 
+	 * @param groupId
+	 * @return
+	 */
 	private <T extends Serializable> Consumer<Long, MessageEvent<T>> getKafkaConsumer(String groupId) {
 		Properties props = new Properties();
 
@@ -50,7 +56,9 @@ public class KafkaMessageEventBus implements MessageEventBus {
 	public <T extends Serializable> void addMessageEventListener(String groupId, List<String> eventTypes,
 			MessageEventListener<T> eventListener) {
 		Consumer<Long, MessageEvent<T>> consumer = getKafkaConsumer(groupId);
+
 		consumer.subscribe(eventTypes);
+
 		while (true) {
 			ConsumerRecords<Long, MessageEvent<T>> records = consumer.poll(100);
 			for (ConsumerRecord<Long, MessageEvent<T>> record : records) {

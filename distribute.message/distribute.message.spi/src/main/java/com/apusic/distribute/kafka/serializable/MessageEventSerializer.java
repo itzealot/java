@@ -19,10 +19,12 @@ public class MessageEventSerializer<T extends Serializable> implements Serialize
 
 	}
 
+	@Override
 	public void configure(Map<String, ?> map, boolean b) {
 
 	}
 
+	@Override
 	public byte[] serialize(String s, MessageEvent<T> message) {
 		if (message == null)
 			return null;
@@ -30,6 +32,7 @@ public class MessageEventSerializer<T extends Serializable> implements Serialize
 			return SerializerUtil.serializeToByte(message);
 	}
 
+	@Override
 	public void close() {
 
 	}

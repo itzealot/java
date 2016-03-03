@@ -9,7 +9,10 @@ import com.apusic.distribute.kafka.util.SerializerUtil;
 import com.apusic.distribute.message.model.MessageEvent;
 
 /**
- * Created by a on 2016/1/18.
+ * 
+ * @author zt
+ *
+ * @param <T>
  */
 public class MessageEventDeserializer<T extends Serializable> implements Deserializer<MessageEvent<T>> {
 
@@ -17,10 +20,12 @@ public class MessageEventDeserializer<T extends Serializable> implements Deseria
 
 	}
 
+	@Override
 	public void configure(Map<String, ?> map, boolean b) {
 
 	}
 
+	@Override
 	public MessageEvent<T> deserialize(String s, byte[] bytes) {
 		if (bytes == null)
 			return null;
@@ -28,6 +33,7 @@ public class MessageEventDeserializer<T extends Serializable> implements Deseria
 			return SerializerUtil.deserializeFromByte(bytes);
 	}
 
+	@Override
 	public void close() {
 
 	}

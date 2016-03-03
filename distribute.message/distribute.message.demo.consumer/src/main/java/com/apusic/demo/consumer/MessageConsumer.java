@@ -24,6 +24,7 @@ public class MessageConsumer implements MessageEventListener<User> {
 		MessageConsumer consumer = new MessageConsumer();
 		MessageEventBus bus = new KafkaMessageEventBus();
 
+		// 监听事件
 		bus.addMessageEventListener("groupId-1", "event-1", consumer);
 	}
 

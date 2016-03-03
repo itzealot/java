@@ -23,6 +23,11 @@ public class KafkaMessageEventPublisher<T extends Serializable> implements Messa
 		producer = getKafkaProducer();
 	}
 
+	/**
+	 * 获取Kafka 生产者
+	 * 
+	 * @return
+	 */
 	private Producer<Long, MessageEvent<T>> getKafkaProducer() {
 		Properties props = new Properties();
 
@@ -40,9 +45,11 @@ public class KafkaMessageEventPublisher<T extends Serializable> implements Messa
 		return producer;
 	}
 
+	@Override
 	public void submitMessageEvent(MessageEvent<T> messageEvent) {
 		producer.send(new ProducerRecord<Long, MessageEvent<T>>(messageEvent.getEventType(),
 				messageEvent.getTime().getTime(), messageEvent));
+
 		producer.flush();
 		producer.close();
 	}
