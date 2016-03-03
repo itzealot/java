@@ -13,6 +13,11 @@ import java.io.Serializable;
  */
 public interface MessageEventPublisher<T extends Serializable> {
 
+	/**
+	 * 发送事件
+	 * 
+	 * @param event
+	 */
 	void submitMessageEvent(MessageEvent<T> event);
 
 }

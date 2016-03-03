@@ -1,5 +1,6 @@
 package com.apusic.distribute.kafka.serializable;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import org.apache.kafka.common.serialization.Deserializer;
@@ -10,7 +11,7 @@ import com.apusic.distribute.message.model.MessageEvent;
 /**
  * Created by a on 2016/1/18.
  */
-public class MessageEventDeserializer implements Deserializer<MessageEvent> {
+public class MessageEventDeserializer<T extends Serializable> implements Deserializer<MessageEvent<T>> {
 
 	public MessageEventDeserializer() {
 
@@ -20,7 +21,7 @@ public class MessageEventDeserializer implements Deserializer<MessageEvent> {
 
 	}
 
-	public MessageEvent deserialize(String s, byte[] bytes) {
+	public MessageEvent<T> deserialize(String s, byte[] bytes) {
 		if (bytes == null)
 			return null;
 		else

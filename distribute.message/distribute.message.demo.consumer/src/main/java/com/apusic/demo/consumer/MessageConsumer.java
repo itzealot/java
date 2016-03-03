@@ -17,7 +17,7 @@ public class MessageConsumer implements MessageEventListener<User> {
 	@Override
 	public void handler(MessageEvent<User> eventMessage) {
 		User usr = eventMessage.getMessage();
-		System.out.println("Message:" + usr);
+		System.out.println("Message: " + usr);
 	}
 
 	public static void main(String[] args) {

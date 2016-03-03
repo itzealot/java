@@ -14,7 +14,7 @@ import java.io.Serializable;
 public interface MessageEventListener<T extends Serializable> {
 
 	/**
-	 * 消息处理
+	 * 接收消息
 	 * 
 	 * @param eventMessage
 	 */

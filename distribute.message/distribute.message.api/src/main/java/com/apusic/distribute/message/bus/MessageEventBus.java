@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 事件处理中心
+ * 事件处理中心接口
  * 
  * @author zt
  *
@@ -15,7 +15,8 @@ public interface MessageEventBus {
 
 	/**
 	 * 监听单个事件
-	 *
+	 * 
+	 * @param groupId
 	 * @param eventType
 	 * @param eventListener
 	 */
@@ -24,7 +25,8 @@ public interface MessageEventBus {
 
 	/**
 	 * 监听一组事件
-	 *
+	 * 
+	 * @param groupId
 	 * @param eventTypes
 	 * @param eventListener
 	 */

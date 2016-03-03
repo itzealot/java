@@ -4,12 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by a on 2016/1/18. 消息事件对象，event为事件类型 message为事件消息
+ * 消息事件
+ * 
+ * @author zt
+ *
+ * @param <T>
  */
 public class MessageEvent<T extends Serializable> implements Serializable {
 	private static final long serialVersionUID = 6213014733727673739L;
+
+	// 事件类型
 	private String eventType;
+
+	// 消息
 	private T message;
+
+	// 日期
 	private Date time;
 
 	public MessageEvent() {

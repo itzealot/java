@@ -27,11 +27,12 @@ public class KafkaMessageEventBus implements MessageEventBus {
 	private final static Logger log = LoggerFactory.getLogger(KafkaMessageEventBus.class);
 
 	public KafkaMessageEventBus() {
-
+		log.info("create KafkaMessageEventBus.");
 	}
 
-	private Consumer<Long, MessageEvent> getKafkaConsumer(String groupId) {
+	private <T extends Serializable> Consumer<Long, MessageEvent<T>> getKafkaConsumer(String groupId) {
 		Properties props = new Properties();
+
 		props.put("bootstrap.servers", "172.20.129.154:9092,172.20.129.158:9092,172.20.129.159:9092");
 		props.put("group.id", groupId);
 		props.put("enable.auto.commit", "true");
@@ -41,18 +42,18 @@ public class KafkaMessageEventBus implements MessageEventBus {
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.LongDeserializer");
 		props.put("value.deserializer", "com.apusic.distribute.kafka.serializable.MessageEventDeserializer");
 
-		Consumer<Long, MessageEvent> consumer = new KafkaConsumer(props);
+		Consumer<Long, MessageEvent<T>> consumer = new KafkaConsumer<Long, MessageEvent<T>>(props);
 		return consumer;
 	}
 
 	@Override
 	public <T extends Serializable> void addMessageEventListener(String groupId, List<String> eventTypes,
 			MessageEventListener<T> eventListener) {
-		Consumer<Long, MessageEvent> consumer = getKafkaConsumer(groupId);
+		Consumer<Long, MessageEvent<T>> consumer = getKafkaConsumer(groupId);
 		consumer.subscribe(eventTypes);
 		while (true) {
-			ConsumerRecords<Long, MessageEvent> records = consumer.poll(100);
-			for (ConsumerRecord<Long, MessageEvent> record : records) {
+			ConsumerRecords<Long, MessageEvent<T>> records = consumer.poll(100);
+			for (ConsumerRecord<Long, MessageEvent<T>> record : records) {
 				eventListener.handler(record.value());
 			}
 		}

@@ -4,29 +4,33 @@ import com.apusic.distribute.kafka.util.SerializerUtil;
 import com.apusic.distribute.message.model.MessageEvent;
 import org.apache.kafka.common.serialization.Serializer;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
- * Created by a on 2016/1/18.
+ * 
+ * @author zt
+ *
+ * @param <T>
  */
-public class MessageEventSerializer implements Serializer<MessageEvent> {
+public class MessageEventSerializer<T extends Serializable> implements Serializer<MessageEvent<T>> {
 
-    public MessageEventSerializer() {
+	public MessageEventSerializer() {
 
-    }
+	}
 
-    public void configure(Map<String, ?> map, boolean b) {
+	public void configure(Map<String, ?> map, boolean b) {
 
-    }
+	}
 
-    public byte[] serialize(String s, MessageEvent message) {
-        if (message == null)
-            return null;
-        else
-            return SerializerUtil.serializeToByte(message);
-    }
+	public byte[] serialize(String s, MessageEvent<T> message) {
+		if (message == null)
+			return null;
+		else
+			return SerializerUtil.serializeToByte(message);
+	}
 
-    public void close() {
+	public void close() {
 
-    }
+	}
 }
