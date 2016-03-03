@@ -6,25 +6,29 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by a on 2016/1/19.
- * ÊÂ¼ş´¦ÀíÖĞĞÄ
+ * äº‹ä»¶å¤„ç†ä¸­å¿ƒ
+ * 
+ * @author zt
+ *
  */
 public interface MessageEventBus {
 
-    /**
-     * ¼àÌıµ¥¸öÊÂ¼ş
-     *
-     * @param eventType
-     * @param eventListener
-     */
-    <T extends Serializable> void addMessageEventListener(String groupId, String eventType, MessageEventListener<T> eventListener);
+	/**
+	 * ç›‘å¬å•ä¸ªäº‹ä»¶
+	 *
+	 * @param eventType
+	 * @param eventListener
+	 */
+	<T extends Serializable> void addMessageEventListener(String groupId, String eventType,
+			MessageEventListener<T> eventListener);
 
-    /**
-     * ¼àÌıÒ»×éÊÂ¼ş
-     *
-     * @param eventTypes
-     * @param eventListener
-     */
-    <T extends Serializable> void addMessageEventListener(String groupId, List<String> eventTypes, MessageEventListener<T> eventListener);
+	/**
+	 * ç›‘å¬ä¸€ç»„äº‹ä»¶
+	 *
+	 * @param eventTypes
+	 * @param eventListener
+	 */
+	<T extends Serializable> void addMessageEventListener(String groupId, List<String> eventTypes,
+			MessageEventListener<T> eventListener);
 
 }

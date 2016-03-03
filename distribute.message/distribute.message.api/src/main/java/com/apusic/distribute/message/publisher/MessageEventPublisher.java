@@ -5,11 +5,14 @@ import com.apusic.distribute.message.model.MessageEvent;
 import java.io.Serializable;
 
 /**
- * Created by a on 2016/1/19.
- * ·¢ËÍÊÂ¼ş½Ó¿Ú
+ * å‘é€äº‹ä»¶æ¥å£
+ * 
+ * @author zt
+ *
+ * @param <T>
  */
 public interface MessageEventPublisher<T extends Serializable> {
 
-    void submitMessageEvent(MessageEvent<T> event);
+	void submitMessageEvent(MessageEvent<T> event);
 
 }

@@ -3,44 +3,49 @@ package com.apusic.demo.model;
 import java.io.Serializable;
 
 /**
- * Created by a on 2016/1/20.
+ * 角色实体
+ * 
+ * @author zt
+ *
  */
 public class Role implements Serializable {
-    private static final long serialVersionUID = -8278668004252288005L;
-    private long id;
-    private String name;
-    private String description;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -8278668004252288005L;
 
-    public long getId() {
-        return id;
-    }
+	private long id;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	private String name;
 
-    public String getName() {
-        return name;
-    }
+	private String description;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Role{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + '}';
+	}
 }

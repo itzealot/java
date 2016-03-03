@@ -7,20 +7,24 @@ import com.apusic.distribute.message.listener.MessageEventListener;
 import com.apusic.distribute.message.model.MessageEvent;
 
 /**
- * Created by a on 2016/1/19.
+ * 消息消费者
+ * 
+ * @author zt
+ *
  */
-public class MessageConsumer implements MessageEventListener<User>{
+public class MessageConsumer implements MessageEventListener<User> {
 
+	@Override
+	public void handler(MessageEvent<User> eventMessage) {
+		User usr = eventMessage.getMessage();
+		System.out.println("Message:" + usr);
+	}
 
-    public void handler(MessageEvent<User> eventMessage) {
-        User usr = eventMessage.getMessage();
-        System.out.println("Message:"+usr);
-    }
+	public static void main(String[] args) {
+		MessageConsumer consumer = new MessageConsumer();
+		MessageEventBus bus = new KafkaMessageEventBus();
 
-    public static void main(String[] args){
-        MessageConsumer consumer = new MessageConsumer();
-        MessageEventBus bus = new KafkaMessageEventBus();
-        bus.addMessageEventListener("groupId-1","event-1",consumer);
-    }
+		bus.addMessageEventListener("groupId-1", "event-1", consumer);
+	}
 
 }
