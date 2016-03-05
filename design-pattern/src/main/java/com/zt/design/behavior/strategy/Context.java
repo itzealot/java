@@ -1,15 +1,21 @@
 package com.zt.design.behavior.strategy;
 
+/**
+ * 根据传入的策略实现类，执行策略的方法
+ * 
+ * @author zt 2016年3月5日
+ */
 public class Context {
+
+	// 策略接口
 	private Strategy strategy;
 
-	// 构造对象时，指定传入的Strategy对象
 	public Context(Strategy strategy) {
 		this.strategy = strategy;
 	}
 
 	/**
-	 * 根据Strategy strategy 对象确定执行何种操作
+	 * 执行策略的方法
 	 * 
 	 * @param num1
 	 * @param num2

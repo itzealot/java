@@ -1,8 +1,7 @@
 package com.zt.design.behavior.template;
 
 /**
- * class Cricket extends Game.<br />
- * 创建扩展了上述类的实体类。
+ * Cricket 游戏
  * 
  * @author zengtao
  *

@@ -1,7 +1,7 @@
 package com.zt.design.behavior.template;
 
 /**
- * class Football extends Game
+ * 足球游戏
  * 
  * @author zengtao
  *

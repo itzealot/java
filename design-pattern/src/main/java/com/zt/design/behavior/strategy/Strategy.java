@@ -3,18 +3,18 @@ package com.zt.design.behavior.strategy;
 import java.io.Serializable;
 
 /**
- * 进行操作的接口
+ * 策略接口
  * 
  * @author zengtao
  *
  */
 public interface Strategy extends Serializable {
 	/**
-	 * 根据不同的要求实现不同的运算
+	 * 根据传入的两个 int 值进行处理
 	 * 
 	 * @param num1
 	 * @param num2
-	 * @return
+	 * @return 返回操作结果
 	 */
 	public int doOperation(int num1, int num2);
 }
