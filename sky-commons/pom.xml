@@ -75,5 +75,11 @@
 			<artifactId>spring-orm</artifactId>
 			<version>3.0.6.RELEASE</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>14.0.1</version>
+		</dependency>
 	</dependencies>
 </project>
