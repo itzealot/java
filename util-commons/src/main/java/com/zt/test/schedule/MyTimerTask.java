@@ -15,17 +15,13 @@ public class MyTimerTask extends TimerTask {
 	private Timer timer = new Timer();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		MyTimerTask t = new MyTimerTask();
 		t.start();
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		/**
-		 * 以下信息将自动一秒执行一次
-		 */
+		// 以下信息将自动一秒执行一次
 		System.out.println("备份程序运行……");
 		printchar();
 	}
@@ -34,9 +30,7 @@ public class MyTimerTask extends TimerTask {
 	 * 启动定时器
 	 */
 	public void start() {
-		/**
-		 * 一秒执行一次
-		 */
+		// 一秒执行一次
 		timer.scheduleAtFixedRate(this, new Date(), 1000);
 	}
 

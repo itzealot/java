@@ -5,12 +5,9 @@ import java.util.Map;
 
 /**
  * 
- * @author a
- *
- * @param <KEY>
- * @param <VALUE>
+ * @author zt 2016年3月5日
  */
-class MapComparator<K, V extends Comparable<V>> implements Comparator<Map<K, V>> {
+public class MapComparator<K, V extends Comparable<V>> implements Comparator<Map<K, V>> {
 	private K key = null;
 
 	// is desc(默认为降序)
@@ -37,7 +34,6 @@ class MapComparator<K, V extends Comparable<V>> implements Comparator<Map<K, V>>
 
 	@Override
 	public int compare(Map<K, V> o1, Map<K, V> o2) {
-		// TODO Auto-generated method stub
 		V obj1 = o1.get(key);
 		V obj2 = o2.get(key);
 		if (flag) {

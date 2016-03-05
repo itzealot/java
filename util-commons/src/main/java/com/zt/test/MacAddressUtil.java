@@ -51,11 +51,7 @@ public class MacAddressUtil {
 	public static void main(String[] args) {
 		try {
 			System.out.println(getMACAddr());
-		} catch (SocketException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

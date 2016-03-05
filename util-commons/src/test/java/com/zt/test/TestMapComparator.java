@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-public class TestMapCcoparator {
+public class TestMapComparator {
 	@Test
 	public void test() {
 

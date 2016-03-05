@@ -23,7 +23,6 @@ public class HtmlToStringFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -34,13 +33,13 @@ public class HtmlToStringFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		// String words = request.getParameter("word");
 		// String filter = HtmlWordsToStringUtils.filter(words);
+
 		HTMLCharacterRequest myRequest = new HTMLCharacterRequest(request);
 		chain.doFilter(myRequest, response);
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 
 	}
 

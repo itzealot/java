@@ -11,7 +11,6 @@ public class DESUtil {
 	private String source;
 
 	public DESUtil(String source) {
-		// TODO Auto-generated constructor stub
 		this.source = source;
 	}
 
@@ -22,7 +21,6 @@ public class DESUtil {
 	 * @return
 	 */
 	public String decryptStr(String source) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

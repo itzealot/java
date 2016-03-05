@@ -11,6 +11,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 
+ * 
+ * @author zt 2016年3月5日
+ */
 public abstract class BaseFilter implements Filter {
 
 	public abstract void init(FilterConfig filterConfig) throws ServletException;
@@ -18,7 +23,6 @@ public abstract class BaseFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
