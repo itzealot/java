@@ -7,7 +7,6 @@ package com.zt.test;
  */
 public class TypeException extends Exception {
 	public TypeException(String string) {
-		// TODO Auto-generated constructor stub
 		super(string);
 	}
 

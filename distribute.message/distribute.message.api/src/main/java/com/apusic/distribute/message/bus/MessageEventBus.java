@@ -20,10 +20,8 @@ public interface MessageEventBus {
 	 * @param eventType
 	 * @param eventListener
 	 */
-	<T extends Serializable> void addMessageEventListener(
-															String groupId, 
-															String eventType,
-															MessageEventListener<T> eventListener);
+	<T extends Serializable> void addMessageEventListener(String groupId, String eventType,
+			MessageEventListener<T> eventListener);
 
 	/**
 	 * 监听一组事件
@@ -32,8 +30,7 @@ public interface MessageEventBus {
 	 * @param eventTypes
 	 * @param eventListener
 	 */
-	<T extends Serializable> void addMessageEventListener(
-															String groupId, List<String> eventTypes,
-															MessageEventListener<T> eventListener);
+	<T extends Serializable> void addMessageEventListener(String groupId, List<String> eventTypes,
+			MessageEventListener<T> eventListener);
 
 }
