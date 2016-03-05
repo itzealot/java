@@ -14,9 +14,13 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 6685512927738742500L;
 	private long id;
+
 	private String name;
+
 	private String passowrd;
+
 	private String status;
+
 	private Role role;
 
 	public long getId() {
