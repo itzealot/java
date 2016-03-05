@@ -41,7 +41,6 @@ package com.zt.design.behavior.chainofresponse;
  */
 public class ChainPatternDemo {
 	private static AbstractLogger getChainOfLoggers() {
-
 		// 创建不同类型的记录器，并赋予不同错误级别
 		AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
 		AbstractLogger fileLogger = new FileLogger(AbstractLogger.DEBUG);
@@ -68,12 +67,10 @@ public class ChainPatternDemo {
 
 		System.out.println("-------------------------------------------------");
 
-		loggerChain.logMessage(AbstractLogger.DEBUG,
-				"This is an debug level information.");
+		loggerChain.logMessage(AbstractLogger.DEBUG, "This is an debug level information.");
 
 		System.out.println("-------------------------------------------------");
 
-		loggerChain.logMessage(AbstractLogger.ERROR,
-				"This is an error information.");
+		loggerChain.logMessage(AbstractLogger.ERROR, "This is an error information.");
 	}
 }

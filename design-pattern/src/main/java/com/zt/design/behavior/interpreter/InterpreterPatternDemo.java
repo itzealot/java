@@ -37,31 +37,47 @@ package com.zt.design.behavior.interpreter;
  */
 public class InterpreterPatternDemo {
 
-	// 规则：Robert 和 John 是男性
+	/**
+	 * 规则：Robert 和 John 是男性
+	 * 
+	 * @return
+	 */
 	public static Expression getMaleExpression() {
+		// 包含表达式
 		Expression robert = new TerminalExpression("Robert");
+
+		// 包含表达式
 		Expression john = new TerminalExpression("John");
+
 		return new OrExpression(robert, john);
 	}
 
-	// 规则：Julie 是一个已婚的女性
+	/**
+	 * 规则：Julie 是一个已婚的女性
+	 * 
+	 * @return
+	 */
 	public static Expression getMarriedWomanExpression() {
+		// 包含表达式
 		Expression julie = new TerminalExpression("Julie");
+
+		// 包含表达式
 		Expression married = new TerminalExpression("Married");
+
 		return new AndExpression(julie, married);
 	}
 
-	/**
-	 * InterpreterPatternDemo 使用 Expression 类来创建规则，并解析它们
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
+		// 男性表达式
 		Expression isMale = getMaleExpression();
+
+		// 已婚女性表达式
 		Expression isMarriedWoman = getMarriedWomanExpression();
 
+		// John 是否一个男性
 		System.out.println("John is male? " + isMale.interpret("John"));
-		System.out.println("Julie is a married women? "
-				+ isMarriedWoman.interpret("Married Julie"));
+
+		// Julie 是否是一个已婚的女性
+		System.out.println("Julie is a married women? " + isMarriedWoman.interpret("Married Julie"));
 	}
 }

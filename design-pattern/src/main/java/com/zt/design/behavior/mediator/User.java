@@ -1,7 +1,16 @@
 package com.zt.design.behavior.mediator;
 
+/**
+ * 
+ * 
+ * @author zt
+ */
 public class User {
 	private String name;
+
+	public User(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
@@ -11,12 +20,8 @@ public class User {
 		this.name = name;
 	}
 
-	public User(String name) {
-		this.name = name;
-	}
-
 	/**
-	 * 通过ChatRoom 的静态方法来显示信息
+	 * 通过中介者 ChatRoom 来传达信息
 	 * 
 	 * @param message
 	 */

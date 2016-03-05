@@ -4,34 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 创建 CareTaker 类, 对象负责从 Memento 中恢复对象的状态.<br />
- * 内含List<Memento> mementoList 以及对其进行添加与获取.<br />
- * 模拟栈的实现，先添加的在前面，后天加的在后面
+ * 备忘录列表
  * 
  * @author zengtao
  *
  */
 public class CareTaker {
 
-	// The List<Memento>
-	private List<Memento> mementoList = new ArrayList<Memento>();
+	// 备忘录列表
+	private List<Memento> mementos = new ArrayList<Memento>();
 
 	/**
-	 * To add Memento object into List<Memento> mementoList
+	 * 添加备忘录对象到备忘录列表
 	 * 
 	 * @param state
 	 */
 	public void add(Memento state) {
-		mementoList.add(state);
+		mementos.add(state);
 	}
 
 	/**
-	 * To get the Memento from List<Memento> mementoList
+	 * 根据索引值从备忘录列表中获取备忘录对象
 	 * 
 	 * @param index
 	 * @return
 	 */
 	public Memento get(int index) {
-		return mementoList.get(index);
+		if (index < 0 || index > mementos.size()) {
+			throw new IllegalArgumentException("index value is out of bound where index = " + index);
+		}
+
+		return mementos.get(index);
 	}
 }

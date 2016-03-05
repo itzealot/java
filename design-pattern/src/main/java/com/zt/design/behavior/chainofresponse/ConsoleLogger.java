@@ -1,7 +1,7 @@
 package com.zt.design.behavior.chainofresponse;
 
 /**
- * 创建扩展了该记录器类的实体类
+ * 控制台日志打印
  * 
  * @author zengtao
  *

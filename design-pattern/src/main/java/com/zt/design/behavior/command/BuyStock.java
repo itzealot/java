@@ -1,19 +1,20 @@
 package com.zt.design.behavior.command;
 
 /**
- * class BuyStock implements Order
+ * 命令的实现类，执行 Stock 的 buy 方法
  * 
  * @author zengtao
  *
  */
 public class BuyStock implements Order {
-	private Stock abcStock;
+	private Stock stock;
 
-	public BuyStock(Stock abcStock) {
-		this.abcStock = abcStock;
+	public BuyStock(Stock stock) {
+		this.stock = stock;
 	}
 
+	@Override
 	public void execute() {
-		abcStock.buy();
+		stock.buy();
 	}
 }

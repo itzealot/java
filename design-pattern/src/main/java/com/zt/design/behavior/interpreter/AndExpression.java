@@ -1,7 +1,6 @@
 package com.zt.design.behavior.interpreter;
 
 /**
- * class AndExpression implements Expression.<br />
  * 与表达式
  * 
  * @author zengtao
@@ -9,7 +8,10 @@ package com.zt.design.behavior.interpreter;
  */
 public class AndExpression implements Expression {
 
+	// 表达式1
 	private Expression expr1 = null;
+
+	// 表达式2
 	private Expression expr2 = null;
 
 	public AndExpression(Expression expr1, Expression expr2) {
@@ -18,7 +20,7 @@ public class AndExpression implements Expression {
 	}
 
 	/**
-	 * 表达式间是 AND
+	 * 表达式间是与运算
 	 */
 	@Override
 	public boolean interpret(String context) {

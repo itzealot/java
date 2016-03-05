@@ -1,7 +1,7 @@
 package com.zt.design.behavior.iterator;
 
 /**
- * interface Container 封装了含有获取迭代器的方法.<br />
+ * 获取迭代器的接口
  * 
  * @author zengtao
  *

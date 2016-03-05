@@ -1,7 +1,6 @@
 package com.zt.design.behavior.interpreter;
 
 /**
- * OrExpression implements Expression.<br />
  * 或表达式
  * 
  * @author zengtao
@@ -9,7 +8,10 @@ package com.zt.design.behavior.interpreter;
  */
 public class OrExpression implements Expression {
 
+	// 表达式1
 	private Expression expr1 = null;
+
+	// 表达式2
 	private Expression expr2 = null;
 
 	public OrExpression(Expression expr1, Expression expr2) {
@@ -18,7 +20,7 @@ public class OrExpression implements Expression {
 	}
 
 	/**
-	 * 表达式间是 OR
+	 * 表达式间是或运算
 	 */
 	@Override
 	public boolean interpret(String context) {

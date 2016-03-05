@@ -1,7 +1,7 @@
 package com.zt.design.behavior.iterator;
 
 /**
- * 迭代器模式之创建迭代器接口.<br />
+ * 迭代器接口
  * 
  * @author zengtao
  *

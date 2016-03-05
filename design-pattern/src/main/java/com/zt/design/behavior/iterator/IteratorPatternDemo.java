@@ -36,21 +36,15 @@ package com.zt.design.behavior.iterator;
  */
 public class IteratorPatternDemo {
 
-	/**
-	 * 使用 NameRepository 来获取迭代器，并打印名字
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
+		// 使用 NameRepository 来获取迭代器，并打印名字
 		NameRepository namesRepository = new NameRepository();
 
-		/**
-		 * 迭代输出 NameRepository
-		 */
-		for (Iterator<String> iter = namesRepository.getIterator(); iter
-				.hasNext();) {
+		// 迭代输出
+		for (Iterator<String> iter = namesRepository.getIterator(); iter.hasNext();) {
 			// 获取下一个元素
 			String name = iter.next();
+
 			System.out.println("Name : " + name);
 		}
 	}

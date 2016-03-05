@@ -42,15 +42,19 @@ public class CommandPatternDemo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Stock abcStock = new Stock();
+		Stock stock = new Stock();
 
-		BuyStock buyStockOrder = new BuyStock(abcStock);
-		SellStock sellStockOrder = new SellStock(abcStock);
+		// BuyStock
+		BuyStock buyStockOrder = new BuyStock(stock);
+
+		// SellStock
+		SellStock sellStockOrder = new SellStock(stock);
 
 		Broker broker = new Broker();
 		broker.takeOrder(buyStockOrder);
 		broker.takeOrder(sellStockOrder);
 
+		// 执行命令列表
 		broker.placeOrders();
 	}
 }
