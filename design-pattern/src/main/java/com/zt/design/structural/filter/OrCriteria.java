@@ -3,7 +3,7 @@ package com.zt.design.structural.filter;
 import java.util.List;
 
 /**
- * Criteria或运算
+ * 多个过滤条件进行或运算过滤的实现类
  * 
  * @author zengtao
  *
@@ -27,6 +27,7 @@ public class OrCriteria implements Criteria {
 				firstCriteriaItems.add(person);
 			}
 		}
+
 		return firstCriteriaItems;
 	}
 }

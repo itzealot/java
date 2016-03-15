@@ -1,12 +1,14 @@
 package com.zt.design.structural.proxy;
 
 /**
- * 输出图像信息的接口 Image.<br />
- * 内含输出图像信息的方法 display.<br />
+ * 图像信息的接口
  * 
  * @author zengtao
  *
  */
 public interface Image {
+	/**
+	 * 输出图像信息
+	 */
 	void display();
 }

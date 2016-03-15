@@ -1,8 +1,14 @@
 package com.zt.design.structural.facade;
 
+/**
+ * 图形接口
+ * 
+ * @author zt
+ */
 public interface Shape {
+
 	/**
-	 * 画各种图形的抽象方法
+	 * 绘制图形的方法
 	 */
 	public void draw();
 }

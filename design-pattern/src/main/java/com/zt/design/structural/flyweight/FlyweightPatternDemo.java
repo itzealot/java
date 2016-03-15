@@ -37,21 +37,17 @@ package com.zt.design.structural.flyweight;
  *
  */
 public class FlyweightPatternDemo {
-	private static final String colors[] = { "Red", "Green", "Blue", "White",
-			"Black" };
+	private static final String colors[] = { "Red", "Green", "Blue", "White", "Black" };
 
-	/**
-	 * 使用该工厂，通过传递颜色信息来获取实体类的对象。
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		for (int i = 0; i < 20; ++i) {
 			Circle circle = (Circle) ShapeFactory.getCircle(getRandomColor());
+
 			circle.setX(getRandomX());
 			circle.setY(getRandomY());
 			circle.setRadius(100);
+
 			circle.draw();
 		}
 	}

@@ -10,10 +10,14 @@ public class ShapeMaker {
 	// 持有构建正方形的实例
 	private Shape square;
 
+	public ShapeMaker() {
+		init();
+	}
+
 	/**
 	 * 初始化各种构建
 	 */
-	public ShapeMaker() {
+	private void init() {
 		circle = new Circle();
 		rectangle = new Rectangle();
 		square = new Square();

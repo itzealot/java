@@ -3,7 +3,7 @@ package com.zt.design.structural.filter;
 import java.util.List;
 
 /**
- * Criteria与运算
+ * 多个过滤条件进行与运算过滤的实现类
  * 
  * @author zengtao
  *
@@ -11,6 +11,7 @@ import java.util.List;
 public class AndCriteria implements Criteria {
 
 	private Criteria criteria;
+
 	private Criteria otherCriteria;
 
 	public AndCriteria(Criteria criteria, Criteria otherCriteria) {
@@ -19,7 +20,6 @@ public class AndCriteria implements Criteria {
 	}
 
 	public List<Person> meetCriteria(List<Person> persons) {
-		List<Person> firstCriteriaPersons = criteria.meetCriteria(persons);
-		return otherCriteria.meetCriteria(firstCriteriaPersons);
+		return otherCriteria.meetCriteria(criteria.meetCriteria(persons));
 	}
 }

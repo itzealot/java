@@ -7,7 +7,6 @@ package com.zt.design.structural.decorator;
  *
  */
 public abstract class ShapeDecorator implements Shape {
-	// 可用于子类继承
 	protected Shape decoratedShape;
 
 	public ShapeDecorator(Shape decoratedShape) {
@@ -15,6 +14,7 @@ public abstract class ShapeDecorator implements Shape {
 	}
 
 	public void draw() {
+		// 调用子类传来的装饰对象进行装饰
 		decoratedShape.draw();
 	}
 }

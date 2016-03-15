@@ -1,14 +1,14 @@
 package com.zt.design.structural.flyweight;
 
 /**
- * 绘
+ * 绘制图形的接口
  * 
  * @author zengtao
  *
  */
 public interface Shape {
 	/**
-	 * 画各种图形的抽象方法
+	 * 绘制各种图像
 	 */
 	public void draw();
 }

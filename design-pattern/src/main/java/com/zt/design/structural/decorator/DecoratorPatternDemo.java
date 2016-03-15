@@ -33,13 +33,8 @@ package com.zt.design.structural.decorator;
  *
  */
 public class DecoratorPatternDemo {
-	/**
-	 * 使用 RedShapeDecorator 来装饰 Shape 对象。
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		// 创建无修饰圆形
 		Shape circle = new Circle();
 

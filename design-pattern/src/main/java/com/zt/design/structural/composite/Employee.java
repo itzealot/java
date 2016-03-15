@@ -7,9 +7,10 @@ public class Employee {
 	private String name;
 	private String dept;
 	private int salary;
+
+	// 员工列表
 	private List<Employee> subordinates;
 
-	// 构造函数
 	public Employee(String name, String dept, int sal) {
 		this.name = name;
 		this.dept = dept;
@@ -17,10 +18,20 @@ public class Employee {
 		subordinates = new ArrayList<Employee>();
 	}
 
+	/**
+	 * 从员工列表中添加员工
+	 * 
+	 * @param e
+	 */
 	public void add(Employee e) {
 		subordinates.add(e);
 	}
 
+	/**
+	 * 从员工列表中移除员工
+	 * 
+	 * @param e
+	 */
 	public void remove(Employee e) {
 		subordinates.remove(e);
 	}
@@ -31,7 +42,6 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return ("Employee :[ Name : " + name + ", dept : " + dept
-				+ ", salary :" + salary + " ]");
+		return ("Employee :[ Name : " + name + ", dept : " + dept + ", salary :" + salary + " ]");
 	}
 }
