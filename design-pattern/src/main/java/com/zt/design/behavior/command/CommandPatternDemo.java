@@ -36,25 +36,22 @@ package com.zt.design.behavior.command;
  *
  */
 public class CommandPatternDemo {
-	/**
-	 * 使用 Broker 类来接受并执行命令。
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
+
+		// 使用 Broker 类来接受并执行命令
 		Stock stock = new Stock();
 
-		// BuyStock
 		BuyStock buyStockOrder = new BuyStock(stock);
 
-		// SellStock
 		SellStock sellStockOrder = new SellStock(stock);
 
+		// 命令调用者
 		Broker broker = new Broker();
 		broker.takeOrder(buyStockOrder);
 		broker.takeOrder(sellStockOrder);
 
-		// 执行命令列表
+		// 执行命令列表所有命令
 		broker.placeOrders();
 	}
 }

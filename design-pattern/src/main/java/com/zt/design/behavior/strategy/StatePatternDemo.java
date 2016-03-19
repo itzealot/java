@@ -28,8 +28,8 @@ package com.zt.design.behavior.strategy;
  *
  */
 public class StatePatternDemo {
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		// 加法操作
 		Context context = new Context(new OperationAdd());
 		System.out.println("10 + 5 = " + context.executeStrategy(10, 5));

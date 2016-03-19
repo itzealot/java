@@ -1,7 +1,7 @@
 package com.zt.design.behavior.memento;
 
 /**
- * Originator 创建并在 Memento 对象中存储状态。
+ * 创建并在 Memento 对象中存储状态。
  * 
  * @author zengtao
  */

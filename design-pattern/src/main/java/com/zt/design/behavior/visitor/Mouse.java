@@ -1,7 +1,7 @@
 package com.zt.design.behavior.visitor;
 
 /**
- * class Mouse implements ComputerPart
+ * 鼠标
  * 
  * @author zengtao
  *

@@ -3,7 +3,7 @@ package com.zt.design.behavior.strategy;
 /**
  * 根据传入的策略实现类，执行策略的方法
  * 
- * @author zt 2016年3月5日
+ * @author zt
  */
 public class Context {
 

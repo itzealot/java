@@ -1,5 +1,10 @@
 package com.zt.design.behavior.visitor;
 
+/**
+ * 计算机访问实现类
+ * 
+ * @author zt
+ */
 public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
 
 	public void visit(Computer computer) {

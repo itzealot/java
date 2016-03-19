@@ -12,14 +12,6 @@ public class User {
 		this.name = name;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	/**
 	 * 通过中介者 ChatRoom 来传达信息
 	 * 
@@ -28,4 +20,13 @@ public class User {
 	public void sendMessage(String message) {
 		ChatRoom.showMessage(this, message);
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

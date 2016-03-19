@@ -17,7 +17,6 @@ public class TerminalExpression implements Expression {
 	/**
 	 * 表达式间是包含(INCLUDE)运算
 	 */
-	@Override
 	public boolean interpret(String context) {
 		if (context.contains(data)) {
 			return true;

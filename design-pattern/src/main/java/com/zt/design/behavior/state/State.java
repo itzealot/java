@@ -8,7 +8,7 @@ package com.zt.design.behavior.state;
  */
 public interface State {
 	/**
-	 * 为Context context设置状态
+	 * 为Context设置状态
 	 * 
 	 * @param context
 	 */

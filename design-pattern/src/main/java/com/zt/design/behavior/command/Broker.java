@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 命令调用类
+ * 命令调用者
  * 
  * @author zengtao
  */
@@ -23,13 +23,14 @@ public class Broker {
 	}
 
 	/**
-	 * 执行命令列表，并清除命令列表
+	 * 执行命令列表所有命令，并清除命令列表
 	 */
 	public void placeOrders() {
 		for (Order order : orders) {
 			order.execute();
 		}
 
+		// 清除命令列表
 		orders.clear();
 	}
 }

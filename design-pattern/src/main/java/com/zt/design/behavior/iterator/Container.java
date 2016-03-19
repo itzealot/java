@@ -7,6 +7,7 @@ package com.zt.design.behavior.iterator;
  *
  */
 public interface Container<T> {
+
 	/**
 	 * 获取迭代器
 	 * 

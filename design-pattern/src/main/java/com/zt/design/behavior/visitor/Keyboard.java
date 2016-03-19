@@ -1,7 +1,7 @@
 package com.zt.design.behavior.visitor;
 
 /**
- * class Keyboard implements ComputerPart
+ * 键盘
  * 
  * @author zengtao
  *

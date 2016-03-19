@@ -38,12 +38,9 @@ package com.zt.design.behavior.observer;
  *
  */
 public class ObserverPatternDemo {
-	/**
-	 * 使用 Subject 和实体观察者对象
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
+		// 使用 Subject 和实体观察者对象
 		Subject subject = new Subject();
 
 		// 16进制观察者
@@ -57,6 +54,8 @@ public class ObserverPatternDemo {
 
 		System.out.println("First state change: 15");
 		subject.setState(15);
+
+		System.out.println();
 
 		System.out.println("Second state change: 10");
 		subject.setState(10);

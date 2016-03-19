@@ -7,10 +7,11 @@ package com.zt.design.behavior.state;
  *
  */
 public class Context {
+
+	// 状态
 	private State state;
 
 	public Context() {
-		state = null;
 	}
 
 	public void setState(State state) {

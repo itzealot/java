@@ -11,28 +11,13 @@ import java.util.List;
  */
 public class Subject {
 
-	// List<Observer> observers
+	// 观测者列表
 	private List<Observer> observers = new ArrayList<Observer>();
+
 	private int state;
 
-	public int getState() {
-		return state;
-	}
-
 	/**
-	 * 设置状态并更新所有观察者
-	 * 
-	 * @param state
-	 */
-	public void setState(int state) {
-		this.state = state;
-
-		// update method
-		notifyAllObservers();
-	}
-
-	/**
-	 * To add Observer observer into List<Observer> observers
+	 * 向观测者列表添加观测者
 	 * 
 	 * @param observer
 	 */
@@ -41,11 +26,26 @@ public class Subject {
 	}
 
 	/**
-	 * To update List<Observer> observers all Observer
+	 * 更新观察者列表中所有的观察者
 	 */
 	public void notifyAllObservers() {
 		for (Observer observer : observers) {
 			observer.update();
 		}
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	/**
+	 * 设置新状态并更新所有观察者信息
+	 * 
+	 * @param state
+	 */
+	public void setState(int state) {
+		this.state = state;
+
+		notifyAllObservers();
 	}
 }

@@ -40,37 +40,39 @@ package com.zt.design.behavior.chainofresponse;
  *
  */
 public class ChainPatternDemo {
-	private static AbstractLogger getChainOfLoggers() {
-		// 创建不同类型的记录器，并赋予不同错误级别
-		AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
-		AbstractLogger fileLogger = new FileLogger(AbstractLogger.DEBUG);
-		AbstractLogger consoleLogger = new ConsoleLogger(AbstractLogger.INFO);
 
-		// 设置下一个记录器
+	/**
+	 * 获取日志链，返回日志链的根
+	 * 
+	 * @return
+	 */
+	private static AbstractLogger getChainOfLoggers() {
+
+		// 根据不同日志级别创建不同类型的记录仪
+		AbstractLogger errorLogger = new ErrorLogger(LoggerLevel.ERROR);
+		AbstractLogger fileLogger = new FileLogger(LoggerLevel.DEBUG);
+		AbstractLogger consoleLogger = new ConsoleLogger(LoggerLevel.INFO);
+
+		// 设置日志链
 		errorLogger.setNextLogger(fileLogger);
 		fileLogger.setNextLogger(consoleLogger);
 
-		// 返回根(最顶端)记录器
+		// 返回日志链的根
 		return errorLogger;
 	}
 
-	/**
-	 * 1. 创建不同类型的记录器。赋予它们不同的错误级别，并在每个记录器中设置下一个记录器。<br />
-	 * 2. 每个记录器中的下一个记录器代表的是链的一部分。
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
+		// 日志链
 		AbstractLogger loggerChain = getChainOfLoggers();
 
-		loggerChain.logMessage(AbstractLogger.INFO, "This is an information.");
+		loggerChain.logMessage(LoggerLevel.INFO, "This is an information.");
 
 		System.out.println("-------------------------------------------------");
 
-		loggerChain.logMessage(AbstractLogger.DEBUG, "This is an debug level information.");
+		loggerChain.logMessage(LoggerLevel.DEBUG, "This is an debug level information.");
 
 		System.out.println("-------------------------------------------------");
 
-		loggerChain.logMessage(AbstractLogger.ERROR, "This is an error information.");
+		loggerChain.logMessage(LoggerLevel.ERROR, "This is an error information.");
 	}
 }

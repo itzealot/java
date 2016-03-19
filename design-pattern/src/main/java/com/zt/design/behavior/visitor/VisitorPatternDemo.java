@@ -29,13 +29,8 @@ package com.zt.design.behavior.visitor;
  *
  */
 public class VisitorPatternDemo {
-	/**
-	 * 使用 ComputerPartDisplayVisitor 来显示 Computer 的组成部分。
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		ComputerPart computer = new Computer();
 		computer.accept(new ComputerPartDisplayVisitor());
 	}

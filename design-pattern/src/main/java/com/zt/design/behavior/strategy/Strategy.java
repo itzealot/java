@@ -9,6 +9,7 @@ import java.io.Serializable;
  *
  */
 public interface Strategy extends Serializable {
+
 	/**
 	 * 根据传入的两个 int 值进行处理
 	 * 

@@ -7,15 +7,8 @@ package com.zt.design.behavior.strategy;
  *
  */
 public class OperationMultiply implements Strategy {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8579859818800348853L;
 
-	/**
-	 * 乘法操作
-	 */
-	@Override
 	public int doOperation(int num1, int num2) {
 		return num1 * num2;
 	}

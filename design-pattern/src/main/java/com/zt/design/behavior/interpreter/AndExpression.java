@@ -22,7 +22,6 @@ public class AndExpression implements Expression {
 	/**
 	 * 表达式间是与运算
 	 */
-	@Override
 	public boolean interpret(String context) {
 		return expr1.interpret(context) && expr2.interpret(context);
 	}

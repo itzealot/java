@@ -1,7 +1,7 @@
 package com.zt.design.behavior.command;
 
 /**
- * 请求类
+ * 请求者
  * 
  * @author zengtao
  *
@@ -15,14 +15,14 @@ public class Stock {
 	private int quantity = 10;
 
 	/**
-	 * 购买
+	 * 购买请求
 	 */
 	public void buy() {
 		System.out.println("Stock [ Name: " + name + ", Quantity: " + quantity + " ] bought");
 	}
 
 	/**
-	 * 出售
+	 * 出售请求
 	 */
 	public void sell() {
 		System.out.println("Stock [ Name: " + name + ",Quantity: " + quantity + " ] sold");

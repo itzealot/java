@@ -1,7 +1,7 @@
 package com.zt.design.behavior.chainofresponse;
 
 /**
- * 控制台日志打印
+ * 控制台日志
  * 
  * @author zengtao
  *

@@ -3,7 +3,7 @@ package com.zt.design.behavior.nullobject;
 /**
  * 客户容器工厂
  * 
- * @author zt 2016年3月5日
+ * @author zt
  */
 public class CustomerFactory {
 
@@ -12,7 +12,6 @@ public class CustomerFactory {
 
 	/**
 	 * 根据名称获取客户的客户对象.<br />
-	 * To get AbstractCustomer by name.<br />
 	 * 
 	 * @param name
 	 * @return
