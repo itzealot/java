@@ -13,25 +13,23 @@ package com.zt.design.j2ee.busydelegate;
  *
  */
 public class BusinessDelegatePatternDemo {
-	/**
-	 * 使用 BusinessDelegate 和 Client 类来演示业务代表模式
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		// 创建业务代表
 		BusinessDelegate businessDelegate = new BusinessDelegate();
+
 		// 服务类型
 		businessDelegate.setServiceType("EJB");
 
 		// 根据业务代表创建客户端
 		Client client = new Client(businessDelegate);
+
 		// 执行任务方法
 		client.doTask();
 
 		// 修改服务类型
 		businessDelegate.setServiceType("JMS");
+
 		// 执行任务方法
 		client.doTask();
 	}

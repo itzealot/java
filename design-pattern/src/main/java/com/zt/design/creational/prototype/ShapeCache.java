@@ -13,13 +13,14 @@ public class ShapeCache {
 	private static Hashtable<String, Shape> shapeMap = new Hashtable<String, Shape>();
 
 	/**
-	 * To get shape by shapeId
+	 * 从HashTabel中根据键获取值
 	 * 
 	 * @param shapeId
 	 * @return
 	 */
 	public static Shape getShape(String shapeId) {
 		Shape cachedShape = shapeMap.get(shapeId);
+
 		// 克隆相应的对象
 		return (Shape) cachedShape.clone();
 	}

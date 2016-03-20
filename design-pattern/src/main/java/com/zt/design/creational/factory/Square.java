@@ -1,9 +1,7 @@
 package com.zt.design.creational.factory;
 
 /**
- * 1. 创建型模式之工厂模式.<br />
- * Square implements Shape.<br />
- * 实现画正方形的方法
+ * 图形-正方形实现类
  * 
  * @author zengtao
  *

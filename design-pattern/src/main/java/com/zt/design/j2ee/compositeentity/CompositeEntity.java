@@ -7,6 +7,7 @@ package com.zt.design.j2ee.compositeentity;
  *
  */
 public class CompositeEntity {
+
 	private CoarseGrainedObject cgo = new CoarseGrainedObject();
 
 	public void setData(String data1, String data2) {

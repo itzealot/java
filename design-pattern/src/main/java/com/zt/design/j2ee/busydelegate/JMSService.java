@@ -1,7 +1,7 @@
 package com.zt.design.j2ee.busydelegate;
 
 /**
- * 创建实体服务类 JMSService
+ * JMS服务实现类 JMSService
  * 
  * @author zengtao
  *

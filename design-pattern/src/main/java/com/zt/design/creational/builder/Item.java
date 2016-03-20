@@ -1,12 +1,13 @@
 package com.zt.design.creational.builder;
 
 /**
- * 创建一个表示食物条目和食物包装的接口。
+ * 食物条目和食物包装接口
  * 
  * @author zengtao
  *
  */
 public interface Item {
+
 	/**
 	 * 该项名称
 	 * 

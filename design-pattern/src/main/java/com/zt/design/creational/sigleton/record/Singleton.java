@@ -22,6 +22,7 @@ package com.zt.design.creational.sigleton.record;
  *
  */
 public class Singleton {
+
 	/**
 	 * 使用静态的内部类初始化实例
 	 * 
@@ -36,8 +37,7 @@ public class Singleton {
 	}
 
 	/**
-	 * 获取实例的方法.<br />
-	 * 获取内部类创建的实例.<br />
+	 * 获取实例的方法,获取内部类创建的实例.<br />
 	 * 
 	 * @return
 	 */

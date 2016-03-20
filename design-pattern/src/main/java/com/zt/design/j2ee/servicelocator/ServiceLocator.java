@@ -1,6 +1,7 @@
 package com.zt.design.j2ee.servicelocator;
 
 public class ServiceLocator {
+
 	private static Cache cache;
 
 	static {
@@ -8,7 +9,6 @@ public class ServiceLocator {
 	}
 
 	public static Service getService(String jndiName) {
-
 		Service service = cache.getService(jndiName);
 
 		if (service != null) {
@@ -18,6 +18,7 @@ public class ServiceLocator {
 		InitialContext context = new InitialContext();
 		Service service1 = (Service) context.lookup(jndiName);
 		cache.addService(service1);
+
 		return service1;
 	}
 }

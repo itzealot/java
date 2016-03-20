@@ -8,8 +8,9 @@ package com.zt.design.creational.absfactory;
  *
  */
 public abstract class AbstractFactory {
+
 	/**
-	 * 根据String类型的color实例来生产实现了Color接口的对象
+	 * 根据颜色名称获取Color引用的对象
 	 * 
 	 * @param color
 	 * @return
@@ -17,7 +18,7 @@ public abstract class AbstractFactory {
 	abstract Color getColor(String color);
 
 	/**
-	 * 根据String类型的shape实例来生产实现了Shape接口的对象
+	 * 根据形状获取Shape引用的对象
 	 * 
 	 * @param shape
 	 * @return

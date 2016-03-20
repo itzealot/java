@@ -7,6 +7,7 @@ package com.zt.design.j2ee.interceptorfilter;
  *
  */
 public interface Filter {
+
 	/**
 	 * 执行某个过滤方法
 	 * 

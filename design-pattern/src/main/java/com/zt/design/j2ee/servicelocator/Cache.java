@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 创建缓存Cache
+ * 缓存
  * 
  * @author zengtao
  *
@@ -26,11 +26,11 @@ public class Cache {
 	public Service getService(String serviceName) {
 		for (Service service : services) {
 			if (service.getName().equalsIgnoreCase(serviceName)) {
-				System.out.println("Returning cached  " + serviceName
-						+ " object");
+				System.out.println("Returning cached  " + serviceName + " object");
 				return service;
 			}
 		}
+
 		return null;
 	}
 
@@ -41,11 +41,13 @@ public class Cache {
 	 */
 	public void addService(Service newService) {
 		boolean exists = false;
+
 		for (Service service : services) {
 			if (service.getName().equalsIgnoreCase(newService.getName())) {
 				exists = true;
 			}
 		}
+
 		if (!exists) {
 			services.add(newService);
 		}

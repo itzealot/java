@@ -1,13 +1,21 @@
 package com.zt.design.j2ee.servicelocator;
 
 /**
- * 创建服务接口 Service
+ * 服务接口
  * 
  * @author zengtao
  *
  */
 public interface Service {
+	/**
+	 * 获取名称
+	 * 
+	 * @return
+	 */
 	public String getName();
 
+	/**
+	 * 执行
+	 */
 	public void execute();
 }

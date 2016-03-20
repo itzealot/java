@@ -18,7 +18,6 @@ package com.zt.design.creational.sigleton.enums;
  *
  */
 public enum Singleton {
-
 	// 使用枚举的方式实现单例
 	INSTANCE;
 }

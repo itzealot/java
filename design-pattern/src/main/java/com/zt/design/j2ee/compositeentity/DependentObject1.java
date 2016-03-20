@@ -7,6 +7,7 @@ package com.zt.design.j2ee.compositeentity;
  *
  */
 public class DependentObject1 {
+
 	private String data;
 
 	public void setData(String data) {

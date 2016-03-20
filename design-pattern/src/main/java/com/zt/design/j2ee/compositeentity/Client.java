@@ -7,6 +7,7 @@ package com.zt.design.j2ee.compositeentity;
  *
  */
 public class Client {
+
 	private CompositeEntity compositeEntity = new CompositeEntity();
 
 	public void printData() {

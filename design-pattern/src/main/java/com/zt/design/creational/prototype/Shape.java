@@ -1,7 +1,7 @@
 package com.zt.design.creational.prototype;
 
 /**
- * abstract class Shape implements Cloneable.<br />
+ * 抽象的图像类
  * 
  * @author zengtao
  *
@@ -12,7 +12,7 @@ public abstract class Shape implements Cloneable {
 	protected String type;
 
 	/**
-	 * draw shape
+	 * 绘制图形
 	 */
 	abstract void draw();
 
@@ -34,11 +34,13 @@ public abstract class Shape implements Cloneable {
 	@Override
 	public Object clone() {
 		Object clone = null;
+
 		try {
 			clone = super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
+
 		return clone;
 	}
 }

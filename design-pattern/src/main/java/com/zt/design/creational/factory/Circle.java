@@ -1,19 +1,15 @@
 package com.zt.design.creational.factory;
 
 /**
- * 1. 创建型模式之工厂模式.<br />
- * Circle implements Shape.<br />
- * 实现画圆的方法
+ * 图形-圆形实现类
  * 
  * @author zengtao
  *
  */
 public class Circle implements Shape {
 
-	/**
-	 * 画圆的方法
-	 */
 	public void draw() {
+		// 画圆的方法
 		System.out.println("Inside Circle::draw() method.");
 	}
 }

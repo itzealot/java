@@ -1,14 +1,15 @@
 package com.zt.design.j2ee.busydelegate;
 
 /**
- * 创建服务接口 BusinessService
+ * 服务接口
  * 
  * @author zengtao
  *
  */
 public interface BusinessService {
+
 	/**
-	 * 服务方法
+	 * 服务执行方法
 	 */
 	public void doProcessing();
 }

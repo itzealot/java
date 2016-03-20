@@ -1,8 +1,7 @@
 package com.zt.design.creational.prototype;
 
 /**
- * class Circle extends Shape.<br />
- * 绘制圆形的类
+ * 图形-圆形实现类
  * 
  * @author zengtao
  *
@@ -13,9 +12,6 @@ public class Circle extends Shape {
 		type = "Circle";
 	}
 
-	/**
-	 * draw circle
-	 */
 	@Override
 	public void draw() {
 		System.out.println("Inside Circle::draw() method.");

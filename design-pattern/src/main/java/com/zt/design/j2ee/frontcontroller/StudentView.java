@@ -1,12 +1,13 @@
 package com.zt.design.j2ee.frontcontroller;
 
 /**
- * 创建视图 StudentView
+ * Student 视图
  * 
  * @author zengtao
  *
  */
 public class StudentView {
+
 	public void show() {
 		System.out.println("Displaying Student Page");
 	}

@@ -1,8 +1,7 @@
 package com.zt.design.creational.prototype;
 
 /**
- * class Rectangle extends Shape.<br />
- * 绘制矩形的类
+ * 图形-矩形实现类
  * 
  * @author zengtao
  *

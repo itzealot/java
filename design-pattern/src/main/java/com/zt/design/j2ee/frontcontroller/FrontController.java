@@ -1,12 +1,13 @@
 package com.zt.design.j2ee.frontcontroller;
 
 /**
- * 创建前端控制器 FrontController
+ * 前端控制器
  * 
  * @author zengtao
  *
  */
 public class FrontController {
+
 	// 持有调度器实例
 	private Dispatcher dispatcher;
 

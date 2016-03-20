@@ -1,8 +1,8 @@
 package com.zt.design.j2ee.mvc;
 
 public class MVCPatternDemo {
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		// 从数据可获取学生记录
 		Student model = retriveStudentFromDatabase();
 

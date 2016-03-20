@@ -1,23 +1,26 @@
 package com.zt.design.j2ee.frontcontroller;
 
 /**
- * 创建调度器 Dispatcher
+ * 调度器
  * 
  * @author zengtao
  *
  */
 public class Dispatcher {
+
 	private StudentView studentView;
+
 	private HomeView homeView;
 
-	// 创建 Dispatcher 时，初始化视图
 	public Dispatcher() {
+		// 创建 Dispatcher 时，初始化视图
 		studentView = new StudentView();
+
 		homeView = new HomeView();
 	}
 
 	/**
-	 * 根据不同的String request 调度
+	 * 根据不同的 request 调度
 	 * 
 	 * @param request
 	 */

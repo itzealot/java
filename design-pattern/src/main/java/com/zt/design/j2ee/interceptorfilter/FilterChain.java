@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 创建过滤器链
+ * 过滤器链
  * 
  * @author zengtao
  *
  */
 public class FilterChain {
+
 	// 使用 List<Filter>存储 过滤器链
 	private List<Filter> filters = new ArrayList<Filter>();
+
 	private Target target;
 
 	public void addFilter(Filter filter) {
@@ -22,6 +24,7 @@ public class FilterChain {
 		for (Filter filter : filters) {
 			filter.execute(request);
 		}
+
 		target.execute(request);
 	}
 

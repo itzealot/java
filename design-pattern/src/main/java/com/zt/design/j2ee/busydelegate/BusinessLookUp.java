@@ -1,12 +1,13 @@
 package com.zt.design.j2ee.busydelegate;
 
 /**
- * 创建业务查询服务 BusinessLookUp
+ * 业务查询服务
  * 
  * @author zengtao
  *
  */
 public class BusinessLookUp {
+
 	/**
 	 * 根据服务类型创建不同的服务对象
 	 * 

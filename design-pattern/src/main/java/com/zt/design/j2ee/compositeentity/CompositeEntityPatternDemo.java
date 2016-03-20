@@ -14,12 +14,10 @@ package com.zt.design.j2ee.compositeentity;
  *
  */
 public class CompositeEntityPatternDemo {
-	/**
-	 * 使用 Client 来演示组合实体设计模式的用法
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
+		// 使用 Client 来演示组合实体设计模式的用法
+
 		Client client = new Client();
 		client.setData("Test", "Data");
 		client.printData();

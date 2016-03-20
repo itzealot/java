@@ -17,14 +17,9 @@ package com.zt.design.creational.sigleton.lazy.unsafe;
  */
 public class Singleton {
 
-	/**
-	 * 静态成员变量，Singleton 实例对象
-	 */
+	// 静态成员变量，Singleton 实例对象
 	private static Singleton instance;
 
-	/**
-	 * 抽象的构造方法
-	 */
 	private Singleton() {
 		super();
 	}
@@ -39,6 +34,7 @@ public class Singleton {
 		if (instance == null) {
 			instance = new Singleton();
 		}
+
 		return instance;
 	}
 }

@@ -26,9 +26,6 @@ public class Singleton {
 	 */
 	private volatile static Singleton singleton;
 
-	/**
-	 * 私有构造方法
-	 */
 	private Singleton() {
 	}
 
@@ -38,17 +35,16 @@ public class Singleton {
 	 * @return
 	 */
 	public static Singleton getSingleton() {
-
 		if (singleton == null) {
 			// 使用Singleton.class 对象来做锁
 			synchronized (Singleton.class) {
-
 				// 多线程下可能多个线程访问，可能实例变量同时为null，添加该限制可以避免
 				if (singleton == null) {
 					singleton = new Singleton();
 				}
 			}
 		}
+
 		return singleton;
 	}
 }

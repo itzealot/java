@@ -7,7 +7,6 @@ package com.zt.design.j2ee.busydelegate;
  *
  */
 public class Client {
-	// 持有 BusinessDelegate 实例
 	BusinessDelegate businessService;
 
 	public Client(BusinessDelegate businessService) {

@@ -1,12 +1,13 @@
 package com.zt.design.j2ee.busydelegate;
 
 /**
- * 创建业务代表 BusinessDelegate
+ * 创建业务代表
  * 
  * @author zengtao
  *
  */
 public class BusinessDelegate {
+
 	// 持有业务查询服务 BusinessLookUp 实例
 	private BusinessLookUp lookupService = new BusinessLookUp();
 

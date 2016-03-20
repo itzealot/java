@@ -15,12 +15,10 @@ package com.zt.design.j2ee.interceptorfilter;
  *
  */
 public class FrontControllerPatternDemo {
-	/**
-	 * 使用 Client 来演示拦截过滤器设计模式
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
+		// 使用 Client 来演示拦截过滤器设计模式
+
 		FilterManager filterManager = new FilterManager(new Target());
 		filterManager.setFilter(new AuthenticationFilter());
 		filterManager.setFilter(new DebugFilter());

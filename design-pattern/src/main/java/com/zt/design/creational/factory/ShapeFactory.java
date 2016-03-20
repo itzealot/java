@@ -43,7 +43,7 @@ package com.zt.design.creational.factory;
 public class ShapeFactory {
 
 	/**
-	 * 根据String类型的shapeType来绘制不同图形
+	 * 根据shapeType来绘制不同图形
 	 * 
 	 * @param shapeType
 	 *            the difference of shape name
@@ -53,6 +53,7 @@ public class ShapeFactory {
 		if (shapeType == null) {
 			return null;
 		}
+
 		if (shapeType.equalsIgnoreCase("CIRCLE")) {
 			return new Circle();
 		} else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
@@ -60,6 +61,7 @@ public class ShapeFactory {
 		} else if (shapeType.equalsIgnoreCase("SQUARE")) {
 			return new Square();
 		}
+
 		return null;
 	}
 }

@@ -1,6 +1,7 @@
 package com.zt.design.j2ee.interceptorfilter;
 
 public class Client {
+
 	// 持有 FilterManager 的实例
 	FilterManager filterManager;
 

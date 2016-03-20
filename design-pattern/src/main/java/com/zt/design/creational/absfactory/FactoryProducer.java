@@ -1,15 +1,15 @@
 package com.zt.design.creational.absfactory;
 
 /**
- * 2. 创建型模式之抽象工厂模式.<br />
- * 创建扩展了 AbstractFactory 的工厂类.<br />
+ * 创建扩展了 AbstractFactory 的工厂类
  * 
  * @author zengtao
  *
  */
 public class FactoryProducer {
+
 	/**
-	 * 根据不同的工厂信息创建相应的工厂，返回创建后的工厂
+	 * 根据名称创建工厂，并返回
 	 * 
 	 * @param choice
 	 * @return
@@ -20,6 +20,7 @@ public class FactoryProducer {
 		} else if (choice.equalsIgnoreCase("COLOR")) {
 			return new ColorFactory();
 		}
+
 		return null;
 	}
 }

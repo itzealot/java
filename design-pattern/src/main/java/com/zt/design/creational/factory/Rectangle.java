@@ -1,19 +1,15 @@
 package com.zt.design.creational.factory;
 
 /**
- * 1. 创建型模式之工厂模式.<br />
- * Rectangle implements Shape.<br />
- * 实现画矩形的方法
+ * 图形-矩形实现类
  * 
  * @author zengtao
  *
  */
 public class Rectangle implements Shape {
 
-	/**
-	 * 画矩形的方法
-	 */
 	public void draw() {
+		// 画矩形的方法
 		System.out.println("Inside Rectangle::draw() method.");
 	}
 }
