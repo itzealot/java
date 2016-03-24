@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-8-17 9:52:27 by Hibernate Tools 3.4.0.CR1 -->
+
+<!-- 在一个包下，则可以在hibernate-mapping的属性package中设置class名即包名.类名 -->
+<hibernate-mapping>
+
+    <class name="hibernate.n21.Order" table="ORDERS">
+    
+        <id name="orderId" type="java.lang.Integer">
+            <column name="ORDER_ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="orderName" type="java.lang.String">
+            <column name="ORDER_NAME" />
+        </property>
+        
+        
+        <!-- 映射多对一的关联关系，自动生成。
+        	name: 多的一端关联的属性的名字。
+        	class: 一那一端的属性对应的类名，即包名.类名。
+        	column: 一那一端在多一端对应数据表中的外键的名字。
+         -->
+        <many-to-one name="customer" class="hibernate.n21.Customer" column="CUSTOMER_ID"></many-to-one>
+        
+    </class>
+    
+    
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-8-17 9:52:27 by Hibernate Tools 3.4.0.CR1 -->
+
+<!-- 数据库列名命名方式为单词间用下划线连接；java为开始单词首字母小写，后面的单词首字母大写。 -->
+<hibernate-mapping>
+
+    <class name="hibernate.n21.Customer" table="CUSTOMER">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME" />
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>

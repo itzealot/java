@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="hibernate.extend.union.subclass">
+	<!-- 当插入的对象为Person时，TYPE属性列的值为PERSON -->
+    <class name="Person" table="PERSONS_UNION">
+    
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <!-- 主键生成策略不能为identity，即generator中值不能为native，MySQl为identity（自动增长） -->
+            <generator class="hilo" />
+        </id>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        
+        <union-subclass name="Student" table="STUDENTS_UNION">
+        	<property name="school" column="SCHOOL" type="string"></property>
+        </union-subclass>
+    </class>
+    
+</hibernate-mapping>

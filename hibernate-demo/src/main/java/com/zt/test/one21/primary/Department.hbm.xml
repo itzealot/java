@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-8-18 8:57:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    
+    <class name="hibernate.one2one.primary.Department" table="DEPARTMENT">
+        
+        <id name="departId" type="java.lang.Integer">
+        	
+            <column name="DEPART_ID" />
+            <!-- 使用外键的方式来生成当前主键。 -->
+            <!-- 使用foreign，下面的one-to-one应该使用constrained="true"属性，添加外键约束。 -->
+            <generator class="foreign" >
+            	<!-- property 属性指定使用当前持久化类的一个属性的主键作为外键。
+            		参照Department 类中的manager属性 -->
+            	<param name="property">manager</param>
+            </generator>
+        </id>
+        
+        <property name="departName" type="java.lang.String">
+            <column name="DEPART_NAME" />
+        </property>
+        
+        <!-- 实验one-to-one的方式来映射主键1-1的关联关系。
+        	采用foreign 主键生成器策略的一端增加one-to-one 元素映射关联属性，其one-to-one属性还应
+        	增加constrained="true"属性，以使当前的主键上添加外键约束。
+         -->
+        <one-to-one name="manager" class="hibernate.one2one.primary.Manager"
+        	constrained="true">
+        </one-to-one>
+        
+    </class>
+    
+</hibernate-mapping>

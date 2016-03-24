@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 配置Bean -->
+	<bean id="arithmeticCalculator" class="spring.aop.xml.ArithmeticCalculatorImpl">
+
+	</bean>
+
+	<!-- 配置切面 -->
+	<bean id="logAspect" class="spring.aop.xml.LogAspect">
+
+	</bean>
+
+	<!-- 配置AOP -->
+	<aop:config>
+		<!-- 配置切点表达式 -->
+		<aop:pointcut
+			expression="execution(* spring.aop.xml.ArithmeticCalculator.*(int, int))"
+			id="pointcut" />
+		<!-- 配置切面及通知: ref : 指向配置的切面 order : 表明切面的优先级 -->
+		<aop:aspect ref="logAspect" order="2">
+			<!-- 配置通知 method : 表明通知的函数名 pointcut-ref : 指向切点 -->
+			<aop:before method="beforeMethod" pointcut-ref="pointcut" />
+			<aop:after method="afterMethod" pointcut-ref="pointcut" />
+			<!-- thorwing : 表示抛出异常的变量名。 returning : 表示返回值的变量名。 -->
+			<aop:after-throwing method="afterThrowing"
+				pointcut-ref="pointcut" throwing="ex" />
+			<aop:after-returning method="afterRunning"
+				pointcut-ref="pointcut" returning="result" />
+			<aop:around method="around" pointcut-ref="pointcut" />
+		</aop:aspect>
+
+		<!-- other aop aspect by aop:aspect label. <aop:aspect></aop:aspect> -->
+	</aop:config>
+</beans>

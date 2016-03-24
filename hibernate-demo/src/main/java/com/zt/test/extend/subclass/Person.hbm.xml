@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="hibernate.extend.subclass">
+	<!-- 当插入的对象为Person时，TYPE属性列的值为PERSON -->
+    <class name="Person" table="PERSONS" discriminator-value="PERSON">
+    
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <!-- 配置辨别者列，类型为string类型 -->
+        <discriminator column="TYPE" type="string"></discriminator>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        
+        <!-- 映射子类Student，使用subclass进行映射;discriminator-value 当插入对象为Student时，TYPE属性值默认为STUDENT -->
+        <subclass name="Student" discriminator-value="STUDENT">
+        	<property name="school" type="string" column="SCHOOL"></property>
+        </subclass>
+    </class>
+    
+</hibernate-mapping>

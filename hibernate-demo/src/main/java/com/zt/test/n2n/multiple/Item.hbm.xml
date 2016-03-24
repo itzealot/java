@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-8-24 10:35:12 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="hibernate.n2n.multiple.Item" table="ITEM">
+    	<!-- The property id as the primary and it's type is Integer -->
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <!-- The property name and it's type is String. -->
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <set name="categorys" table="CATEGORY_ITEM" inverse="true">
+        	<key column="I_ID"></key>
+        	
+        	<many-to-many class="hibernate.n2n.multiple.Category" column="C_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

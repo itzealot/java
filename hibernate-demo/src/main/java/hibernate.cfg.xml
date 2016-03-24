@@ -3,30 +3,36 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+	<!-- 配置连接数据库的基本信息 -->
 	<session-factory>
-    
-		<!-- 配置连接数据库的基本信息 -->
-		<property name="connection.username">sys as sysdba</property>
-		<property name="connection.password">root</property>
-		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:mydb</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">921015</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
-		<!-- 配置 hibernate 的基本信息 -->
-		<!-- hibernate 所使用的数据库方言 -->
-		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<!-- "localhost:3306" 默认信息可以省略，hibernate为表名 -->
+		<property name="connection.url">jdbc:mysql:///hibernate</property>
 
-		<!-- 执行操作时是否在控制台打印 SQL -->
+		<!-- 配置hibernate的基本信息 -->
+		<!-- hibernate所使用的数据库方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- 执行操作时是否在控制台打印SQL -->
 		<property name="show_sql">true</property>
 
-		<!-- 是否对 SQL 进行格式化 -->
+		<!-- 是否对SQL进行格式化 -->
 		<property name="format_sql">true</property>
 
 		<!-- 指定自动生成数据表的策略 -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<!-- 指定关联的 .hbm.xml 文件 -->
-		<mapping resource="com/zt/test/hbm/User.hbm.xml" />
+		<!-- 设置Hibernate 的事务隔离级别 -->
+		<property name="connection.isolation">2</property>
 
+		<!-- 删除对象后，使其OID置为null -->
+		<property name="use_identifier_rollback">true</property>
+
+		<!-- 指定关联的*.hbm.xml文件，该文件名为目录结构，不是包名.类名 -->
+		<mapping resource="com/zt/test/hbm/*.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

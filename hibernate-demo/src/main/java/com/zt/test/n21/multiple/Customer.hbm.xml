@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-8-17 9:52:27 by Hibernate Tools 3.4.0.CR1 -->
+
+<!-- 数据库列名命名方式为单词间用下划线连接；java为开始单词首字母小写，后面的单词首字母大写。 -->
+<hibernate-mapping>
+
+    <class name="hibernate.n21.multiple.Customer" table="CUSTOMER">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME" />
+        </property>
+        
+        
+        <!-- 映射1 对多的那个集合属性。
+        		inverse属性指定哪一方来维护关联关系，通常设置为true，以指定由
+        		多的一端来维护关联关系。
+        		cascade: 设定级联操作，此处为删除级联可以取值save-update级联保存delete级联删除。
+        		开发时不建议设定该属性，建议使用手工的方式来处理。
+        		 cascade="delete"---级联删除。
+        		 order-by 在查询时对集合中的元素进行排序，order-by使用的是表的字段名，而不是持久化类的属性名。
+        -->
+        <!-- set: 映射类型的属性，table：set 中的元素对应的记录放在哪一个数据表中，该值需要和多对一的多的那个表的名字一致。 -->
+        <set name="order" table="ORDERS" inverse="true" order-by="ORDER_NAME DESC">
+        	<!-- 执行多的表中的外键列的名字 -->
+        	<key column="CUSTOMER_ID"></key>
+        	<!-- 指定映射类型 -->
+        	<one-to-many class="hibernate.n21.multiple.Order" />
+        </set>
+        
+    </class>
+    
+</hibernate-mapping>
