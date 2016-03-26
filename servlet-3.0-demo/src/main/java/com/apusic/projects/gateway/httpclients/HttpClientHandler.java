@@ -56,10 +56,7 @@ public class HttpClientHandler implements IHttpClientHandler {
 		this.protocol = protocol;
 	}
 
-	@Override
 	public String doHandler() {
-		// TODO Auto-generated method stub
-
 		CloseableHttpClient httpClient = null;
 		CloseableHttpResponse httpResponse = null;
 

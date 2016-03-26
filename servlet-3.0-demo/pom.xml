@@ -16,13 +16,18 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
 		<!-- To add http component dependency start -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.4.1</version>
 		</dependency>
-
 		<!-- To add http component dependency end -->
 	</dependencies>
 	<build>
