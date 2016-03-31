@@ -26,15 +26,20 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-common</artifactId>
-			<version>2.5.0-cdh5.3.0</version>
-
-			<!-- To solve Problems: Missing artifact jdk.tools:jdk.tools:jar:1.6. -->
+			<version>2.5.1</version>
 			<exclusions>
 				<exclusion>
 					<groupId>jdk.tools</groupId>
 					<artifactId>jdk.tools</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>jdk.tools</groupId>
+			<artifactId>jdk.tools</artifactId>
+			<version>1.6</version>
+			<scope>system</scope>
+			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>jdk.tools</groupId>
