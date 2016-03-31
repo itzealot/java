@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.zt.test</groupId>
-	<artifactId>hadoop-demo</artifactId>
+	<groupId>com.sky.projects.hdfs</groupId>
+	<artifactId>hdfs-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>hadoop-demo</name>
+	<name>hdfs-demo</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,10 +21,14 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- The hadoop dependency start -->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-common</artifactId>
-			<version>2.5.1</version>
+			<version>2.5.0-cdh5.3.0</version>
+
+			<!-- To solve Problems: Missing artifact jdk.tools:jdk.tools:jar:1.6. -->
 			<exclusions>
 				<exclusion>
 					<groupId>jdk.tools</groupId>
@@ -39,15 +43,6 @@
 			<scope>system</scope>
 			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs</artifactId>
-			<version>2.5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>2.5.1</version>
-		</dependency>
+		<!-- The hadoop dependency end -->
 	</dependencies>
 </project>
