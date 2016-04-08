@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 消息事件
+ * 消息事件，包含事件类型，消息，日期
  * 
  * @author zt
  *

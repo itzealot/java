@@ -1,8 +1,5 @@
 package com.projects.sky.util.common;
 
-import java.io.Closeable;
-import java.io.IOException;
-
 /**
  * 关闭流
  * 
@@ -12,7 +9,7 @@ public final class Closeables {
 	private Closeables() {
 	}
 
-	public static void close(Closeable... closes) {
+	public static void close(AutoCloseable... closes) {
 		if (closes == null) {
 			return;
 		}
@@ -23,7 +20,7 @@ public final class Closeables {
 			try {
 				if (closes[i] != null)
 					closes[i].close();
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

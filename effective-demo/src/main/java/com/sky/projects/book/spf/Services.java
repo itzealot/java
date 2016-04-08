@@ -18,15 +18,15 @@ public final class Services {
 
 	public static final String DEFAULT_PROVIDER_NAME = "<def>";
 
-	public static Map<String, Provider> registerDefaultProvider(
-			Provider provider) {
+	public static Map<String, Provider> registerDefaultProvider(Provider provider) {
 		registerProvider(DEFAULT_PROVIDER_NAME, provider);
+
 		return providers;
 	}
 
-	public static Map<String, Provider> registerProvider(String name,
-			Provider provider) {
+	public static Map<String, Provider> registerProvider(String name, Provider provider) {
 		providers.put(name, provider);
+
 		return providers;
 	}
 
@@ -36,10 +36,11 @@ public final class Services {
 
 	public static Service newInstance(String name) {
 		Provider provider = providers.get(name);
+
 		if (provider == null) {
-			throw new IllegalArgumentException(
-					"No provider register with name: " + name);
+			throw new IllegalArgumentException("No provider register with name: " + name);
 		}
+
 		return provider.newService();
 	}
 

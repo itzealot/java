@@ -5,10 +5,11 @@ import java.util.Map;
 
 import org.apache.kafka.common.serialization.Deserializer;
 
-import com.apusic.distribute.kafka.util.SerializerUtil;
 import com.apusic.distribute.message.model.MessageEvent;
+import com.projects.sky.util.common.Serializables;
 
 /**
+ * MessageEvent 反序列化
  * 
  * @author zt
  *
@@ -17,7 +18,6 @@ import com.apusic.distribute.message.model.MessageEvent;
 public class MessageEventDeserializer<T extends Serializable> implements Deserializer<MessageEvent<T>> {
 
 	public MessageEventDeserializer() {
-
 	}
 
 	@Override
@@ -29,8 +29,7 @@ public class MessageEventDeserializer<T extends Serializable> implements Deseria
 	public MessageEvent<T> deserialize(String s, byte[] bytes) {
 		if (bytes == null)
 			return null;
-		else
-			return SerializerUtil.deserializeFromByte(bytes);
+		return Serializables.read(bytes);
 	}
 
 	@Override

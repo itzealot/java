@@ -48,8 +48,7 @@ public class KafkaMessageEventBus implements MessageEventBus {
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.LongDeserializer");
 		props.put("value.deserializer", "com.apusic.distribute.kafka.serializable.MessageEventDeserializer");
 
-		Consumer<Long, MessageEvent<T>> consumer = new KafkaConsumer<Long, MessageEvent<T>>(props);
-		return consumer;
+		return new KafkaConsumer<Long, MessageEvent<T>>(props);
 	}
 
 	@Override

@@ -17,6 +17,7 @@ public interface MessageEventListener<T extends Serializable> {
 	 * 接收消息
 	 * 
 	 * @param eventMessage
+	 *            消息
 	 */
 	void handler(MessageEvent<T> eventMessage);
 

@@ -1,8 +1,8 @@
 package com.zt.test.async;
 
-import com.zt.test.async.AsyncController;
-import com.zt.test.async.FutureContext;
-import com.zt.test.async.OutputResult;
+import com.sky.projects.jdk.async.AsyncController;
+import com.sky.projects.jdk.async.FutureContext;
+import com.sky.projects.jdk.async.OutputResult;
 
 public class TestAsyncController {
 

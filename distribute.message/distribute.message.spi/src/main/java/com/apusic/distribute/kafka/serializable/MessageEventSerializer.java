@@ -1,13 +1,15 @@
 package com.apusic.distribute.kafka.serializable;
 
-import com.apusic.distribute.kafka.util.SerializerUtil;
-import com.apusic.distribute.message.model.MessageEvent;
-import org.apache.kafka.common.serialization.Serializer;
-
 import java.io.Serializable;
 import java.util.Map;
 
+import org.apache.kafka.common.serialization.Serializer;
+
+import com.apusic.distribute.message.model.MessageEvent;
+import com.projects.sky.util.common.Serializables;
+
 /**
+ * MessageEvent 序列化
  * 
  * @author zt
  *
@@ -16,7 +18,6 @@ import java.util.Map;
 public class MessageEventSerializer<T extends Serializable> implements Serializer<MessageEvent<T>> {
 
 	public MessageEventSerializer() {
-
 	}
 
 	@Override
@@ -28,8 +29,7 @@ public class MessageEventSerializer<T extends Serializable> implements Serialize
 	public byte[] serialize(String s, MessageEvent<T> message) {
 		if (message == null)
 			return null;
-		else
-			return SerializerUtil.serializeToByte(message);
+		return Serializables.serialize(message);
 	}
 
 	@Override

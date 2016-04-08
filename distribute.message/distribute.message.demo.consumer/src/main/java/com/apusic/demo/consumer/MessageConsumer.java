@@ -27,5 +27,4 @@ public class MessageConsumer implements MessageEventListener<User> {
 		// 监听事件
 		bus.addMessageEventListener("groupId-1", "event-1", consumer);
 	}
-
 }

@@ -17,6 +17,7 @@ import com.apusic.distribute.message.publisher.MessageEventPublisher;
  *
  */
 public class KafkaMessageEventPublisher<T extends Serializable> implements MessageEventPublisher<T> {
+
 	private Producer<Long, MessageEvent<T>> producer;
 
 	public KafkaMessageEventPublisher() {
@@ -24,7 +25,7 @@ public class KafkaMessageEventPublisher<T extends Serializable> implements Messa
 	}
 
 	/**
-	 * 获取Kafka 生产者
+	 * 获取 Kafka 生产者
 	 * 
 	 * @return
 	 */
@@ -40,9 +41,7 @@ public class KafkaMessageEventPublisher<T extends Serializable> implements Messa
 		props.put("key.serializer", "org.apache.kafka.common.serialization.LongSerializer");
 		props.put("value.serializer", "com.apusic.distribute.kafka.serializable.MessageEventSerializer");
 
-		Producer<Long, MessageEvent<T>> producer = new KafkaProducer<Long, MessageEvent<T>>(props);
-
-		return producer;
+		return new KafkaProducer<Long, MessageEvent<T>>(props);
 	}
 
 	@Override

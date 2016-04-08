@@ -50,17 +50,17 @@ public final class Serializables {
 	 * 将序列化的对象写入文件中
 	 * 
 	 * @param t
-	 * @param fileName
+	 * @param file
 	 */
-	public static <T extends Serializable> void write(T t, String fileName) {
+	public static <T extends Serializable> void write(T t, String file) {
 		checkNotNull(t, "t can not be null");
-		checkNotNull(fileName, "fileName can not be null");
+		checkNotNull(file, "fileName can not be null");
 
 		ObjectOutputStream oos = null;
 		FileOutputStream fos = null;
 
 		try {
-			fos = new FileOutputStream(fileName);
+			fos = new FileOutputStream(file);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(t);
 		} catch (IOException e) {
@@ -102,12 +102,12 @@ public final class Serializables {
 	/**
 	 * 从序列化的文件中读取对象并返回，读取失败，则返回null
 	 * 
-	 * @param fileName
+	 * @param file
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> T read(String fileName) {
-		checkNotNull(fileName, "fileName can not be null");
+	public static <T extends Serializable> T read(String file) {
+		checkNotNull(file, "fileName can not be null");
 
 		FileInputStream bis = null;
 		ObjectInputStream ois = null;
@@ -115,7 +115,7 @@ public final class Serializables {
 		T obj = null;
 
 		try {
-			bis = new FileInputStream(fileName);
+			bis = new FileInputStream(file);
 			ois = new ObjectInputStream(bis);
 			obj = (T) ois.readObject();
 		} catch (Exception e) {
