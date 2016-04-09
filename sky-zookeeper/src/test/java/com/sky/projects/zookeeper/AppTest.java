@@ -1,4 +1,4 @@
-package com.sky.projects.spark;
+package com.sky.projects.zookeeper;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

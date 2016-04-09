@@ -17,12 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Splitter;
 
-/**
- * Common Util named Commons class
- * 
- * @author zt
- *
- */
 public final class Commons {
 	private static final Logger log = LoggerFactory.getLogger(Commons.class);
 
