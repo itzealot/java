@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		使用bean的scope 属性来配置bean的作用域
+		singleton: 默认值，容器初始时创建bean实例，在整个容器的生命周期内只创建一个bean，单例的。
+		prototype: 原型的，容器初始化时不创建bean的实例，而在每次请求时都创建一个新的Bean实例，并返回。
+	 -->
+	<bean id="car" class="com.sky.projects.spring.entity.Car"
+		scope="singleton">
+		<constructor-arg value="Audi"></constructor-arg>
+		<constructor-arg value="ShangHai"></constructor-arg>
+		<constructor-arg value="300000"></constructor-arg>
+	</bean>
+
+	<bean id="car2" class="com.sky.projects.spring.entity.Car"
+		scope="prototype">
+		<constructor-arg value="Audi"></constructor-arg>
+		<constructor-arg value="ShangHai"></constructor-arg>
+		<constructor-arg value="300000"></constructor-arg>
+	</bean>
+</beans>

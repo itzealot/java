@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="spring.transaction"></context:component-scan>
+	<!-- 引入属性文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	
+	<!-- 配置C3P0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 使用外部化属性文件的属性 -->
+		<property name="user" value="${user}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="driverClass" value="${driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+	</bean>
+	
+	<!-- 配置Spring 的JdbcTemplate
+		依赖注入dataSource 数据源对象 -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置NamedParameterJdbcTemplate，该对象可以使用具名参数，
+		没有无参构造器，依赖注入dataSource数据源对象 -->
+	<bean id="namedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	
+	<!-- 配置Bean -->
+	<bean id="bookShopDao" class="spring.transaction.dao.impl.BookShopDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean id="bookService" class="spring.transaction.service.impl.BookServiceImpl">
+		<property name="bookShopDao" ref="bookShopDao"></property>
+	</bean>
+	<bean id="cashierService" class="spring.transaction.service.impl.CashierServiceImpl">
+		<property name="bookService" ref="bookService"></property>
+	</bean>
+	
+	<!-- 1.配置事务管理器管理器
+		依赖注入dataSource数据源对象。 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 2.配置事務屬性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 根据方法名指定事务的属性 -->
+			<!-- 配置REQUIRES_NEW是否使用自己的事务 -->
+			<!-- 
+			<tx:method name="purchase" propagation="REQUIRES_NEW" />
+			 -->
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 3.配置事物切入点，以及把事物切入点和事务属性关联起来 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* spring.transaction.service.*.*(..))" 
+			id="txPointCut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+	</aop:config>
+</beans>
