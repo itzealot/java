@@ -124,6 +124,7 @@ public final class Serializables {
 		} finally {
 			Closeables.close(ois, bis);
 		}
+
 		return obj;
 	}
 }
