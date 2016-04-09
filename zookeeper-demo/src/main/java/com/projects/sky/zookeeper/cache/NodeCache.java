@@ -45,11 +45,6 @@ public class NodeCache {
 		init(nodes);
 	}
 
-	/**
-	 * get NodeCache singleton
-	 * 
-	 * @return
-	 */
 	public static synchronized NodeCache getNodeCache() {
 		if (cache == null) {
 			cache = new NodeCache();
