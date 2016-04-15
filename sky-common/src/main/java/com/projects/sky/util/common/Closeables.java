@@ -1,10 +1,5 @@
 package com.projects.sky.util.common;
 
-/**
- * 关闭流
- * 
- * @author zt
- */
 public final class Closeables {
 	private Closeables() {
 	}

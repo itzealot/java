@@ -14,6 +14,26 @@ public class AppTest extends TestCase {
 	}
 
 	public void testApp() {
-		assertTrue(true);
+		String str = "17|21312|asjdasd|213123";
+		String[] arrays = str.split("\\|");
+		for (String s : arrays) {
+			System.out.println(s);
+		}
+	}
+
+	public void testApp2() {
+		String str = "17|21312|asjdasd|213123";
+		String[] arrays = str.split("|");
+		for (String s : arrays) {
+			System.out.println(s);
+		}
+	}
+
+	public void testApp3() {
+		String str = "17,21312,asjdasd,213123";
+		String[] arrays = str.split(",");
+		for (String s : arrays) {
+			System.out.println(s);
+		}
 	}
 }

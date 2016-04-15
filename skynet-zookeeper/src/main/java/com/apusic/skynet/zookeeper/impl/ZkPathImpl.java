@@ -25,18 +25,6 @@ import com.apusic.skynet.zookeeper.common.Commons;
  */
 public class ZkPathImpl implements ZkPath {
 
-	// 是否同步标识
-	private boolean syn = false;
-
-	// 是否是临时节点标记
-	private boolean ephemeral = false;
-
-	// 是否带序列标识
-	private boolean sequential = false;
-
-	// 数据
-	private byte[] data;
-
 	// 基于根的存储路径
 	protected String path;
 

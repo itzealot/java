@@ -1,4 +1,4 @@
-package com.projects.sky.util.common;
+package com.projects.sky.util.serialize;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import com.projects.sky.util.common.Closeables;
 
 /**
  * 序列化工具类

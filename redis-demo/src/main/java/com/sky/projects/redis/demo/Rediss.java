@@ -1,4 +1,4 @@
-package com.sky.projects.redis;
+package com.sky.projects.redis.demo;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

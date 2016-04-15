@@ -8,12 +8,6 @@ import org.apache.curator.framework.state.ConnectionStateListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * ZkConnectionStateListener
- * 
- * @author zt
- *
- */
 public class ZkConnectionStateListener implements ConnectionStateListener {
 
 	private Logger logger = LoggerFactory.getLogger(ZkConnectionStateListener.class);

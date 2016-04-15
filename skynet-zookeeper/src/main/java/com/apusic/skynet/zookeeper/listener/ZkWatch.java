@@ -10,12 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import com.apusic.skynet.zookeeper.ZkPath;
 
-/**
- * The ZkWatch
- * 
- * @author zt
- *
- */
 public class ZkWatch<T extends Serializable> implements CuratorWatcher {
 
 	private Logger logger = LoggerFactory.getLogger(ZkConnectionStateListener.class);

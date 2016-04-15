@@ -1,8 +1,10 @@
-package com.sky.projects.redis;
+package com.sky.projects.redis.demo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
@@ -34,6 +36,10 @@ public class Redis {
 		connected = true;
 	}
 
+	public static Redis newInstance(String host, int port) {
+		return new Redis(host, port);
+	}
+
 	public static Redis getInstance(String host, int port) {
 		if (instance == null) {
 			synchronized (lock) {
@@ -46,6 +52,14 @@ public class Redis {
 		}
 
 		return instance;
+	}
+
+	public Map<String, String> hgetall(String key) {
+		if (connected) {
+			return jedis.hgetAll(key);
+		}
+
+		return new HashMap<>();
 	}
 
 	public void connect() {

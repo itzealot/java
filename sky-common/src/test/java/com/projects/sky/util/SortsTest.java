@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.projects.sky.util.ref.SortType;
 import com.projects.sky.util.ref.Sorts;
+import com.projects.sky.util.ref.Sorts.SortType;
 
 public class SortsTest {
 	private List<User> users = new ArrayList<>();

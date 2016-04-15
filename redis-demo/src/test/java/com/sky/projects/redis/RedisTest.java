@@ -1,5 +1,7 @@
 package com.sky.projects.redis;
 
+import com.sky.projects.redis.demo.Redis;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

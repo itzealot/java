@@ -10,19 +10,27 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * The Sort Util
- * 
- * @author zt
- *
- */
 public final class Sorts {
 	private Sorts() {
 	}
 
+	static public enum SortType {
+		ASC("asc"), // 升序
+		DESC("desc"); // 降序
+
+		private String label;
+
+		private SortType(String label) {
+			this.label = label;
+		}
+
+		public String getLabel() {
+			return this.label;
+		}
+	}
+
 	/**
-	 * 根据某个字段进行排序，默认是 升序.<br />
-	 * To sort Collection by fieldName and sortType default is ASC.<br />
+	 * 根据某个字段进行排序，默认是 升序.
 	 * 
 	 * @param collection
 	 *            Collection<T>
@@ -43,8 +51,7 @@ public final class Sorts {
 	}
 
 	/**
-	 * Collection<T> 根据某个字段进行排序，默认是 升序.<br />
-	 * To sort Collection by fieldName and sortType default is ASC.<br />
+	 * 根据某个字段进行排序，默认是 升序.
 	 * 
 	 * @param collection
 	 *            Collection<T>
@@ -60,12 +67,12 @@ public final class Sorts {
 		for (T t : collection) {
 			list.add(t);
 		}
+
 		common(list, fieldName, sortType);
 	}
 
 	/**
-	 * List<T> 根据某个字段进行排序，默认是 ASC.<br />
-	 * To sort List by fieldName and sortType default is ASC.<br />
+	 * 根据某个字段进行排序，默认是 ASC.
 	 * 
 	 * @param list
 	 *            要排序的数组
@@ -80,8 +87,7 @@ public final class Sorts {
 	}
 
 	/**
-	 * List<T> 根据某个字段进行排序，默认是 ASC.<br />
-	 * To sort List by fieldName and sortType default is ASC.<br />
+	 * 根据某个字段进行排序，默认是 ASC.
 	 * 
 	 * @param list
 	 *            要排序的数组
@@ -96,7 +102,7 @@ public final class Sorts {
 	}
 
 	/**
-	 * 根据Class对象，返回对应的应用类型，用于处理八个非引用类型.<br />
+	 * 根据Class对象，返回对应的应用类型，用于处理八个非引用类型.
 	 * 
 	 * @since JDK 1.6
 	 * @param className
@@ -128,8 +134,7 @@ public final class Sorts {
 	}
 
 	/**
-	 * 根据类型名称调用compare方法比较获得比较后的值.<br />
-	 * To get the compare result by typeName and value.<br />
+	 * 根据类型名称调用compare方法比较获得比较后的值.
 	 * 
 	 * @param typeName
 	 * @param v1
@@ -167,16 +172,6 @@ public final class Sorts {
 		return result;
 	}
 
-	/**
-	 * The Sort common method
-	 * 
-	 * @param list
-	 *            List<T>
-	 * @param fieldName
-	 *            String
-	 * @param sortType
-	 *            String
-	 */
 	private static <T> void common(List<T> list, final String fieldName, final String sortType) {
 		Collections.sort(list, new Comparator<T>() {
 			@Override
@@ -210,16 +205,6 @@ public final class Sorts {
 		});
 	}
 
-	/**
-	 * The Sort common method
-	 * 
-	 * @param list
-	 *            List<T>
-	 * @param fieldName
-	 *            String
-	 * @param sortType
-	 *            SortType
-	 */
 	private static <T> void common(List<T> list, final String fieldName, final SortType sortType) {
 		if (sortType == null) {
 			common(list, fieldName, "");
@@ -228,23 +213,11 @@ public final class Sorts {
 		}
 	}
 
-	/**
-	 * To check List<T> list and String fieldName not null.
-	 * 
-	 * @param list
-	 * @param fieldName
-	 */
 	private static <T> void check(List<T> list, final String fieldName) {
 		checkNotNull("The list is null.", list);
 		checkNotNull("The filedName is null.", fieldName);
 	}
 
-	/**
-	 * To check List<T> list and String fieldName not null.
-	 * 
-	 * @param list
-	 * @param fieldName
-	 */
 	private static <T> void check(Collection<T> collection, final String fieldName) {
 		checkNotNull("The collection is null.", collection);
 		checkNotNull("The filedName is null.", fieldName);
