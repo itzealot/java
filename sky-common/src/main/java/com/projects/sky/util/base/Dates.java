@@ -1,72 +1,41 @@
 package com.projects.sky.util.base;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 
 public final class Dates {
 
-	private Dates() {
-	}
+	static enum DateFormat {
+		// format date like 2016-01-01 18:00:00, for 24 小时制
+		DEFAULT_FORMAT("yyyy-MM-dd HH:mm:ss"),
 
-	public static enum DateFormateType {
-		DATE("yyyy-MM-dd"), DATETIME("yyyy-MM-dd HH:mm:ss"), MOST_DATETIME("yyyyMMddHHmmssSSS");
-		private String format;
+		// format date like 2016-01-01 01:00:00 for, 12 小时制
+		FORMAT_TO_HOUR_12("yyyy-MM-dd hh:mm:ss"),
 
-		private DateFormateType(String format) {
+		// yyyyMMddhhmmss
+		FORMAT_TO_NO_SPILIT("yyyyMMddhhmmss"),
+
+		// yyyy-MM-dd
+		FORMAT_TO_DATE("yyyy-MM-dd"),
+
+		// HH:mm:ss
+		FORMAT_TO_TIME("HH:mm:ss");
+
+		String format;
+
+		DateFormat(String format) {
 			this.format = format;
 		}
-
-		public String getFormat() {
-			return format;
-		}
-
-		public void setFormat(String format) {
-			this.format = format;
-		}
-
-	}
-
-	/**
-	 * To format the date by DateFormateType
-	 * 
-	 * @param date
-	 * @param type
-	 * @return
-	 */
-	public static String format(Date date, DateFormateType type) {
-		if (date != null) {
-			return new SimpleDateFormat(type.format).format(date);
-		}
-		return "";
-	}
-
-	public static Date parse(String date, DateFormateType type) {
-		if (StringUtils.isNotBlank(date)) {
-			try {
-				return new SimpleDateFormat(type.format).parse(date);
-			} catch (ParseException e) {
-				// TODO
-				return null;
-			}
-		}
-		return null;
-	}
-
-	public static Date after(Date date, int days) {
-		Calendar calendar = Calendar.getInstance();
-
-		calendar.setTime(date);
-		calendar.add(Calendar.DAY_OF_MONTH, days);
-
-		return calendar.getTime();
 	}
 
 	/**
@@ -134,4 +103,118 @@ public final class Dates {
 
 		return dateList;
 	}
+	
+	public static Date after(Date date, int days) {
+		Calendar calendar = Calendar.getInstance();
+
+		calendar.setTime(date);
+		calendar.add(Calendar.DAY_OF_MONTH, days);
+
+		return calendar.getTime();
+	}
+	
+	public static Date add(Date date, int offset) {
+		checkNotNull(date, "date must not be null");
+
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+
+		// 整数往后推,负数往前移动
+		calendar.add(Calendar.DATE, offset);
+
+		return calendar.getTime();
+	}
+
+	public static boolean between(Date start, Date source, Date end) {
+		checkNotNull(source, "source date must not be null");
+
+		if (source.after(start) && source.before(end)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static boolean between(long start, long source, long end) {
+		if (source > start && source < end) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static SimpleDateFormat get(String format) {
+		checkNotNull(format, "format String must not be null");
+
+		return new SimpleDateFormat(format);
+	}
+
+	public static String format(String format, Date date) {
+		checkNotNull(date, "date must not be null");
+
+		return get(format).format(date);
+	}
+
+	public static String format(DateFormat format, Date date) {
+		return format(format.format, date);
+	}
+
+	public static String format(Date date) {
+		return format(DateFormat.DEFAULT_FORMAT, date);
+	}
+
+	public static String format2Time(Date date) {
+		return format(DateFormat.FORMAT_TO_TIME, date);
+	}
+
+	public static String format2Date(Date date) {
+		return format(DateFormat.FORMAT_TO_DATE, date);
+	}
+
+	public static String format2NoSpilit(Date date) {
+		return format(DateFormat.FORMAT_TO_NO_SPILIT, date);
+	}
+
+	public static String format2HourSmall(Date date) {
+		return format(DateFormat.FORMAT_TO_HOUR_12, date);
+	}
+
+	public static Date of(String source, String format) {
+		checkNotNull(format, "format String must not be null");
+		checkNotNull(source, "source String must not be null");
+
+		try {
+			return get(format).parse(source);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
+
+	public static Date of(String source) {
+		return of(source, DateFormat.DEFAULT_FORMAT);
+	}
+
+	public static Date of(String source, DateFormat format) {
+		return of(source, format.format);
+	}
+
+	public static Date ofDate(String source) {
+		return of(source, DateFormat.FORMAT_TO_DATE);
+	}
+
+	public static Date ofTime(String source) {
+		return of(source, DateFormat.FORMAT_TO_TIME);
+	}
+
+	public static Date ofHourSmall(String source) {
+		return of(source, DateFormat.FORMAT_TO_HOUR_12);
+	}
+
+	public static Date ofNoSpilit(String source) {
+		return of(source, DateFormat.FORMAT_TO_NO_SPILIT);
+	}
+
+	private Dates() {
+	}
+
 }

@@ -1,4 +1,4 @@
-package com.zt.test;
+package com.sky.projects.spring.anotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.zt.test;
+package com.sky.projects.spring.anotation;
 
 public interface MessageService {
 

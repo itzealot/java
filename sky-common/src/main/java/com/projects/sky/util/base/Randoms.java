@@ -7,18 +7,22 @@ public final class Randoms {
 	private Randoms() {
 	}
 
-	private static Random getRandomInstance() {
+	private static Random get() {
 		return new Random();
 	}
 
 	public static int randomInteger() {
-		return getRandomInstance().nextInt();
+		return get().nextInt();
+	}
+
+	private static void check(int n) {
+		if (n <= 0) {
+			throw new IllegalArgumentException("参数 n = " + n + " 非法，值必须大于0");
+		}
 	}
 
 	public static int[] randomIntegers(int n) throws Exception {
-		if (n <= 0) {
-			throw new Exception("参数 n 非法，值必须大于0");
-		}
+		check(n);
 
 		int[] result = new int[n];
 
@@ -30,7 +34,7 @@ public final class Randoms {
 	}
 
 	public static int randomInteger(int n) {
-		return getRandomInstance().nextInt(n);
+		return get().nextInt(n);
 	}
 
 	public static int randomInteger(int start, int end) throws Exception {
@@ -38,17 +42,15 @@ public final class Randoms {
 			throw new Exception("参数start 与 end 非法");
 		}
 
-		return start + getRandomInstance().nextInt(end - start);
+		return start + get().nextInt(end - start);
 	}
 
 	public static boolean randomBoolean() {
-		return getRandomInstance().nextBoolean();
+		return get().nextBoolean();
 	}
 
 	public static boolean[] randomBooleans(int n) throws Exception {
-		if (n <= 0) {
-			throw new Exception("参数 n 非法，值必须大于0");
-		}
+		check(n);
 
 		boolean[] result = new boolean[n];
 
@@ -60,13 +62,12 @@ public final class Randoms {
 	}
 
 	public static float randomFloat() {
-		return getRandomInstance().nextFloat();
+		return get().nextFloat();
 	}
 
 	public static float[] randomFloats(int n) throws Exception {
-		if (n <= 0) {
-			throw new Exception("参数 n 非法，值必须大于0");
-		}
+		check(n);
+
 		float[] result = new float[n];
 
 		for (int i = 0; i < n; i++) {
@@ -77,13 +78,11 @@ public final class Randoms {
 	}
 
 	public static double randomDouble() {
-		return getRandomInstance().nextDouble();
+		return get().nextDouble();
 	}
 
 	public static double[] randomDoubles(int n) throws Exception {
-		if (n <= 0) {
-			throw new Exception("参数 n 非法，值必须大于0");
-		}
+		check(n);
 
 		double[] result = new double[n];
 

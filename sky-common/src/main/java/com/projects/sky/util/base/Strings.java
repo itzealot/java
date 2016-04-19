@@ -1,5 +1,7 @@
 package com.projects.sky.util.base;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 public class Strings {
 
 	public static String trim(String str) {
-		if (str == null || str == "") {
+		if (Validates.validate(str)) {
 			return str;
 		}
 
@@ -24,146 +26,116 @@ public class Strings {
 		return str;
 	}
 
-	public static String append(String str, String start, String end) {
+	public static String append(final String str, final String prefix, final String suffix) {
 		String newStr = str;
 
-		if (start != null) {
-			newStr = start + str;
+		if (prefix != null) {
+			newStr = prefix + str;
 		}
 
-		if (end != null) {
-			newStr = newStr + end;
+		if (suffix != null) {
+			newStr = newStr + suffix;
 		}
 
 		return newStr;
 	}
 
-	/**
-	 * 对指定的字符串(str)按照给定的拆分方法(tag)进行拆分
-	 * 
-	 * @param str
-	 * @param tag
-	 * @return 返回拆分后的字符串数组
-	 */
-	public static String[] str2StrArray(String str, String tag) {
+	public static String[] split(String str, String regex) {
 		if (Validates.validate(str)) {
-			return str.split(tag);
+			return str.split(regex);
 		}
 
 		return null;
 	}
 
-	/**
-	 * JDK for all.<br />
-	 * To get the Class name.<br />
-	 * 从Class<T>中获取class name.<br />
-	 * 
-	 * @param <T>
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> String getClassName(Class<? extends T> clazz) {
+	public static String nameOf(Class<?> clazz) {
 		int index = clazz.toString().lastIndexOf(".");
 		return clazz.toString().substring(index + 1);
 	}
 
 	/**
-	 * JDK for above 1.5<br />
-	 * To get the Class's simple name.<br />
-	 * 从Class<T>中获取class name.<br />
+	 * class name
 	 * 
-	 * @param <T>
+	 * @since for JDK 1.6
 	 * @param clazz
 	 * @return
 	 */
-	public static <T> String getClassSimpleName(Class<? extends T> clazz) {
+	public static String simpleName(Class<?> clazz) {
 		return clazz.getSimpleName();
 	}
 
-	/**
-	 * To get hql from Class to select the Object.<br />
-	 * 从Class<T>中获取Hql语句<br />
-	 * The result like SELECT t FROM table as t.<br />
-	 * 
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> String getHqlFromClass(Class<? extends T> clazz) {
-		String className = getClassName(clazz);
+	public static String hqlOf(Class<?> clazz) {
+		String className = simpleName(clazz);
 		return "FROM " + className + " as t";
 	}
 
-	/**
-	 * To get hql from Class to select the Object.<br />
-	 * 从Class<T>中获取Hql语句.<br />
-	 * The result like SELECT t.id FROM table as t.<br />
-	 * 
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> String getIdHqlFromClass(Class<? extends T> clazz) {
-		String className = getClassName(clazz);
+	public static String hqlIdOf(Class<?> clazz) {
+		String className = simpleName(clazz);
 		return "SELECT t.id FROM " + className + " as t";
 	}
 
-	/**
-	 * To get Hql from Class to count the entity by id.<br />
-	 * 从Class<T>中获取Hql语句.<br />
-	 * The result like SELECT COUNT(t.id) FROM table as t.<br />
-	 * 
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> String getHqlCountFromClass(Class<? extends T> clazz) {
-		String className = getClassName(clazz);
+	public static String hqlCountOf(Class<?> clazz) {
+		String className = simpleName(clazz);
 		return "SELECT COUNT(t.id) FROM " + className + " as t";
 	}
 
 	/**
 	 * 半角DBC(占一个字节)转全角SBC(占两个字节)
 	 * 
-	 * @param input
-	 *            the String input
-	 * @return the SBC String
+	 * @param source
+	 * @return
 	 */
-	public static String toSBC(String input) {
+	public static String toSBC(String source) {
+		if (source == null) {
+			return null;
+		}
 
-		// 将字符串转换为字符数组
-		char c[] = input.toCharArray();
-		for (int i = 0; i < c.length; i++) {
-			// 空格特殊处理
-			if (c[i] == ' ') {
-				c[i] = '\u3000';
-			} else if (c[i] < '\177') {
-				c[i] = (char) (c[i] + 65248);
+		StringBuffer buffer = new StringBuffer();
+
+		int len = source.length();
+
+		for (int i = 0; i < len; i++) {
+			char ch = source.charAt(i);
+
+			if (ch == ' ') { // 空格特殊处理
+				buffer.append('\u3000');
+			} else if (ch < '\177') {
+				buffer.append((char) (ch + 65248));
 			}
 		}
-		return new String(c);
+
+		return buffer.toString();
 	}
 
 	/**
 	 * 全角SBC(占两个字节)转半角DBC(占一个字节)
 	 * 
-	 * @param input
-	 *            the String input
-	 * @return the DBC String
+	 * @param source
+	 * @return
 	 */
-	public static String toDBC(String input) {
-		char c[] = input.toCharArray();
-		for (int i = 0; i < c.length; i++) {
-			// 空格特殊处理
-			if (c[i] == '\u3000') {
-				c[i] = ' ';
-			} else if (c[i] > '\uFF00' && c[i] < '\uFF5F') {
-				c[i] = (char) (c[i] - 65248);
+	public static String toDBC(String source) {
+		if (source == null) {
+			return null;
+		}
+
+		StringBuffer buffer = new StringBuffer();
+		int len = source.length();
+
+		for (int i = 0; i < len; i++) {
+			char ch = source.charAt(i);
+
+			if (ch == '\u3000') { // 空格特殊处理
+				buffer.append(' ');
+			} else if (ch > '\uFF00' && ch < '\uFF5F') {
+				buffer.append((char) (ch - 65248));
 			}
 		}
-		String returnString = new String(c);
-		return returnString;
+
+		return buffer.toString();
 	}
 
 	/**
-	 * 简单的分割串实现字符串的快速分割，也可以使用StringTokenizer 来分割.<br />
+	 * 简单的分割串实现字符串的快速分割，也可以使用StringTokenizer 来分割
 	 * 
 	 * @param source
 	 * @param split
@@ -265,82 +237,21 @@ public class Strings {
 		return strings;
 	}
 
-	/**
-	 * 判断源字符串source 是否以start 字符串开头，是则返回true；否则返回false
-	 * 
-	 * @param source
-	 * @param start
-	 * @return
-	 */
-	public static boolean startWith(String source, String start) {
-		if (source == null) {
-			throw new NullPointerException(source);
-		}
+	public static boolean startsWith(String source, String prefix) {
+		checkNotNull(source, "source String can not be null");
+		checkNotNull(prefix, "prefix String can not be null");
 
-		if (start == null) {
-			throw new NullPointerException(start);
-		}
-
-		// The start String's length
-		int lengthStart = start.length();
-
-		// The source String's length
-		int lengthSource = source.length();
-
-		// 源串source 长度小于开始串start 长度
-		if (lengthSource < lengthStart) {
-			return false;
-		} else if (lengthSource == lengthStart) {
-			return source.equals(start);
-		} else {
-			for (int i = 0; i < lengthStart; i++) {
-				if (source.charAt(i) != start.charAt(i)) {
-					return false;
-				}
-			}
-		}
-		return true;
+		return source.startsWith(prefix);
 	}
 
-	/**
-	 * 判断源字符串source 是否以end 字符串结尾，是则返回true；否则返回false
-	 * 
-	 * @param source
-	 * @param start
-	 * @return
-	 */
-	public static boolean endWith(String source, String end) {
-		if (source == null) {
-			throw new NullPointerException(source);
-		}
+	public static boolean endsWith(String source, String suffix) {
+		checkNotNull(source, "source String can not be null");
+		checkNotNull(suffix, "suffix String can not be null");
 
-		if (end == null) {
-			throw new NullPointerException(end);
-		}
-
-		// The start String's length
-		int lengthEnd = end.length();
-
-		// The source String's length
-		int lengthSource = source.length();
-
-		// 源串source 长度小于开始串start 长度
-		if (lengthSource < lengthEnd) {
-			return false;
-		} else if (lengthSource == lengthEnd) {
-			return source.equals(end);
-		} else {
-			int absLength = lengthSource - lengthEnd;
-			for (int i = 0; i < lengthEnd; i++) {
-				if (end.charAt(i) != source.charAt(absLength + i)) {
-					return false;
-				}
-			}
-		}
-		return true;
+		return source.endsWith(suffix);
 	}
 
-	public static String dealString(String src) {
+	public static String trimWith0(String src) {
 		if (src == null) {
 			return "0";
 		}
@@ -350,7 +261,7 @@ public class Strings {
 		return s == "" ? "0" : s;
 	}
 
-	public static Object getNumberFromString(String src, Class<?> clazz) {
+	public static Object numberOf(String src, Class<?> clazz) {
 		try {
 			if (clazz == Byte.class) {
 				return Byte.parseByte(src);
@@ -368,29 +279,30 @@ public class Strings {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 
-	/**
-	 * 将字符串数组转为数字数组
-	 * 
-	 * @param roelIds
-	 * @return
-	 */
-	public static Object[] getIntIdsFromStringIds(String[] idStr, Class<?> clazz) {
+	public static <T> List<T> numbersOf(String[] idStr, Class<?> clazz) {
 		if (!Validates.validate(idStr)) {
 			return null;
 		}
+
 		int length = idStr.length;
-		Object[] ids = new Object[length];
+
+		List<T> lists = new ArrayList<>();
+
 		for (int i = 0; i < length; i++) {
-			ids[i] = getNumberFromString(idStr[i], clazz);
+
+			@SuppressWarnings("unchecked")
+			T t = (T) numberOf(idStr[i], clazz);
+			lists.add(t);
 		}
-		return ids;
+
+		return lists;
 	}
 
 	/**
-	 * the source String is containing the destination String.<br />
 	 * 原串 source 是否包含 目标串 dest，支持特殊字符匹配.<br />
 	 * --1). * is all.<br />
 	 * --2). _ is one char.<br />
@@ -412,66 +324,34 @@ public class Strings {
 				source.substring(index1 + 1);
 			}
 		}
+
 		return source.contains(dest);
 	}
 
-	/**
-	 * 生成日志表名称:logs_year_month.
-	 * 
-	 * @param offset
-	 *            the value about the current month
-	 * @return
-	 */
-	public static String generateLogTableName(int offset) {
-		// the singleton Calendar
+	public static String nameOfYear(String prefix, int offset) {
+		checkNotNull(prefix, "prefix must not be null");
+
 		Calendar c = Calendar.getInstance();
-		// 2015
 		int year = c.get(Calendar.YEAR);
 
-		// Calendar.MONTH : 0-11 + 1 = 1 - 12
-		int month = c.get(Calendar.MONTH) + 1;
+		year += offset;
 
-		// 加偏移量
-		month += offset;
-		if (month > 12) {
-			year++;
-			// or month -= 12
-			month = month - 12;
-		}
-		if (month < 1) {
-			year--;
-			month = month + 12;
-		}
-		DecimalFormat format = new DecimalFormat();
-		// 使用格式即两位，不够高位补0
-		format.applyPattern("00");
-		return "logs_" + year + "_" + format.format(month);
+		return prefix + "_" + year;
 	}
 
-	/**
-	 * 根据tableName与offset生成表名称.
-	 * 
-	 * @param tableName
-	 *            the tableName you want you generate
-	 * @param offset
-	 *            the offset the input
-	 * @return
-	 */
-	public static String getTableName(String tableName, int offset) {
-		// the singleton Calendar
+	public static String nameOfYearAndMonth(String prefix, int offset) {
+		checkNotNull(prefix, "prefix must not be null");
+
 		Calendar c = Calendar.getInstance();
-		// 2015
 		int year = c.get(Calendar.YEAR);
 
-		// Calendar.MONTH : 0-11 + 1 = 1 - 12
+		// Calendar.MONTH : 0~11 -> 1~12
 		int month = c.get(Calendar.MONTH) + 1;
 
-		// 加偏移量.To add offset
 		month += offset;
 
 		if (month > 12) {
 			year++;
-			// or month -= 12
 			month = month - 12;
 		}
 
@@ -485,7 +365,7 @@ public class Strings {
 		// 使用格式即两位，不够高位补0. To format the number
 		format.applyPattern("00");
 
-		return tableName + "_" + year + "_" + format.format(month);
+		return prefix + "_" + year + "_" + format.format(month);
 	}
 
 	public static String md5(String source) throws Exception {
@@ -548,5 +428,24 @@ public class Strings {
 		}
 
 		return hexValue.toString();
+	}
+
+	public static int indexOf(String strs[], String str) {
+		if (strs == null || strs.length == 0 || str == null || str == "") {
+			return -1;
+		}
+
+		int len = strs.length;
+		for (int i = 0; i < len; i++) {
+			if (str.equals(strs[i])) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	public static boolean contains(String strs[], String str) {
+		return indexOf(strs, str) != -1;
 	}
 }
