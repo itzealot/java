@@ -12,9 +12,9 @@ import java.util.SortedMap;
 import org.junit.Test;
 
 public class TestCharset {
+
 	@Test
 	public void testEncoderAndDncoder() throws Exception {
-
 		// 1. 通过编码字符例如"ISO-8859-1" 得到Charset 对象
 		Charset latin1 = Charset.forName("ISO-8859-1"); // 只能表示的英文字符
 
@@ -32,9 +32,6 @@ public class TestCharset {
 
 	/**
 	 * 获得全部可以的字符集 编码
-	 * 
-	 * Title: testGetAllCharsets.<br />
-	 * Description: .<br />
 	 */
 	@Test
 	public void testGetAllCharsets() {
@@ -43,8 +40,8 @@ public class TestCharset {
 		all = Charset.availableCharsets();
 
 		// 2. 遍历输出
-		Iterator<Map.Entry<String, Charset>> iter = null;
-		iter = all.entrySet().iterator();
+		Iterator<Map.Entry<String, Charset>> iter = all.entrySet().iterator();
+
 		while (iter.hasNext()) {
 			Map.Entry<String, Charset> me = iter.next();
 			System.out.println(me.getKey() + " --> " + me.getValue());

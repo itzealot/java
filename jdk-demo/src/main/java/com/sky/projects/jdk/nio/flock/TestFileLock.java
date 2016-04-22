@@ -8,19 +8,17 @@ import java.nio.channels.FileLock;
 import org.junit.Test;
 
 public class TestFileLock {
+
 	@Test
 	public void test() throws Exception {
-
 		// 得到文件流
 		File file = new File("d:" + File.separator + "out.txt");
-		FileOutputStream output = null;
 
 		// 表示是追加操作
-		output = new FileOutputStream(file, true);
+		FileOutputStream output = new FileOutputStream(file, true);
 
 		// 2. 得到文件通道
-		FileChannel fout = null;
-		fout = output.getChannel();// 得到通道
+		FileChannel fout = output.getChannel();
 
 		// 3. 通过文件通道得到文件锁，此处为独占锁
 		FileLock lock = fout.tryLock(); // 进行独占锁的操作

@@ -10,9 +10,6 @@ public class TestIntBuffer {
 
 	/**
 	 * 测试 NIO中 Buffer 的变量：position, limit, capacity
-	 * 
-	 * Title: testVariable.<br />
-	 * Description: .<br />
 	 */
 	@Test
 	public void testVariable() {
@@ -43,9 +40,6 @@ public class TestIntBuffer {
 
 	/**
 	 * 测试子缓冲区，子缓冲区与父缓冲区共享
-	 * 
-	 * Title: testSubBuffer.<br />
-	 * Description: .<br />
 	 */
 	@Test
 	public void testSubBuffer() {
@@ -83,14 +77,12 @@ public class TestIntBuffer {
 
 	/**
 	 * 只读缓冲区
-	 * 
-	 * Title: testReadOnlyBuffer.<br />
-	 * Description: .<br />
 	 */
 	@Test
 	public void testReadOnlyBuffer() {
 		// 1. 准备出10个大小的缓冲区
 		IntBuffer buffer = IntBuffer.allocate(10);
+		
 		IntBuffer read = null; // 定义子缓冲区
 		for (int i = 0; i < 10; i++) {
 			buffer.put(2 * i + 1); // 在主缓冲区中加入10个奇数
@@ -115,14 +107,12 @@ public class TestIntBuffer {
 
 	/**
 	 * 测试直接缓冲区，内存从物理内存上分配，不从虚拟机上分配
-	 * 
-	 * Title: testDirectBuffer.<br />
-	 * Description: .<br />
 	 */
 	@Test
 	public void testDirectBuffer() {
 		// 准备出10个大小的缓冲区
 		ByteBuffer buf = ByteBuffer.allocateDirect(10);
+
 		// 设置一组内容
 		byte temp[] = { 1, 3, 5, 7, 9 };
 		buf.put(temp);
@@ -135,27 +125,11 @@ public class TestIntBuffer {
 		}
 	}
 
-	/**
-	 * To display buffer's content
-	 * 
-	 * Title: diplayContent.<br />
-	 * Description: .<br />
-	 * 
-	 * @param buffer
-	 */
 	public void displayContent(String info, IntBuffer buffer) {
 		System.out.print(info);
 		displayContent(buffer);
 	}
 
-	/**
-	 * To display buffer's content
-	 * 
-	 * Title: diplayContent.<br />
-	 * Description: .<br />
-	 * 
-	 * @param buffer
-	 */
 	public void displayContent(IntBuffer buffer) {
 		while (buffer.hasRemaining()) {
 			System.out.print(buffer.get() + " ");
@@ -166,21 +140,15 @@ public class TestIntBuffer {
 	/**
 	 * 输出缓冲区Buffer 的变量：position, limit, capacity
 	 * 
-	 * Title: display.<br />
-	 * Description: .<br />
-	 * 
 	 * @param buffer
 	 */
 	public void display(Buffer buffer) {
-		System.out.println("position : " + buffer.position() + ", limit : "
-				+ buffer.limit() + ", capacity : " + buffer.capacity());
+		System.out.println("position : " + buffer.position() + ", limit : " + buffer.limit() + ", capacity : "
+				+ buffer.capacity());
 	}
 
 	/**
 	 * 输出其他信息与缓冲区Buffer 的变量：position, limit, capacity
-	 * 
-	 * Title: display.<br />
-	 * Description: .<br />
 	 * 
 	 * @param info
 	 * @param buffer

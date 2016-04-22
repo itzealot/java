@@ -13,8 +13,7 @@ public class FileSearchUtil {
 	 * @param pathName
 	 *            需要寻找的路径名
 	 */
-	public static void searchByKeywords(List<String> lists, String keyword,
-			String pathName) {
+	public static void searchByKeywords(List<String> lists, String keyword, String pathName) {
 		File file = new File(pathName);
 
 		// 若该文件是目录

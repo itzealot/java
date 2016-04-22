@@ -3,7 +3,7 @@ package com.sky.projects.jdk.encode;
 /**
  * 加密解密的工具类
  * 
- * @author a
+ * @author zt
  *
  */
 public class DESUtil {

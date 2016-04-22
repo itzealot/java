@@ -38,8 +38,7 @@ public class DateServer {
 			while (iter.hasNext()) {
 				SelectionKey key = iter.next(); // 取出每一个key
 				if (key.isAcceptable()) {
-					ServerSocketChannel server = (ServerSocketChannel) key
-							.channel();
+					ServerSocketChannel server = (ServerSocketChannel) key.channel();
 					SocketChannel client = server.accept(); // 接收新连接
 					client.configureBlocking(false);// 配置为非阻塞
 					ByteBuffer outBuf = ByteBuffer.allocateDirect(1024); //
@@ -49,6 +48,7 @@ public class DateServer {
 					client.close(); // 关闭
 				}
 			}
+
 			selectedKeys.clear(); // 清楚全部的key
 		}
 

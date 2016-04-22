@@ -7,14 +7,6 @@ import org.apache.pdfbox.util.PDFTextStripper;
 
 public class PDFReaderUtil {
 
-	/**
-	 * To write info from String src
-	 * 
-	 * @param src
-	 *            the pdf's file name
-	 * @param dir
-	 *            the dir's file name
-	 */
 	public static void wirteIntoFile(String src, String dir) {
 		try {
 			// 加载src 代表的PDF文件
@@ -29,7 +21,7 @@ public class PDFReaderUtil {
 			System.out.println(content);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO
 			e.printStackTrace();
 		}
 

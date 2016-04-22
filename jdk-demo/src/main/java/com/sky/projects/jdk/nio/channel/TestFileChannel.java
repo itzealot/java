@@ -14,16 +14,12 @@ public class TestFileChannel {
 	/**
 	 * 通道操作与缓冲区为主
 	 * 
-	 * Title: main.<br />
-	 * Description: .<br />
-	 * 
 	 * @param args
 	 * @throws Exception
 	 */
 	@Test
 	public void testWrite() throws Exception {
-		String info[] = { "MLDN", "MLDNJAVA", "www.mldn.cn", "www.mldnjava.cn",
-				"李兴华", "lixinghua" };
+		String info[] = { "MLDN", "MLDNJAVA", "www.mldn.cn", "www.mldnjava.cn", "李兴华", "lixinghua" };
 
 		// 1. 新建文件与文件流对象(文件输出流，因为是向文件中写入数据)
 		File file = new File("d:" + File.separator + "out.txt");
@@ -51,14 +47,12 @@ public class TestFileChannel {
 
 	@Test
 	public void testNioCopyFile() throws Exception {
-
 		// 1. 得到文件输入流与文件输出流
 		File fileIn = new File("d:" + File.separator + "out.txt");
 		File fileOut = new File("d:" + File.separator + "outnote.txt");
-		FileInputStream input = null;
-		FileOutputStream output = null;
-		output = new FileOutputStream(fileOut);
-		input = new FileInputStream(fileIn);
+
+		FileInputStream input = new FileInputStream(fileIn);
+		FileOutputStream output = new FileOutputStream(fileOut);
 
 		// 2. 根据文件流得到文件输入通道与文件输出通道
 		FileChannel fout = null;
@@ -86,25 +80,19 @@ public class TestFileChannel {
 	/**
 	 * 测试 MappedByteBuffer
 	 * 
-	 * Title: testMappedByteBuffer.<br />
-	 * Description: .<br />
-	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void testMappedByteBuffer() throws Exception {
 		// 1. 得到文件流
 		File file = new File("d:" + File.separator + "out.txt");
-		FileInputStream input = null;
-		input = new FileInputStream(file);
+		FileInputStream input = new FileInputStream(file);
 
 		// 2. 得到文件通道
-		FileChannel fin = null;
-		fin = input.getChannel();
+		FileChannel fin = input.getChannel();
 
 		// 3. 得到 MappedByteBuffer 对象
-		MappedByteBuffer mbb = null;
-		mbb = fin.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+		MappedByteBuffer mbb = fin.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
 
 		// 4. 开辟空间接收内容
 		byte data[] = new byte[(int) file.length()];
@@ -112,6 +100,7 @@ public class TestFileChannel {
 		while (mbb.hasRemaining()) {
 			data[foot++] = mbb.get(); // 读取数据
 		}
+
 		System.out.println(new String(data)); // 输出内容
 
 		// 5. 关闭通道与流

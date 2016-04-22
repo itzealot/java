@@ -15,7 +15,7 @@ import org.springframework.util.PropertiesPersister;
 /**
  * 配置文件des加密，然后读取配置文件时解密
  * 
- * @author a
+ * @author zt
  *
  */
 public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {

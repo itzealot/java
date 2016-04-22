@@ -13,8 +13,10 @@ public final class Closeables {
 
 		for (int i = 0; i < length; i++) {
 			try {
-				if (closes[i] != null)
+				if (closes[i] != null) {
 					closes[i].close();
+					closes[i] = null;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
