@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.kafka.common.serialization.Deserializer;
 
 import com.apusic.distribute.message.model.MessageEvent;
-import com.projects.sky.util.common.Serializables;
+import com.projects.sky.util.serialize.Serializables;
 
 /**
  * MessageEvent 反序列化

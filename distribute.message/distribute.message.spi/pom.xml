@@ -69,7 +69,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.projects.sky.util</groupId>
+			<groupId>com.sky.projects.common</groupId>
 			<artifactId>sky-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

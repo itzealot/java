@@ -56,6 +56,7 @@ public class KafkaMessageEventBus implements MessageEventBus {
 			MessageEventListener<T> eventListener) {
 		Consumer<Long, MessageEvent<T>> consumer = getKafkaConsumer(groupId);
 
+		// 根据消息类型订阅消息
 		consumer.subscribe(eventTypes);
 
 		while (true) {
