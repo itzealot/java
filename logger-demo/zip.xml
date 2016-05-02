@@ -1,0 +1,42 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>release</id>
+
+	<!-- 打包的文件格式,可以有：tar.zip, war, zip, gz, tar, tar.gz, tar.bz2 -->
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<fileSets>
+		<!-- 打包 src/main/resources 下的配置文件打包到 conf 目录下 -->
+		<fileSet>
+			<directory>${project.basedir}/src/main/resources</directory>
+			<outputDirectory>conf</outputDirectory>
+			
+			<!-- 过滤打包需要不包含的文件 -->
+			<!-- <excludes>
+				<exclude>zip.xml</exclude>
+				<exclude>junit:junit</exclude>
+			</excludes> -->
+		</fileSet>
+		
+		<!-- 将源码 bin 下的文件打包到 bin 目录下 -->
+		<fileSet>
+			<directory>${project.basedir}/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+	</fileSets>
+
+	<dependencySets>
+		<dependencySet>
+			<!-- 当前项目构件是否包含在这个依赖集合里。 -->
+			<useProjectArtifact>true</useProjectArtifact>
+
+			<!-- 将scope为 runtime 的依赖包打包到lib目录下。 -->
+			<outputDirectory>lib</outputDirectory>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+</assembly>

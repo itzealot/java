@@ -96,13 +96,18 @@ public final class SSHs {
 				clo.close();
 			} catch (IOException e) {
 				// TODO
+				clo = null;
 			}
 		}
 
-		if (session != null)
+		if (session != null) {
 			session.close();
+			session = null;
+		}
 
-		if (conn != null)
+		if (conn != null) {
 			conn.close();
+			conn = null;
+		}
 	}
 }

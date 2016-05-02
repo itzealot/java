@@ -3,6 +3,7 @@ package com.sky.projects.jdk.nio.channel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
@@ -10,6 +11,102 @@ import java.nio.channels.FileChannel;
 import org.junit.Test;
 
 public class TestFileChannel {
+
+	@Test
+	public void testReadOf() throws IOException {
+		readOf("d:/nio-data.txt");
+	}
+
+	public static void readOf(String filePath) throws IOException {
+		File file = new File(filePath);
+
+		FileInputStream input = new FileInputStream(file);
+
+		// 获取文件通道
+		FileChannel channel = input.getChannel();
+
+		// 开辟缓冲区
+		ByteBuffer buffer = ByteBuffer.allocate(1024);
+
+		// 通过 channel 读数据到缓冲区
+		while (channel.read(buffer) != -1) {
+			// 刷新 缓冲区
+			buffer.flip();
+
+			while (buffer.hasRemaining()) {
+				// 读取数据
+				System.out.print((char) buffer.get());
+			}
+
+			// 清空 buffer
+			buffer.clear();
+		}
+
+		input.close();
+	}
+
+	/**
+	 * Scattering Reads是指数据从一个channel读取到多个buffer中。
+	 * 
+	 * buffer在数组中的顺序将从channel中读取的数据写入到buffer，当一个buffer被写满后，
+	 * channel紧接着向另一个buffer中写。
+	 * 
+	 * Scattering Writes不能处理动态消息。
+	 * 
+	 * @param filePath
+	 * @return
+	 * @throws IOException
+	 */
+	public static ByteBuffer[] scatter(String filePath) throws IOException {
+		File file = new File(filePath);
+
+		FileInputStream input = new FileInputStream(file);
+
+		// 获取文件通道
+		FileChannel channel = input.getChannel();
+
+		ByteBuffer header = ByteBuffer.allocate(128);
+		ByteBuffer body = ByteBuffer.allocate(1024);
+
+		ByteBuffer[] results = { header, body };
+
+		channel.read(results);
+
+		input.close();
+
+		return results;
+	}
+
+	/**
+	 * Gathering Writes是指数据从多个 buffer 写入到同一个channel。
+	 * 
+	 * 按照buffer在数组中的顺序，将数据写入到channel，注意只有position和limit之间的数据才会被写入。
+	 * 
+	 * Gathering Writes能较好的处理动态消息
+	 * 
+	 * @param filePath
+	 * @throws IOException
+	 */
+	public static ByteBuffer[] gather(String filePath) throws IOException {
+		File file = new File(filePath);
+
+		FileInputStream input = new FileInputStream(file);
+
+		// 获取文件通道
+		FileChannel channel = input.getChannel();
+
+		ByteBuffer header = ByteBuffer.allocate(128);
+		ByteBuffer body = ByteBuffer.allocate(1024);
+
+		// write data into buffers
+		ByteBuffer[] results = { header, body };
+
+		channel.write(results);
+
+		input.close();
+
+		return results;
+	}
 
 	/**
 	 * 通道操作与缓冲区为主
