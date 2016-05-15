@@ -157,7 +157,7 @@ public class TestCuratorFramework extends JunitTestCase {
 
 	@Test
 	public void callback() throws Exception {
-		String path = "/callback";
+		final String path = "/callback";
 
 		BackgroundCallback callback = new BackgroundCallback() {
 			@Override
@@ -177,7 +177,7 @@ public class TestCuratorFramework extends JunitTestCase {
 	@Test
 	public void listener() throws Exception {
 
-		String path = "/listener";
+		final String path = "/listener";
 
 		client.delete().forPath(path);
 
@@ -199,7 +199,7 @@ public class TestCuratorFramework extends JunitTestCase {
 
 	@Test
 	public void watch() throws Exception {
-		String path = "/watch";
+		final String path = "/watch";
 
 		if (client.checkExists().forPath(path) == null) {
 			client.create().forPath(path, path.getBytes());

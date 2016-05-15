@@ -23,7 +23,7 @@ public final class ProducerConfigBuilder {
 		Properties props = new Properties();
 
 		props.put("serializer.class", "kafka.serializer.StringEncoder");
-		props.put("metadata.broker.list", "10.22.10.139:9092");
+		props.put("metadata.broker.list", KafkaConfig.METADAT_BROKER_LIST);
 
 		return new ProducerConfig(props);
 	}

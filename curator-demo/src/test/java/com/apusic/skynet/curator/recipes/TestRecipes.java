@@ -56,7 +56,7 @@ public class TestRecipes {
 		nodeCache.close();
 	}
 
-	private NodeCacheListener getNodeCacheListener(NodeCache nodeCache) {
+	private NodeCacheListener getNodeCacheListener(final NodeCache nodeCache) {
 		return new NodeCacheListener() {
 			@Override
 			public void nodeChanged() throws Exception {

@@ -16,10 +16,10 @@ public class Redis {
 		this.jedis = jedis;
 	}
 
-	public <T> void execute(RedisResultAction<T> action) {
+	public <T> T execute(RedisResultAction<T> action) {
 		checkNotNull(action, "action must not be null");
 
-		action.action(jedis);
+		return action.action(jedis);
 	}
 
 	public <T> void execute(RedisNoResultAction action) {
@@ -61,7 +61,7 @@ public class Redis {
 	}
 
 	public interface PipelineResultAction<T> extends RedisAction<T> {
-		public List<T> action(Pipeline pipeline);
+		public void action(Pipeline pipeline);
 	}
 
 	public interface PipelineNoResultAction extends RedisAction<Void> {

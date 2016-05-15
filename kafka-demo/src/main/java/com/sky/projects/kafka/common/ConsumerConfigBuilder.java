@@ -22,8 +22,8 @@ public final class ConsumerConfigBuilder {
 	public static ConsumerConfig createConsumerConfig() {
 		Properties props = new Properties();
 
-		props.put("zookeeper.connect", KafkaConfig.zkConnect);
-		props.put("group.id", KafkaConfig.groupId);
+		props.put("zookeeper.connect", KafkaConfig.ZK_CONNECT);
+		props.put("group.id", KafkaConfig.GROUO_ID);
 		props.put("zookeeper.session.timeout.ms", "40000");
 		props.put("zookeeper.sync.time.ms", "200");
 		props.put("auto.commit.interval.ms", "1000");
