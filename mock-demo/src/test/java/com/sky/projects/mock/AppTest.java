@@ -1,4 +1,4 @@
-package com.sky.projects.hadoop;
+package com.sky.projects.mock;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

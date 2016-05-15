@@ -1,4 +1,4 @@
-package com.sky.projects.hadoop;
+package com.sky.projects.apache.common;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
