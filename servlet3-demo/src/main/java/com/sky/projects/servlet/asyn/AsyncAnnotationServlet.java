@@ -1,7 +1,6 @@
 package com.sky.projects.servlet.asyn;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.AsyncContext;
@@ -30,9 +29,8 @@ public class AsyncAnnotationServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("进入Servlet的时间：" + new Date() + ".<br />");
-		out.flush();
+
+		System.out.println("进入Servlet的时间：" + new Date() + ".<br />");
 
 		// 在子线程中执行业务调用，并由其负责输出响应，主线程退出
 		// 创建AsyncContext，开始异步调用
@@ -44,8 +42,7 @@ public class AsyncAnnotationServlet extends HttpServlet {
 		// 启动异步调用的线程,模拟业务处理
 		ctx.start(new Executor(ctx));
 
-		out.println("结束Servlet的时间：" + new Date() + ".<br />");
-		out.flush();
+		System.out.println("结束Servlet的时间：" + new Date() + ".<br />");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
