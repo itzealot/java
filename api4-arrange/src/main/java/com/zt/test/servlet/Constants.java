@@ -3,7 +3,7 @@ package com.zt.test.servlet;
 /**
  * 常量类
  * 
- * @author leen
+ * @author zt
  *
  */
 public class Constants {

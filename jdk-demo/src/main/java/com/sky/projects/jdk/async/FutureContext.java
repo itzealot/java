@@ -13,17 +13,17 @@ import java.util.concurrent.Future;
  * @param <T>
  */
 public class FutureContext<T> {
-	private List<Future<T>> futureList = new ArrayList<Future<T>>();
+	private List<Future<T>> futures = new ArrayList<Future<T>>();
 
 	// 线程池
 	private ExecutorService service;
 
 	public void addFuture(Future<T> future) {
-		this.futureList.add(future);
+		this.futures.add(future);
 	}
 
 	public List<Future<T>> getFutureList() {
-		return this.futureList;
+		return this.futures;
 	}
 
 	public void setService(ExecutorService service) {

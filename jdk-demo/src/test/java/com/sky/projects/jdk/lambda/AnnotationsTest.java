@@ -14,6 +14,7 @@ public class AnnotationsTest {
 	public void test() {
 		final Holder<String> holder = new @NonEmpty Holder<String>();
 		System.out.println(holder);
+
 		@NonEmpty
 		Collection<@NonEmpty String> strings = new ArrayList<>();
 		System.out.println(strings);

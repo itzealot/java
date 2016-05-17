@@ -10,8 +10,8 @@ import java.lang.reflect.Parameter;
  *
  */
 public class ParameterNames {
-	public static void main(String[] args) throws Exception {
 
+	public static void main(String[] args) throws Exception {
 		// 获取 Method 对象
 		Method method = ParameterNames.class.getMethod("main", String[].class);
 

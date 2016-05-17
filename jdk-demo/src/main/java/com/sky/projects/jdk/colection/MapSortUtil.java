@@ -10,9 +10,9 @@ import java.util.Map;
 import org.junit.Test;
 
 public class MapSortUtil {
+
 	@Test
 	public void test() {
-
 		List<Map<String, Object>> listResult = new ArrayList<Map<String, Object>>();
 		Map<String, Object> map1 = new LinkedHashMap<String, Object>();
 		map1.put("count", 2);
@@ -83,4 +83,3 @@ public class MapSortUtil {
 	}
 
 }
-

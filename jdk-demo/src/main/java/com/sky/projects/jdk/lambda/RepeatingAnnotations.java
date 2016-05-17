@@ -28,7 +28,7 @@ public class RepeatingAnnotations {
 	@Repeatable(Filters.class)
 	public @interface Filter {
 		String value();
-	};
+	}
 
 	@Filter("filter1")
 	@Filter("filter2")

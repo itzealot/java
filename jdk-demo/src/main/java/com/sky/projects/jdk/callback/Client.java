@@ -6,7 +6,7 @@ package com.sky.projects.jdk.callback;
  * @author zt
  *
  */
-public class Client implements CSCallBack {
+public class Client implements CallBackable {
 
 	// 服务器实例
 	private Server server;

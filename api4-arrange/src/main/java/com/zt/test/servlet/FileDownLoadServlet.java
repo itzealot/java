@@ -18,6 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class FileDownLoadServlet extends HttpServlet {
+
 	private static final long serialVersionUID = -3622487091178180833L;
 
 	public static final Log log = LogFactory.getLog(FileDownLoadServlet.class);
@@ -65,6 +66,7 @@ public class FileDownLoadServlet extends HttpServlet {
 	private String getMetadataZipTempDir(Properties config) {
 		String serverHome = System.getProperty(Constants.APUSIC_SERVER_HOME);
 		String zipDir = serverHome + config.getProperty(Constants.ZIP_FILE_TEMP_DIR_PATH);
+
 		return zipDir;
 	}
 

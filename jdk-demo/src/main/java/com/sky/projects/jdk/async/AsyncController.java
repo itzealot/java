@@ -32,8 +32,8 @@ public class AsyncController {
 
 		// 开启100个异步计算，每个异步计算线程随机sleep几秒来模拟计算耗时。
 		for (int i = 0; i < 100; i++) {
+			// 创建 Future，Callable<T> 执行回调函数，返回结果并保存到 Future<T> 中
 			Future<String> future = this.service.submit(new Callable<String>() {
-
 				@Override
 				public String call() throws Exception {
 					int randomInt = random.nextInt(10);
@@ -45,8 +45,9 @@ public class AsyncController {
 				}
 			});
 
-			// 每个异步计算的结果存放在context中
+			// 每个异步计算的结果存放在 context 中
 			this.context.addFuture(future);
+			this.context.setService(service);
 		}
 	}
 
@@ -54,7 +55,4 @@ public class AsyncController {
 		return this.context;
 	}
 
-	public ExecutorService getService() {
-		return service;
-	}
 }

@@ -16,7 +16,6 @@ public class TestAsyncController {
 		OutputResult output = new OutputResult();
 
 		FutureContext<String> context = controller.getFutureContext();
-		context.setService(controller.getService());
 
 		output.setFutureContext(context);
 

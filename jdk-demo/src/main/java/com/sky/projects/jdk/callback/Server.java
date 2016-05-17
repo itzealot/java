@@ -11,10 +11,10 @@ public class Server {
 	/**
 	 * 处理客户端传来的消息，并执行回调函数
 	 * 
-	 * @param csCallBack
+	 * @param call
 	 * @param msg
 	 */
-	public void getClientMsg(CSCallBack csCallBack, String msg) {
+	public void getClientMsg(CallBackable call, String msg) {
 		System.out.println("服务端：服务端接收到客户端发送的消息为:" + msg);
 
 		// 模拟服务端需要对数据处理
@@ -28,6 +28,6 @@ public class Server {
 		String status = "200";
 
 		// 执行回调函数
-		csCallBack.process(status);
+		call.process(status);
 	}
 }

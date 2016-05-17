@@ -1,20 +1,20 @@
 package com.zt.test.common;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.net.Socket;
 
 public class Closes {
-	public static void close(Closeable... closeables) {
-		if (closeables == null) {
+	public static void close(AutoCloseable... clos) {
+		if (clos == null) {
 			return;
 		}
-		for (Closeable item : closeables) {
+
+		for (AutoCloseable item : clos) {
 			try {
 				if (item != null) {
 					item.close();
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				// TODO
 			}
 		}
@@ -24,6 +24,7 @@ public class Closes {
 		if (socket == null) {
 			return;
 		}
+
 		try {
 			socket.close();
 		} catch (IOException e) {

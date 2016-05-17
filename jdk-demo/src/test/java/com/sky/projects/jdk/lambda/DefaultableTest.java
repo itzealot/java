@@ -8,14 +8,14 @@ import org.junit.Test;
  * @author zt
  *
  */
-public class IDefaulableTest {
+public class DefaultableTest {
 
 	@Test
 	public void test() {
-		IDefaulable defaulable1 = new DefaultableImpl();
+		Defautlable defaulable1 = new DefaultableImpl();
 		System.out.println(defaulable1.notRequired());
 
-		IDefaulable defaulable2 = new OverridableImpl();
+		Defautlable defaulable2 = new OverridableImpl();
 		System.out.println(defaulable2.notRequired());
 	}
 }

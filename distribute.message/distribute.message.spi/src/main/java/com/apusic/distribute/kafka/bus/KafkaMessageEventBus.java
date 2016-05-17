@@ -12,6 +12,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.apusic.distribute.kafka.common.KafkaConf;
 import com.apusic.distribute.message.bus.MessageEventBus;
 import com.apusic.distribute.message.listener.MessageEventListener;
 import com.apusic.distribute.message.model.MessageEvent;
@@ -39,7 +40,7 @@ public class KafkaMessageEventBus implements MessageEventBus {
 	private <T extends Serializable> Consumer<Long, MessageEvent<T>> getKafkaConsumer(String groupId) {
 		Properties props = new Properties();
 
-		props.put("bootstrap.servers", "172.20.129.154:9092,172.20.129.158:9092,172.20.129.159:9092");
+		props.put("bootstrap.servers", KafkaConf.BOOTSTRAP_SERVERS);
 		props.put("group.id", groupId);
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");

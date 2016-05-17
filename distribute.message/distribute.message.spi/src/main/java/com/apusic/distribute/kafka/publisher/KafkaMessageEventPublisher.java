@@ -7,6 +7,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import com.apusic.distribute.kafka.common.KafkaConf;
 import com.apusic.distribute.message.model.MessageEvent;
 import com.apusic.distribute.message.publisher.MessageEventPublisher;
 
@@ -32,7 +33,7 @@ public class KafkaMessageEventPublisher<T extends Serializable> implements Messa
 	private Producer<Long, MessageEvent<T>> getKafkaProducer() {
 		Properties props = new Properties();
 
-		props.put("bootstrap.servers", "172.20.129.154:9092,172.20.129.158:9092,172.20.129.159:9092");
+		props.put("bootstrap.servers", KafkaConf.BOOTSTRAP_SERVERS);
 		props.put("acks", "all");
 		props.put("retries", 0);
 		props.put("batch.size", 16384);

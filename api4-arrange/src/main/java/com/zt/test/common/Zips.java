@@ -13,9 +13,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * ZIP压缩工具类
+ * zip 压缩工具类
  * 
- * @author leen
+ * @author zt
  * 
  */
 public class Zips {

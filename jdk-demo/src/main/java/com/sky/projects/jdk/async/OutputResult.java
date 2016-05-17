@@ -38,22 +38,18 @@ public class OutputResult implements Runnable {
 	 * @param future
 	 */
 	private void outputResultFromFuture(Future<String> future) {
-		try {
-			// 持续监听异步线程
-			while (true) {
-				// future.isDone() : 即任务完成，返回 true；否则返回 false
-				// future.isCancelled() : 返回 true，则任务已经取消；否则返回 false
-				if (future.isDone() && !future.isCancelled()) {
-					System.out.println("Future: " + future + ", Result: " + future.get());
+		// 持续监听异步线程
+		while (true) {
+			// future.isDone() : 即任务完成，返回 true；否则返回 false
+			// future.isCancelled() : 返回 true，则任务已经取消；否则返回 false
+			if (future.isDone() && !future.isCancelled()) {
+				System.out.println("Future: " + future + ", Result: " + Threads.get(future));
 
-					// 任务执行完成，退出
-					break;
-				} else {
-					Thread.sleep(1000);
-				}
+				// 任务执行完成，退出
+				break;
+			} else {
+				Threads.sleep(1000);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
