@@ -1,4 +1,4 @@
-package com.sky.projects.spark;
+package com.sky.projects.spark.hello;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;

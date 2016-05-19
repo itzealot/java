@@ -23,7 +23,6 @@ public class Client implements CallBackable {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-
 				// 服务器端处理客户端消息
 				server.getClientMsg(Client.this, msg);
 			}

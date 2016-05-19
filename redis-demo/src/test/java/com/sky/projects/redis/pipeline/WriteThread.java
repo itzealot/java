@@ -3,6 +3,8 @@ package com.sky.projects.redis.pipeline;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.projects.sky.util.io.Files;
+
 public class WriteThread implements Runnable {
 
 	private String file;
@@ -16,7 +18,7 @@ public class WriteThread implements Runnable {
 
 	@Override
 	public void run() {
-//		Files.appendWithBufferedWriter(file, exchange());
+		Files.appendWithBufferedWriter(file, exchange());
 	}
 
 	private List<String> exchange() {

@@ -7,6 +7,8 @@ import java.nio.channels.FileLock;
 
 import org.junit.Test;
 
+import com.projects.sky.util.base.Threads;
+
 public class TestFileLock {
 
 	@Test
@@ -20,11 +22,12 @@ public class TestFileLock {
 		// 2. 得到文件通道
 		FileChannel fout = output.getChannel();
 
-		// 3. 通过文件通道得到文件锁，此处为独占锁
-		FileLock lock = fout.tryLock(); // 进行独占锁的操作
+		// 3. 通过文件通道得到文件锁，此处为独占锁, 进行独占锁的操作
+		FileLock lock = fout.tryLock();
+
 		if (lock != null) {
 			System.out.println(file.getName() + "文件锁定300秒");
-			Thread.sleep(300000);
+			Threads.sleep(300000);
 			lock.release(); // 释放
 			System.out.println(file.getName() + "文件解除锁定。");
 		}

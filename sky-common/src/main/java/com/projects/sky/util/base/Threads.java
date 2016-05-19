@@ -1,6 +1,7 @@
 package com.projects.sky.util.base;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
@@ -8,6 +9,28 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 public final class Threads {
 	private Threads() {
+	}
+
+	public static <T> T get(Future<T> future) {
+		try {
+			return future.get();
+		} catch (Exception e) {
+			// TODO
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public static <T> T get(Future<T> future, long timeout, TimeUnit unit) {
+		try {
+			return future.get(timeout, unit);
+		} catch (Exception e) {
+			// TODO
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 	public static void sleep(long millis) {

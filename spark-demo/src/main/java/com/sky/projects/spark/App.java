@@ -12,41 +12,42 @@ import org.apache.spark.api.java.function.Function;
  * 
  * 统计一行中含有字母 a 的数量与统计一行中含有字母 b 的数量
  * 
- * 
  * @author zt
  *
  */
-public class SimpleApp {
+public class App {
 
+	public static final String master = "spark://172.20.129.136:7077";
+
+	@SuppressWarnings("serial")
 	public static void main(String[] args) {
 		String logFile = "YOUR_SPARK_HOME/README.md";
 
-		SparkConf conf = new SparkConf().setAppName("Simple Application");
+		SparkConf conf = new SparkConf().setAppName("CountApplication");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
+		// 创建 JavaRDD
 		JavaRDD<String> logData = sc.textFile(logFile).cache();
 
-		// 统计含字符 a
-		Function<String, Boolean> funA = new Function<String, Boolean>() {
-			private static final long serialVersionUID = -8530970732718222038L;
-
+		/*
+		 * 统计含字符 a
+		 */
+		long numAs = logData.filter(new Function<String, Boolean>() {
+			@Override
 			public Boolean call(String s) {
 				return s.contains("a");
 			}
-		};
+		}).count();
 
-		long numAs = logData.filter(funA).count();
-
-		// 统计 含字符 b
-		Function<String, Boolean> funB = new Function<String, Boolean>() {
-			private static final long serialVersionUID = 507354263131745742L;
-
+		/*
+		 * 统计含字符 b
+		 */
+		long numBs = logData.filter(new Function<String, Boolean>() {
+			@Override
 			public Boolean call(String s) {
 				return s.contains("b");
 			}
-		};
-
-		long numBs = logData.filter(funB).count();
+		}).count();
 
 		System.out.println("Lines with a: " + numAs + ", lines with b: " + numBs);
 
