@@ -14,14 +14,9 @@
 		<fileSet>
 			<directory>${project.basedir}/bin</directory>
 			<outputDirectory>bin</outputDirectory>
+			<fileMode>0755</fileMode>
 		</fileSet>
 	
-		<!-- 将源码 bin 下的文件打包到 bin 目录下 -->
-		<fileSet>
-			<directory>${project.basedir}/bin</directory>
-			<outputDirectory>bin</outputDirectory>
-		</fileSet>
-		
 		<!-- 打包 src/main/resources 下的配置文件打包到 conf 目录下 -->
 		<fileSet>
 			<directory>${project.basedir}/src/main/resources</directory>
