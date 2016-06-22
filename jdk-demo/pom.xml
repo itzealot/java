@@ -44,5 +44,11 @@
 			<artifactId>sky-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.8.9</version>
+		</dependency>
 	</dependencies>
 </project>

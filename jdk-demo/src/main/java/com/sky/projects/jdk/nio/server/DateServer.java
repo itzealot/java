@@ -12,8 +12,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class DateServer {
-	public static void main(String args[]) throws Exception {
 
+	public static void main(String args[]) throws Exception {
 		// 表示五个监听端口
 		int ports[] = { 8000, 8001, 8002, 8003, 8005, 8006 };
 

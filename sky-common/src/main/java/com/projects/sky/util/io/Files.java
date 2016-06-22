@@ -1,6 +1,7 @@
 package com.projects.sky.util.io;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -115,5 +116,10 @@ public final class Files {
 		} finally {
 			Closeables.close(randomFile);
 		}
+	}
+
+	public static List<String> read(File file, int bufferSize) {
+		
+		return null;
 	}
 }

@@ -3,7 +3,7 @@ package com.apusic.skynet.zookeeper;
 /**
  * 负责维护并持有zookeeper的会话。
  * 
- * @author jiangjianbo
+ * @author zt
  *
  */
 public interface ZkConnection extends AutoCloseable {

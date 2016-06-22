@@ -21,7 +21,7 @@ public class TestIntBuffer {
 		display("初始化时变量值：", buffer);
 
 		// 3. 使用put方法 向缓冲区写入数据，可以是单个，也可以是数组
-		for (int i = 0; i < capacity; i++) {
+		for (int i = 0; i < 10; i++) {
 			buffer.put(i);
 		}
 
@@ -82,7 +82,7 @@ public class TestIntBuffer {
 	public void testReadOnlyBuffer() {
 		// 1. 准备出10个大小的缓冲区
 		IntBuffer buffer = IntBuffer.allocate(10);
-		
+
 		IntBuffer read = null; // 定义子缓冲区
 		for (int i = 0; i < 10; i++) {
 			buffer.put(2 * i + 1); // 在主缓冲区中加入10个奇数
