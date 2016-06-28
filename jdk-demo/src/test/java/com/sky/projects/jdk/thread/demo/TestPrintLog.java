@@ -3,6 +3,8 @@ package com.sky.projects.jdk.thread.demo;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+import com.projects.sky.util.base.Threads;
+
 public class TestPrintLog {
 
 	public static void main(String[] args) {
@@ -19,16 +21,15 @@ public class TestPrintLog {
 
 		System.out.println("begin : " + System.currentTimeMillis() / 1000);
 
-		/**
-		 * 模拟处理16行日志，下面的代码产生了16个日志对象，当前代码需要运行16秒才能打印完.<br />
-		 * 修改程序代码，开四个线程让这16个对象在四秒钟打完日志.<br />
-		 * 即每个线程打4个日志，需要4秒；4个线程并行一共需要4秒.<br />
+		/*
+		 * 模拟处理16行日志，下面的代码产生了16个日志对象，当前代码需要运行16秒才能打印完.
+		 * 修改程序代码，开四个线程让这16个对象在四秒钟打完日志. 即每个线程打4个日志，需要4秒；4个线程并行一共需要4秒.
 		 */
-		for (int i = 0; i < 16; i++) {// 改行代码不能改
-			final String log = "" + (i + 1);// 改行代码不能改
+		for (int i = 0; i < 16; i++) {// 该行代码不能改
+			final String log = "" + (i + 1);// 该行代码不能改
 
-			// 添加到阻塞队列
 			try {
+				// 添加日志到阻塞队列
 				queue.put(log);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -43,6 +44,7 @@ public class TestPrintLog {
 						try {
 							// 取日志信息并打印
 							String log = queue.take();
+
 							TestPrintLog.printLog(log);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
@@ -56,13 +58,15 @@ public class TestPrintLog {
 	public static void testOrigin() {
 		System.out.println("begin : " + System.currentTimeMillis() / 1000);
 
-		/**
-		 * 模拟处理16行日志，下面的代码产生了16个日志对象，当前代码需要运行16秒才能打印完.<br />
-		 * 修改程序代码，开四个线程让这16个对象在四秒钟打完日志.<br />
-		 * 即每个线程打4个日志，需要4秒；4个线程并行一共需要4秒.<br />
+		/*
+		 * 模拟处理16行日志，下面的代码产生了16个日志对象，当前代码需要运行16秒才能打印完.
+		 * 
+		 * 修改程序代码，开四个线程让这16个对象在四秒钟打完日志.
+		 * 
+		 * 即每个线程打4个日志，需要4秒；4个线程并行一共需要4秒.
 		 */
-		for (int i = 0; i < 16; i++) {// 改行代码不能改
-			final String log = "" + (i + 1);// 改行代码不能改
+		for (int i = 0; i < 16; i++) {// 该行代码不能改
+			final String log = "" + (i + 1);// 该行代码不能改
 			TestPrintLog.printLog(log);
 		}
 
@@ -70,19 +74,14 @@ public class TestPrintLog {
 	}
 
 	/**
-	 * 模拟打印日志的方法.<br />
-	 * 更改时不能改动.<br />
+	 * 模拟打印日志的方法,该方法不能改
 	 * 
 	 * @param log
 	 */
-	public static void printLog(String log) {// 改方法不能改
+	public static void printLog(String log) {
 		System.out.println(log + " : " + System.currentTimeMillis() / 1000);
 
-		try {
-			// 休息1秒
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		// 休息1秒，模拟打印日志消耗时间
+		Threads.sleep(1000);
 	}
 }

@@ -1,6 +1,5 @@
 package com.sky.projects.spark.streaming.client;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.yarn.api.records.ApplicationId;
@@ -16,14 +15,11 @@ import org.apache.spark.deploy.yarn.ClientArguments;
  */
 public class SubmitClient {
 	
-	public static void main(String[] arguments) throws Exception {
-		for (int i = 0; i < arguments.length; i++) {
-			System.out.println("args[" + i + "]=" + arguments[i]);
-		}
-		String streamHome = arguments[0];
-		String streamTypeStr = arguments[1];
-		String jarName = arguments[2];
-		String addJars = arguments[3].replace(":", ",file://").substring(1);
+	public static void main(String[] args) throws Exception {
+		String streamHome = args[0];
+		String streamTypeStr = args[1];
+		String jarName = args[2];
+		String addJars = args[3].replace(":", ",file://").substring(1);
 		String appName = "appName";
 		String checkpoint = streamHome + "/" + "checkpoint";
 		
@@ -71,7 +67,7 @@ public class SubmitClient {
 		groupByKeyNum = "";
 
 		// org.apache.spark.deploy.yarn.Client object
-		String[] args = new String[] {
+		String[] arguments = new String[] {
 				// the name of your application
 				"--name", appName,
 				// memory for driver (optional)
@@ -110,24 +106,13 @@ public class SubmitClient {
 				"--arg", "yarn-cluster" };
 		// create a Hadoop Configuration object
 		Configuration config = new Configuration();
+		
 		config.addResource(new Path(coreSite));
 		config.addResource(new Path(hdfsSite));
 		config.addResource(new Path(yarnSite));
 		
-		if (StringUtils.isBlank(bootstrapServers)) {
-			System.out.println("Error missing config bootstrap_servers");
-			return ;
-		}
-		
-		if (StringUtils.isBlank(kafkaMaxRatePerPartition)) {
-			System.out.println("Error missing config wl_kafka_maxRatePerPartition or fj_kafka_maxRatePerPartition");
-			return ;
-		}
-		
-		if (StringUtils.isBlank(kafkaMode)) {
-			System.out.println("Error missing config kafka_mode");
-			return ;
-		}
+		// validate args
+		validate();
 		
 		System.out.println("yarn.resourcemanager.address:"
 				+ config.get("yarn.resourcemanager.address"));
@@ -137,6 +122,7 @@ public class SubmitClient {
 		// create an instance of SparkConf object
 		SparkConf sparkConf = new SparkConf();
 		
+		// spark log4j
 		String sparkLogFile = "file:///etc/spark/conf/log4j.properties";
 		
 //		sparkConf.set("spark.yarn.am.extraJavaOptions", " -Xmn1g -XX:PermSize=256m -XX:MaxPermSize=512m -XX:+PrintGC -XX:+PrintGCDetails -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled  -XX:ConcGCThreads=8 -XX:+CMSParallelRemarkEnabled");
@@ -146,13 +132,17 @@ public class SubmitClient {
 		sparkConf.set("spark.driver.extraJavaOptions", "-Dlog4j.configuration=" + sparkLogFile + " " + driverJavaOptions);
 		
 		// create ClientArguments, which will be passed to Client
-		ClientArguments cArgs = new ClientArguments(args, sparkConf);
+		ClientArguments cArgs = new ClientArguments(arguments, sparkConf);
 		// create an instance of yarn Client client
 		Client client = new Client(cArgs, config, sparkConf);
 		// submit Spark job to YARN
 		ApplicationId applicationId = client.submitApplication();
 		System.out.println("applicationId:"+applicationId.toString());
 //		client.run();
+	}
+
+	private static void validate() {
+		
 	}
 
 }

@@ -62,8 +62,7 @@ public final class Dates {
 	 * @return
 	 */
 	public static Date yesterday() {
-		Date d = DateUtils.addDays(new Date(), -1);
-		return DateUtils.truncate(d, Calendar.DAY_OF_MONTH);
+		return DateUtils.truncate(DateUtils.addDays(new Date(), -1), Calendar.DAY_OF_MONTH);
 	}
 
 	/**
@@ -78,10 +77,8 @@ public final class Dates {
 	 * @return
 	 */
 	public static List<Date> between(Date start, Date end) {
-		if (end == null) {
-			end = yesterday();
-		}
-
+		end = end == null ? yesterday() : end;
+		
 		end = DateUtils.truncate(end, Calendar.DAY_OF_MONTH);
 
 		if (start == null) {
@@ -92,18 +89,18 @@ public final class Dates {
 			return Arrays.asList(end);
 		}
 
-		List<Date> dateList = new ArrayList<Date>();
+		List<Date> dates = new ArrayList<Date>();
 		start = DateUtils.truncate(start, Calendar.DAY_OF_MONTH);
-		dateList.add(start);
+		dates.add(start);
 
 		do {
 			start = DateUtils.addDays(start, 1);
-			dateList.add(start);
+			dates.add(start);
 		} while (start.before(end));
 
-		return dateList;
+		return dates;
 	}
-	
+
 	public static Date after(Date date, int days) {
 		Calendar calendar = Calendar.getInstance();
 
@@ -112,15 +109,15 @@ public final class Dates {
 
 		return calendar.getTime();
 	}
-	
-	public static Date add(Date date, int offset) {
+
+	public static Date add(Date date, int daysOffset) {
 		checkNotNull(date, "date must not be null");
 
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 
 		// 整数往后推,负数往前移动
-		calendar.add(Calendar.DATE, offset);
+		calendar.add(Calendar.DATE, daysOffset);
 
 		return calendar.getTime();
 	}
@@ -128,19 +125,11 @@ public final class Dates {
 	public static boolean between(Date start, Date source, Date end) {
 		checkNotNull(source, "source date must not be null");
 
-		if (source.after(start) && source.before(end)) {
-			return true;
-		}
-
-		return false;
+		return source.after(start) && source.before(end);
 	}
 
 	public static boolean between(long start, long source, long end) {
-		if (source > start && source < end) {
-			return true;
-		}
-
-		return false;
+		return source > start && source < end;
 	}
 
 	public static SimpleDateFormat get(String format) {
