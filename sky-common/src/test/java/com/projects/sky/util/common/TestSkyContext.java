@@ -2,10 +2,10 @@ package com.projects.sky.util.common;
 
 import org.junit.Test;
 
-import com.projects.sky.util.Context;
+import com.projects.sky.util.SkyContext;
 
 public class TestSkyContext {
-	Context context = new SkyContext();
+	SkyContext context = new SkyContextImpl();
 
 	{
 		context.put("int", 1);

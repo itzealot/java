@@ -6,7 +6,6 @@ import java.util.HashSet;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 public class TestCollections2 {
 	private static Collection<Integer> collection;
@@ -33,13 +32,5 @@ public class TestCollections2 {
 	public void after() {
 		collection = null;
 		collection2 = null;
-	}
-
-	@Test
-	public void testGetStringFromCollection() {
-		System.out.println(Collections2.stringOf(collection, ", ", false));
-
-		System.out.println(Collections2.stringOf(collection2, ", ", false));
-
 	}
 }

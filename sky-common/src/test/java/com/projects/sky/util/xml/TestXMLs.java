@@ -1,5 +1,6 @@
 package com.projects.sky.util.xml;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class TestXMLs {
 
 	@Test
 	public void testFormatBy() throws Exception {
-		System.out.println(XMLs.formatBy(path));
+		System.out.println(XMLs.format(new File(path)));
 	}
 
 	@Test
@@ -31,7 +32,7 @@ public class TestXMLs {
 
 	@Test
 	public void testFrom() throws Exception {
-		System.out.println(XMLs.from(path));
+		System.out.println(XMLs.read(path));
 	}
 
 	@Test

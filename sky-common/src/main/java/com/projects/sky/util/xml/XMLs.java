@@ -20,24 +20,87 @@ import org.dom4j.io.XMLWriter;
  *
  */
 public final class XMLs {
-	private XMLs() {
-	}
 
 	/**
-	 * 根据xml 文件路径获取获取内容
+	 * 根据 xml 文件路径获取获取内容
 	 * 
 	 * @param path
+	 *            the xml file path
 	 * @return
 	 * @throws Exception
 	 */
-	public static String from(String path) throws Exception {
-		SAXReader reader = new SAXReader();
-		Document document = reader.read(new File(path));
-		return document.asXML();
+	public static String read(String path) throws Exception {
+		return read(new File(path));
 	}
 
 	/**
-	 * 将字符串转换为 xml 对应的 Document 对象
+	 * 根据 xml 文件路径获取获取内容
+	 * 
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
+	public static String read(File file) throws Exception {
+		return new SAXReader().read(file).asXML();
+	}
+
+	/**
+	 * 从文件中读取xml 内容并格式化
+	 * 
+	 * @param file
+	 *            The xml file
+	 * @return
+	 * @throws Exception
+	 */
+	public static String format(File file) throws Exception {
+		return format(new SAXReader().read(file));
+	}
+
+	/**
+	 * To format the xml content String
+	 * 
+	 * 格式化 xml String
+	 * 
+	 * @param content
+	 *            xml String
+	 * @return 返回格式化后的 xml String
+	 * @throws Exception
+	 */
+	public static String format(String content) throws Exception {
+		return format(new SAXReader().read(new StringReader(content)));
+	}
+
+	/**
+	 * To format the document
+	 * 
+	 * 格式化 Document 对象
+	 * 
+	 * @param document
+	 *            Document
+	 * @return
+	 * @throws IOException
+	 */
+	public static String format(Document document) throws IOException {
+
+		String result = "";
+		XMLWriter writer = null;
+
+		try {
+			StringWriter stringWriter = new StringWriter();
+			OutputFormat format = getOutputFormat(4, false);
+			writer = new XMLWriter(stringWriter, format);
+			writer.write(document);
+			writer.flush();
+			result = stringWriter.getBuffer().toString();
+		} finally {
+			close(writer);
+		}
+
+		return result;
+	}
+
+	/**
+	 * 将xml 字符串转换为 xml 对应的 Document 对象
 	 * 
 	 * @param text
 	 * @return
@@ -51,20 +114,6 @@ public final class XMLs {
 	}
 
 	/**
-	 * To format the xml file by path
-	 * 
-	 * @param path
-	 *            The xml file's path
-	 * @return
-	 * @throws Exception
-	 */
-	public static String formatBy(String path) throws Exception {
-		SAXReader reader = new SAXReader();
-		Document document = reader.read(new File(path));
-		return format(document);
-	}
-
-	/**
 	 * 将格式化的 xml 字符串重置，即去掉所有格式化符号
 	 * 
 	 * @param content
@@ -73,28 +122,18 @@ public final class XMLs {
 	public static String reset(String content) {
 		StringTokenizer tokenizer = new StringTokenizer(content);
 		StringBuffer buffer = new StringBuffer();
+
 		while (tokenizer.hasMoreElements()) {
 			buffer.append(tokenizer.nextToken());
 		}
+
 		return buffer.toString();
 	}
 
 	/**
-	 * To fromat the xml String
-	 * 
-	 * @param content
-	 *            String
-	 * @return
-	 * @throws Exception
-	 */
-	public static String format(String content) throws Exception {
-		SAXReader reader = new SAXReader();
-		Document document = reader.read(new StringReader(content));
-		return format(document);
-	}
-
-	/**
 	 * To get OutputFormat object by indentSize and newLineAfterDeclaration
+	 * 
+	 * 根据参数获取 OutputFormat 对象
 	 * 
 	 * @param indentSize
 	 *            int ：格式化空格数
@@ -110,6 +149,8 @@ public final class XMLs {
 	 * To get OutputFormat object by indentSize, newLineAfterDeclaration and
 	 * encoding
 	 * 
+	 * 根据参数获取OutputFormat 对象
+	 * 
 	 * @param indentSize
 	 *            int ：格式化空格数
 	 * @param newLineAfterDeclaration
@@ -121,50 +162,26 @@ public final class XMLs {
 	 */
 	public static OutputFormat getOutputFormat(int indentSize, boolean newLineAfterDeclaration, String encoding) {
 		OutputFormat format = OutputFormat.createPrettyPrint();
+
 		format.setIndentSize(indentSize);
 		format.setEncoding(encoding);
 		format.setNewLineAfterDeclaration(newLineAfterDeclaration);
+
 		return format;
 	}
 
-	/**
-	 * To close Writer
-	 * 
-	 * @param writer
-	 */
-	public static void close(XMLWriter writer) {
+	private static void close(XMLWriter writer) {
 		if (writer != null) {
 			try {
 				writer.close();
+				writer = null;
 			} catch (IOException e) {
-
+			} finally {
+				writer = null;
 			}
 		}
 	}
 
-	/**
-	 * To format the document
-	 * 
-	 * @param document
-	 *            Document
-	 * @return
-	 * @throws IOException
-	 */
-	public static String format(Document document) throws IOException {
-		String result = "";
-		XMLWriter writer = null;
-		if (document != null) {
-			try {
-				StringWriter stringWriter = new StringWriter();
-				OutputFormat format = getOutputFormat(4, false);
-				writer = new XMLWriter(stringWriter, format);
-				writer.write(document);
-				writer.flush();
-				result = stringWriter.getBuffer().toString();
-			} finally {
-				close(writer);
-			}
-		}
-		return result;
+	private XMLs() {
 	}
 }

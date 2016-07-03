@@ -1,6 +1,6 @@
 package com.sky.projects.web.common.mvc;
 
-public class HtmlStringUtil {
+public final class HtmlStringUtil {
 	/**
 	 * 对特殊的html字符进行编码，并返回编码后的字符串
 	 * 
@@ -9,14 +9,13 @@ public class HtmlStringUtil {
 	 * @return 返回html中能够显示的字符串
 	 */
 	public static String filter(String message) {
-
-		int length = 0;
-		if (message == null || (length = message.length()) == 0) {
+		if (message == null || message.isEmpty()) {
 			return null;
 		}
+
 		StringBuffer result = new StringBuffer();
 
-		for (int i = 0; i < length; i++) {
+		for (int i = 0, length = message.length(); i < length; i++) {
 			switch (message.charAt(i)) {
 			case '<':
 				result.append("&lt;");
@@ -34,7 +33,10 @@ public class HtmlStringUtil {
 				result.append(message.charAt(i));
 			}
 		}
-		return result.toString();
 
+		return result.toString();
+	}
+
+	private HtmlStringUtil() {
 	}
 }

@@ -109,7 +109,7 @@ public final class Sorts {
 	 * @return
 	 */
 	public static Class<?> refClass(Class<?> clazz) {
-		checkNotNull("The class is null.", clazz);
+		checkNotNull("class must not null.", clazz);
 
 		switch (clazz.getSimpleName().toLowerCase()) {
 		case "boolean":
@@ -214,12 +214,12 @@ public final class Sorts {
 	}
 
 	private static <T> void check(List<T> list, final String fieldName) {
-		checkNotNull("The list is null.", list);
-		checkNotNull("The filedName is null.", fieldName);
+		checkNotNull(list, "list must not null.");
+		checkNotNull(fieldName, "filedName must not null.");
 	}
 
 	private static <T> void check(Collection<T> collection, final String fieldName) {
-		checkNotNull("The collection is null.", collection);
-		checkNotNull("The filedName is null.", fieldName);
+		checkNotNull(collection, "collection must not null.");
+		checkNotNull(fieldName, "filedName must not null.");
 	}
 }

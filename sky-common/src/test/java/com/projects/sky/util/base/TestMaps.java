@@ -41,23 +41,4 @@ public class TestMaps {
 		System.out.println(Maps.get(map, new Integer(4)));
 	}
 
-	@Test
-	public void testIteratorMap() {
-		System.out.println(Maps.iteratorMap(map));
-	}
-
-	@Test
-	public void testEntryFEachMap() {
-		System.out.println(Maps.entryFEachMap(map));
-	}
-
-	@Test
-	public void testKeySetIteratorMap() {
-		System.out.println(Maps.keySetIteratorMap(map));
-	}
-
-	@Test
-	public void testKeySetFEachMap() {
-		System.out.println(Maps.keySetFEachMap(map));
-	}
 }

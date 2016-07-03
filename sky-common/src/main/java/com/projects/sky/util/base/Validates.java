@@ -3,112 +3,182 @@ package com.projects.sky.util.base;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * Validate Util
+ * 
+ * @author zt
+ */
 public final class Validates {
 
-	private Validates() {
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(boolean[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(boolean[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(char[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(byte[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(byte[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(short[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(short[] array) {
+		return array == null || array.length == 0;
 	}
 
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
 	public static boolean vlidate(char[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(int[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(int[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(float[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(float[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(long[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(long[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(double[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isEmpty(double[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static <E> boolean validate(E[] array) {
-		if (array == null || array.length == 0) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when array is null or length is 0 then return true; else return false
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static <E> boolean isEmpty(E[] array) {
+		return array == null || array.length == 0;
 	}
 
-	public static boolean validate(Object object) {
-		if (object == null) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when object is null then return true; else return false.
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static boolean isNull(Object object) {
+		return object == null;
 	}
 
-	public static boolean validate(String str) {
-		if (str == null || str.isEmpty()) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when str is null length is 0 then return true; else return false.
+	 * 
+	 * 数组为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEmpty(String str) {
+		return str == null || str.isEmpty();
 	}
 
-	public static <E> boolean validate(Collection<E> collection) {
-		if (collection == null || collection.isEmpty()) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * when Collection is null or length is 0 then return true; else return
+	 * false.
+	 * 
+	 * Collection 为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public static <E> boolean isEmpty(Collection<E> collection) {
+		return collection == null || collection.isEmpty();
 	}
 
-	public static <E, V> boolean validate(Map<E, V> map) {
-		if (map == null || map.isEmpty()) {
-			return false;
-		}
+	/**
+	 * when Map is null or length is 0 then return true; else return false.
+	 * 
+	 * Map 为null或长度为0时返回true，否则返回false
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public static <E, V> boolean isEmpty(Map<E, V> map) {
+		return map == null || map.isEmpty();
+	}
 
-		return true;
+	private Validates() {
 	}
 }

@@ -72,19 +72,13 @@ class HTMLCharacterRequest extends HttpServletRequestWrapper {
 
 	@Override
 	public String getParameter(String name) {
-		Map<String, String[]> parameterMap = getParameterMap();
-		String[] values = parameterMap.get(name);
-		if (values == null) {
-			return null;
-		}
-		return values[0]; // 取回参数的第一个值
+		String[] values = getParameterMap().get(name);
+		return values == null ? null : values[0]; // 取回参数的第一个值
 	}
 
 	@Override
 	public String[] getParameterValues(String name) {
-		Map<String, String[]> parameterMap = getParameterMap();
-		String[] values = parameterMap.get(name);
-		return values;
+		return getParameterMap().get(name);
 	}
 
 }

@@ -19,8 +19,7 @@ public class ResourceBundles {
 	 * @return 返回键为看 key 的 value 值
 	 */
 	public static String getString(String key, String baseName) {
-		ResourceBundle prop = ResourceBundle.getBundle(baseName);
-		return prop.getString(key);
+		return ResourceBundle.getBundle(baseName).getString(key);
 	}
 
 }

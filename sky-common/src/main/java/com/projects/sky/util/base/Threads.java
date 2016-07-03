@@ -8,18 +8,14 @@ import java.util.concurrent.TimeUnit;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 public final class Threads {
-	private Threads() {
-	}
 
 	public static <T> T get(Future<T> future) {
 		try {
 			return future.get();
 		} catch (Exception e) {
-			// TODO
 			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static <T> T get(Future<T> future, long timeout, TimeUnit unit) {
@@ -28,9 +24,8 @@ public final class Threads {
 		} catch (Exception e) {
 			// TODO
 			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static void sleep(long millis) {
@@ -132,4 +127,6 @@ public final class Threads {
 		}
 	}
 
+	private Threads() {
+	}
 }

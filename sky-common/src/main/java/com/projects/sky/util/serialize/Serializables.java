@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,7 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import com.projects.sky.util.common.Closeables;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 序列化工具类
@@ -19,12 +22,12 @@ import com.projects.sky.util.common.Closeables;
  * @author zt
  */
 public final class Serializables {
-
-	private Serializables() {
-	}
+	private static final Logger LOG = LoggerFactory.getLogger(Serializables.class);
 
 	/**
-	 * 序列化对象为字节数组
+	 * To serialize the Object to byte array.
+	 * 
+	 * 序列化一个对象
 	 * 
 	 * @param t
 	 * @return
@@ -34,29 +37,32 @@ public final class Serializables {
 
 		ObjectOutputStream oos = null;
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		byte[] bytes = null;
 
 		try {
 			oos = new ObjectOutputStream(bos);
 			oos.writeObject(t);
+			bytes = bos.toByteArray();
 		} catch (IOException e) {
-			// TODO
-			e.printStackTrace();
+			LOG.error("serialize object error.", e);
 		} finally {
-			Closeables.close(bos, oos);
+			close(bos, oos);
 		}
 
-		return bos.toByteArray();
+		return bytes;
 	}
 
 	/**
-	 * 将序列化的对象写入文件中
+	 * To write the Object into file by file's name
+	 * 
+	 * 序列化一个对象到文件
 	 * 
 	 * @param t
 	 * @param file
 	 */
-	public static <T extends Serializable> void write(T t, String file) {
+	public static <T extends Serializable> void write(T t, File file) {
 		checkNotNull(t, "t can not be null");
-		checkNotNull(file, "fileName can not be null");
+		checkNotNull(file, "file can not be null");
 
 		ObjectOutputStream oos = null;
 		FileOutputStream fos = null;
@@ -66,54 +72,54 @@ public final class Serializables {
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(t);
 		} catch (IOException e) {
-			// TODO
-			e.printStackTrace();
+			LOG.error("write object into file error.", e);
 		} finally {
-			Closeables.close(fos, oos);
+			close(fos, oos);
 		}
 	}
 
 	/**
-	 * 从序列化的字节数组中读取对象并返回，读取失败，则返回null
+	 * To read object from byte array.
 	 * 
-	 * @param data
+	 * 从序列化的数组中读取对象
+	 * 
+	 * @param bytes
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> T read(byte[] data) {
-		checkNotNull(data, "data can not be null");
+	public static <T extends Serializable> T read(byte[] bytes) {
+		checkNotNull(bytes, "bytes can not be null");
 
-		ByteArrayInputStream bis = new ByteArrayInputStream(data);
+		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
 		ObjectInputStream ois = null;
-
 		T obj = null;
 
 		try {
 			ois = new ObjectInputStream(bis);
 			obj = (T) ois.readObject();
 		} catch (Exception e) {
-			// TODO
-			e.printStackTrace();
+			LOG.error("read an object from bytes error.", e);
 		} finally {
-			Closeables.close(ois, bis);
+			close(ois, bis);
 		}
 
 		return obj;
 	}
 
 	/**
-	 * 从序列化的文件中读取对象并返回，读取失败，则返回null
+	 * To read object from file by file's name.
+	 * 
+	 * 从文件中读取序列化对象
 	 * 
 	 * @param file
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> T read(String file) {
-		checkNotNull(file, "fileName can not be null");
+	public static <T extends Serializable> T read(File file) {
+		checkNotNull(file, "file can not be null");
 
 		FileInputStream bis = null;
 		ObjectInputStream ois = null;
-
 		T obj = null;
 
 		try {
@@ -121,12 +127,31 @@ public final class Serializables {
 			ois = new ObjectInputStream(bis);
 			obj = (T) ois.readObject();
 		} catch (Exception e) {
-			// TODO
-			e.printStackTrace();
+			LOG.error("read an object from file error.", e);
 		} finally {
-			Closeables.close(ois, bis);
+			close(ois, bis);
 		}
 
 		return obj;
 	}
+
+	public static void close(Closeable... clos) {
+		if (clos != null) {
+			for (int i = 0, len = clos.length; i < len; i++) {
+				try {
+					if (clos[i] != null) {
+						clos[i].close();
+						clos[i] = null;
+					}
+				} catch (IOException e) {
+					clos[i] = null;
+					LOG.error("close the connection error, index is: " + i, e);
+				}
+			}
+		}
+	}
+
+	private Serializables() {
+	}
+
 }

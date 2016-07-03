@@ -5,21 +5,16 @@ public final class Closeables {
 	}
 
 	public static void close(AutoCloseable... closes) {
-		if (closes == null) {
-			return;
-		}
-
-		int length = closes.length;
-
-		for (int i = 0; i < length; i++) {
-			try {
-				if (closes[i] != null) {
-					closes[i].close();
+		if (closes != null)
+			for (int i = 0, len = closes.length; i < len; i++) {
+				try {
+					if (closes[i] != null) {
+						closes[i].close();
+						closes[i] = null;
+					}
+				} catch (Exception e) {
 					closes[i] = null;
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
-		}
 	}
 }

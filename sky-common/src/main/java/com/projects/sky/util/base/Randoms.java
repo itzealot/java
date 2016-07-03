@@ -4,9 +4,6 @@ import java.util.Random;
 
 public final class Randoms {
 
-	private Randoms() {
-	}
-
 	private static Random get() {
 		return new Random();
 	}
@@ -91,5 +88,8 @@ public final class Randoms {
 		}
 
 		return result;
+	}
+
+	private Randoms() {
 	}
 }

@@ -1,103 +1,76 @@
 package com.projects.sky.util.base;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class Collections2 {
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.projects.sky.util.SkyFilter;
 
+/**
+ * Collection Util
+ * 
+ * @author zt
+ */
+public final class Collections2 {
+
+	/**
+	 * Collection is validate true or false.
+	 * 
+	 * 集合是否有效，有效则返回 true；否则返回 false
+	 * 
+	 * @param collection
+	 * @return 有效则返回 true；否则返回 false
+	 */
 	public static <E> boolean validate(Collection<E> collection) {
-		if (collection == null || collection.isEmpty()) {
-			return false;
-		}
-
-		return true;
+		return collection != null && !collection.isEmpty();
 	}
 
-	public static <E> String stringOf(Collection<E> collection, String split, boolean flag) {
-		if (!validate(collection)) {
-			return "";
-		}
+	public static <T> List<T> collection2List(Collection<T> collection) {
+		checkNotNull(collection, "collection can not be null");
 
-		StringBuffer buffer = new StringBuffer();
-		Iterator<E> iterator = collection.iterator();
-		int length = 0;
-		String splitDefault = ", ";
-
-		if (split != null || split == "") {
-			splitDefault = split;
-		}
-
-		length = splitDefault.length();
-
-		while (iterator.hasNext()) {
-			E element = iterator.next();
-			buffer.append(element.toString());
-			buffer.append(splitDefault);
-		}
-
-		String str = buffer.substring(0, buffer.length() - length);
-
-		if (flag) {
-			str += "\n";
-		}
-
-		return str;
+		return new ArrayList<>(collection);
 	}
 
-	public static <E> String iterator(Set<E> set) {
-		StringBuffer buffer = new StringBuffer();
+	public static <T> List<T> collection2List(Collection<T> collection, SkyFilter<T> filter) {
+		checkNotNull(collection, "collection can not be null");
+		checkNotNull(filter, "filter can not be null");
 
-		// Iterator the Set Collection
-		Iterator<E> it = set.iterator();
-		while (it.hasNext()) {
-			E object = it.next();
-			buffer.append(object.toString());
-			buffer.append(", ");
-		}
-		return buffer.substring(0, buffer.length() - 2);
-	}
+		List<T> lists = Lists.newArrayList();
 
-	public static <E> String forEach(Set<E> set) {
-		StringBuffer buffer = new StringBuffer();
-
-		for (E e : set) {
-			buffer.append(e.toString());
-			buffer.append(", ");
-		}
-
-		return buffer.toString();
-	}
-
-	public static <T> List<? extends T> transform(Set<? extends T> t) {
-		List<T> lists = new ArrayList<T>();
-
-		if (validate(t)) {
-			@SuppressWarnings("unchecked")
-			Iterator<T> it = (Iterator<T>) t.iterator();
-
-			while (it.hasNext()) {
-				lists.add(it.next());
+		for (T t : collection) {
+			if (filter.accept(t)) {
+				lists.add(t);
 			}
 		}
 
 		return lists;
 	}
 
-	public static <T> Set<? extends T> transform(List<? extends T> lists) {
-		if (!validate(lists)) {
-			return null;
-		}
+	public static <T> Set<T> collection2Set(Collection<T> collection) {
+		return new HashSet<>(collection);
+	}
 
-		Set<T> set = new HashSet<T>();
+	public static <T> Set<T> collection2Set(Collection<T> collection, SkyFilter<T> filter) {
+		checkNotNull(collection, "collection can not be null");
+		checkNotNull(filter, "filter can not be null");
 
-		for (T obj : lists) {
-			set.add(obj);
+		Set<T> set = Sets.newHashSet();
+
+		for (T t : collection) {
+			if (filter.accept(t)) {
+				set.add(t);
+			}
 		}
 
 		return set;
+	}
+
+	private Collections2() {
 	}
 }

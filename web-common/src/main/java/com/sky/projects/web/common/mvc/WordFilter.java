@@ -82,10 +82,7 @@ public class WordFilter implements Filter {
 				// 文件过滤器的使用
 				public boolean accept(File f) {
 					// 过滤需要的文件
-					if (f.getName().endsWith(".txt")) {
-						return true;
-					}
-					return false;
+					return f.getName().endsWith(".txt");
 				}
 			});
 
@@ -104,16 +101,11 @@ public class WordFilter implements Filter {
 							// 添加指定数组
 							if ("1".equals(arr[1].trim())) {
 								seqing.add(arr[0]);
-							}
-
-							if ("2".equals(arr[1].trim())) {
+							} else if ("2".equals(arr[1].trim())) {
 								fandong.add(arr[0]);
-							}
-
-							if ("3".equals(arr[1].trim())) {
+							} else if ("3".equals(arr[1].trim())) {
 								zhengzhi.add(arr[0]);
 							}
-
 						}
 
 					}
@@ -122,10 +114,8 @@ public class WordFilter implements Filter {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		}
-
 	}
 
 }
