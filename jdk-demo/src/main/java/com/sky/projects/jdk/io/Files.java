@@ -8,8 +8,6 @@ import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.util.List;
 
-import com.projects.sky.util.common.Closeables;
-
 public final class Files {
 
 	private Files() {
@@ -25,7 +23,7 @@ public final class Files {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(out);
+			close(out);
 		}
 	}
 
@@ -42,7 +40,7 @@ public final class Files {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(out);
+			close(out);
 		}
 	}
 
@@ -58,7 +56,7 @@ public final class Files {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(writer);
+			close(writer);
 		}
 	}
 
@@ -71,7 +69,7 @@ public final class Files {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(writer);
+			close(writer);
 		}
 	}
 
@@ -92,7 +90,7 @@ public final class Files {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(randomFile);
+			close(randomFile);
 		}
 	}
 
@@ -113,7 +111,23 @@ public final class Files {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			Closeables.close(randomFile);
+			close(randomFile);
+		}
+	}
+
+	private static void close(AutoCloseable... clos) {
+		if (clos != null) {
+			for (AutoCloseable c : clos) {
+				if (c != null) {
+					try {
+						c.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						c = null;
+					}
+				}
+			}
 		}
 	}
 }

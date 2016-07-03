@@ -1,7 +1,5 @@
 package com.sky.projects.jdk.thread;
 
-import com.projects.sky.util.base.Threads;
-
 /**
  * 线程A,B间的通信，形成互斥访问
  * 

@@ -1,6 +1,6 @@
 package com.sky.projects.jdk.threads.deamon;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 import com.sky.projects.jdk.thread.deamon.DeamonThread;
 import com.sky.projects.jdk.thread.deamon.NoneDeamonThread;
 

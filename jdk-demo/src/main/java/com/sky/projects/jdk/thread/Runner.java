@@ -1,7 +1,5 @@
 package com.sky.projects.jdk.thread;
 
-import com.projects.sky.util.base.Threads;
-
 public class Runner implements Runnable, AutoCloseable {
 
 	private volatile boolean running = true;
@@ -19,7 +17,8 @@ public class Runner implements Runnable, AutoCloseable {
 		System.out.println("print message..................");
 	}
 
-	public void close() throws Exception {
+	@Override
+	public void close() {
 		this.running = false;
 	}
 

@@ -8,8 +8,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.projects.sky.util.base.Threads;
-
 public class CallableAndFutureTest {
 
 	public static void testOneTask() {

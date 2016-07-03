@@ -3,8 +3,6 @@ package com.sky.projects.jdk.thread;
 import java.util.Random;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-import com.projects.sky.util.base.Threads;
-
 /**
  * 1. ConcurrentSkipListSet<T> 提供的功能类似于TreeSet，线程安全且有序的 set
  * 

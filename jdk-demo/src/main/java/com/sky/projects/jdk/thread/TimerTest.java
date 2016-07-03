@@ -5,8 +5,6 @@ import java.util.GregorianCalendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.projects.sky.util.base.Threads;
-
 public class TimerTest {
 
 	public static void test1() {

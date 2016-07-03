@@ -1,6 +1,6 @@
 package com.sky.projects.jdk.thread.deamon;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 public class DeamonThread implements Runnable {
 

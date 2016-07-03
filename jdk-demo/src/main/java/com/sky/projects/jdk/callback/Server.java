@@ -1,6 +1,6 @@
 package com.sky.projects.jdk.callback;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 /**
  * 模拟服务端类

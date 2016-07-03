@@ -3,7 +3,7 @@ package com.sky.projects.jdk.thread.demo;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 /**
  * 不能改动此 TestThread 类

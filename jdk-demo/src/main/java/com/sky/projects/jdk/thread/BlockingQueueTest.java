@@ -4,8 +4,6 @@ import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import com.projects.sky.util.base.Threads;
-
 public class BlockingQueueTest {
 	// 创建存放整数的阻塞队列，容量为3
 	private static final BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(3);

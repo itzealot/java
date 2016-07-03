@@ -1,8 +1,5 @@
 package com.sky.projects.jdk.thread;
 
-import com.projects.sky.util.base.Threads;
-import com.projects.sky.util.common.Closeables;
-
 public class RunnerClose implements Runnable {
 
 	private Runner runner;
@@ -21,7 +18,7 @@ public class RunnerClose implements Runnable {
 			System.out.println("counts is : " + runner.getCounts());
 
 			if (runner.getCounts() >= counts) {
-				Closeables.close(runner);
+				runner.close();
 				break;
 			}
 		}

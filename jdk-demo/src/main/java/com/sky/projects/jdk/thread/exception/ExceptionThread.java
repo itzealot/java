@@ -2,7 +2,7 @@ package com.sky.projects.jdk.thread.exception;
 
 import java.util.Random;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 public class ExceptionThread implements Runnable {
 

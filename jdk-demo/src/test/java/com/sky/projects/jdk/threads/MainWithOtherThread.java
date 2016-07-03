@@ -1,6 +1,6 @@
 package com.sky.projects.jdk.threads;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 public class MainWithOtherThread {
 

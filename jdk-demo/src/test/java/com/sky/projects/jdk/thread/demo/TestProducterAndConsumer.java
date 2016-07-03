@@ -3,7 +3,7 @@ package com.sky.projects.jdk.thread.demo;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.SynchronousQueue;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 /**
  * 生产者与消费者

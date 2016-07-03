@@ -5,8 +5,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import com.projects.sky.util.base.Threads;
-
 /**
  * 创建线程池.任务交给线程池，直接调用执行方法
  * 

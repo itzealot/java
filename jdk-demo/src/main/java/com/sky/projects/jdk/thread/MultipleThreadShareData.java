@@ -2,8 +2,6 @@ package com.sky.projects.jdk.thread;
 
 import java.util.Random;
 
-import com.projects.sky.util.base.Threads;
-
 class MultipleThreadShareData implements Runnable {
 	private volatile int data = 0;
 	private static Object lock = new Object();

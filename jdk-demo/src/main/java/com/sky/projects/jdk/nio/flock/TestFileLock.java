@@ -7,7 +7,7 @@ import java.nio.channels.FileLock;
 
 import org.junit.Test;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 public class TestFileLock {
 

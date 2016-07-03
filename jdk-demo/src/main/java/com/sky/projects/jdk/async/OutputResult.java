@@ -3,7 +3,7 @@ package com.sky.projects.jdk.async;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 /**
  * 输出结果线程

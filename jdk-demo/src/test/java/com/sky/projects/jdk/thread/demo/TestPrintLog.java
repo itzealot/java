@@ -3,7 +3,7 @@ package com.sky.projects.jdk.thread.demo;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import com.projects.sky.util.base.Threads;
+import com.sky.projects.jdk.thread.Threads;
 
 public class TestPrintLog {
 
