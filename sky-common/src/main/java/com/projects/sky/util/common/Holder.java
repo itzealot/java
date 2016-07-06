@@ -13,6 +13,6 @@ public class Holder<T> {
 
 	@Override
 	public String toString() {
-		return "[value=" + value + "]";
+		return "{value=" + value + "}";
 	}
 }

@@ -141,11 +141,11 @@ public final class Serializables {
 				try {
 					if (clos[i] != null) {
 						clos[i].close();
-						clos[i] = null;
 					}
 				} catch (IOException e) {
-					clos[i] = null;
 					LOG.error("close the connection error, index is: " + i, e);
+				} finally {
+					clos[i] = null;
 				}
 			}
 		}

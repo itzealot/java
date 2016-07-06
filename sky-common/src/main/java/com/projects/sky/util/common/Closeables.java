@@ -1,8 +1,11 @@
 package com.projects.sky.util.common;
 
+/**
+ * AutoCloseable Util
+ * 
+ * @author zt
+ */
 public final class Closeables {
-	private Closeables() {
-	}
 
 	public static void close(AutoCloseable... closes) {
 		if (closes != null)
@@ -10,11 +13,14 @@ public final class Closeables {
 				try {
 					if (closes[i] != null) {
 						closes[i].close();
-						closes[i] = null;
 					}
 				} catch (Exception e) {
+				} finally {
 					closes[i] = null;
 				}
 			}
+	}
+
+	private Closeables() {
 	}
 }
