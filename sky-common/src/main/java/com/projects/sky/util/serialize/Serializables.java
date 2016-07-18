@@ -1,10 +1,10 @@
 package com.projects.sky.util.serialize;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.projects.sky.util.common.Closeables.close;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -44,7 +44,7 @@ public final class Serializables {
 			oos.writeObject(t);
 			bytes = bos.toByteArray();
 		} catch (IOException e) {
-			LOG.error("serialize object error.", e);
+			LOG.error("serialize an object error.", e);
 		} finally {
 			close(bos, oos);
 		}
@@ -53,7 +53,7 @@ public final class Serializables {
 	}
 
 	/**
-	 * To write the Object into file by file's name
+	 * To write the Object into file
 	 * 
 	 * 序列化一个对象到文件
 	 * 
@@ -72,7 +72,7 @@ public final class Serializables {
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(t);
 		} catch (IOException e) {
-			LOG.error("write object into file error.", e);
+			LOG.error("write an object into file error, path : {}, {}", file.getAbsolutePath(), e);
 		} finally {
 			close(fos, oos);
 		}
@@ -127,28 +127,12 @@ public final class Serializables {
 			ois = new ObjectInputStream(bis);
 			obj = (T) ois.readObject();
 		} catch (Exception e) {
-			LOG.error("read an object from file error.", e);
+			LOG.error("read an object from file error, path : {}, {}", file.getAbsolutePath(), e);
 		} finally {
 			close(ois, bis);
 		}
 
 		return obj;
-	}
-
-	public static void close(Closeable... clos) {
-		if (clos != null) {
-			for (int i = 0, len = clos.length; i < len; i++) {
-				try {
-					if (clos[i] != null) {
-						clos[i].close();
-					}
-				} catch (IOException e) {
-					LOG.error("close the connection error, index is: " + i, e);
-				} finally {
-					clos[i] = null;
-				}
-			}
-		}
 	}
 
 	private Serializables() {

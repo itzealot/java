@@ -28,13 +28,19 @@
 			<version>1.6.1</version>
 		</dependency>
 
-		<!-- To import google's guava dependency start -->
+		<!-- To import google's guava or gson dependency start -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
-		<!-- To import google's guava dependency end -->
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<!-- To import google's guava or gson dependency end -->
 
 		<!-- import slf4j log dependency start. -->
 		<dependency>
@@ -69,6 +75,14 @@
 			<version>2.9.1</version>
 		</dependency>
 		<!-- import joda-time dependency end. -->
+
+		<!-- import commons-configuration dependency start. -->
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<!-- import commons-configuration dependency end. -->
 
 	</dependencies>
 </project>

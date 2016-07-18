@@ -47,7 +47,8 @@ public final class Strings {
 	 * @return
 	 */
 	public static String nameOf(Class<?> clazz) {
-		return clazz.toString().substring(clazz.toString().lastIndexOf(".") + 1);
+		String name = clazz.toString();
+		return name.substring(name.lastIndexOf(".") + 1);
 	}
 
 	/**
@@ -140,13 +141,7 @@ public final class Strings {
 	}
 
 	public static String trimWith0(String src) {
-		if (src == null) {
-			return "0";
-		}
-
-		String s = src.trim();
-
-		return s == "" ? "0" : s;
+		return src == null ? "0" : (src.trim() == "" ? "0" : src.trim());
 	}
 
 	public static Object numberOf(String src, Class<?> clazz) {
