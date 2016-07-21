@@ -174,7 +174,6 @@ public final class XMLs {
 		if (writer != null) {
 			try {
 				writer.close();
-				writer = null;
 			} catch (IOException e) {
 			} finally {
 				writer = null;

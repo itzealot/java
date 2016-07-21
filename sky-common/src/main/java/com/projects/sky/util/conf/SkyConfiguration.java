@@ -80,13 +80,10 @@ public final class SkyConfiguration {
 
 	public String getStringsFromArrayWithSpliter(final String key, final String defaluValue, final String spliter) {
 		String[] results = getArray(key);
-		if (results == null)
+		if (results == null || results.length == 0)
 			return defaluValue;
 
-		StringBuffer buffer = new StringBuffer();
-
-		buffer.append(results[0]);
-
+		StringBuffer buffer = new StringBuffer(results[0]);
 		for (int i = 1, len = results.length; i < len; i++) {
 			buffer.append(spliter).append(results[i]);
 		}
