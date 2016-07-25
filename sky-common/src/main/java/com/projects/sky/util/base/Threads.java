@@ -5,15 +5,24 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
+/**
+ * The Thread Util
+ * 
+ * @author zealot
+ */
 public final class Threads {
+	private static final Logger LOG = LoggerFactory.getLogger(Threads.class);
 
 	public static <T> T get(Future<T> future) {
 		try {
 			return future.get();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("get result from Future error.");
 			return null;
 		}
 	}
@@ -22,8 +31,7 @@ public final class Threads {
 		try {
 			return future.get(timeout, unit);
 		} catch (Exception e) {
-			// TODO
-			e.printStackTrace();
+			LOG.error("get result from Future error.");
 			return null;
 		}
 	}
@@ -103,27 +111,6 @@ public final class Threads {
 			}
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
-		}
-	}
-
-	/**
-	 * 保证不会有Exception抛出到线程池的Runnable，防止用户没有捕捉异常导致中断了线程池中的线程。
-	 */
-	public static class WrapExceptionRunnable implements Runnable {
-		private Runnable runnable;
-
-		public WrapExceptionRunnable(Runnable runnable) {
-			this.runnable = runnable;
-		}
-
-		public void run() {
-			try {
-				runnable.run();
-			} catch (Throwable e) {
-				// catch any exception, because the scheduled thread will break
-				// if the exception thrown outside.
-				// TODO 进行日志输出
-			}
 		}
 	}
 

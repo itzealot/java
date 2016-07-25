@@ -16,19 +16,29 @@ import org.apache.commons.lang.time.DateUtils;
 public final class Dates {
 
 	static enum DateFormat {
-		// format date like 2016-01-01 18:00:00, for 24 小时制
+		/**
+		 * format date like 2016-01-01 18:00:00, for 24 小时制
+		 */
 		DEFAULT_FORMAT("yyyy-MM-dd HH:mm:ss"),
 
-		// format date like 2016-01-01 01:00:00 for, 12 小时制
+		/**
+		 * format date like 2016-01-01 01:00:00 for, 12 小时制
+		 */
 		FORMAT_TO_HOUR_12("yyyy-MM-dd hh:mm:ss"),
 
-		// yyyyMMddhhmmss
+		/**
+		 * yyyyMMddhhmmss
+		 */
 		FORMAT_TO_NO_SPILIT("yyyyMMddhhmmss"),
 
-		// yyyy-MM-dd
+		/**
+		 * yyyy-MM-dd
+		 */
 		FORMAT_TO_DATE("yyyy-MM-dd"),
 
-		// HH:mm:ss
+		/**
+		 * HH:mm:ss
+		 */
 		FORMAT_TO_TIME("HH:mm:ss");
 
 		String format;
@@ -78,7 +88,7 @@ public final class Dates {
 	 */
 	public static List<Date> between(Date start, Date end) {
 		end = end == null ? yesterday() : end;
-		
+
 		end = DateUtils.truncate(end, Calendar.DAY_OF_MONTH);
 
 		if (start == null) {
@@ -134,13 +144,11 @@ public final class Dates {
 
 	public static SimpleDateFormat get(String format) {
 		checkNotNull(format, "format String must not be null");
-
 		return new SimpleDateFormat(format);
 	}
 
 	public static String format(String format, Date date) {
 		checkNotNull(date, "date must not be null");
-
 		return get(format).format(date);
 	}
 
@@ -148,22 +156,52 @@ public final class Dates {
 		return format(format.format, date);
 	}
 
+	/**
+	 * Date String : yyyy-MM-dd HH:mm:ss
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String format(Date date) {
 		return format(DateFormat.DEFAULT_FORMAT, date);
 	}
 
+	/**
+	 * Date String : HH:mm:ss
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String format2Time(Date date) {
 		return format(DateFormat.FORMAT_TO_TIME, date);
 	}
 
+	/**
+	 * Date String : yyyy-MM-dd
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String format2Date(Date date) {
 		return format(DateFormat.FORMAT_TO_DATE, date);
 	}
 
+	/**
+	 * Date String : yyyyMMddhhmmss
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String format2NoSpilit(Date date) {
 		return format(DateFormat.FORMAT_TO_NO_SPILIT, date);
 	}
 
+	/**
+	 * Date String : yyyy-MM-dd hh:mm:ss
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public static String format2HourSmall(Date date) {
 		return format(DateFormat.FORMAT_TO_HOUR_12, date);
 	}
@@ -179,6 +217,12 @@ public final class Dates {
 		}
 	}
 
+	/**
+	 * Date format : yyyy-MM-dd HH:mm:ss
+	 * 
+	 * @param source
+	 * @return
+	 */
 	public static Date of(String source) {
 		return of(source, DateFormat.DEFAULT_FORMAT);
 	}
@@ -187,20 +231,80 @@ public final class Dates {
 		return of(source, format.format);
 	}
 
+	/**
+	 * Date format : yyyy-MM-dd
+	 * 
+	 * @param source
+	 * @return
+	 */
 	public static Date ofDate(String source) {
 		return of(source, DateFormat.FORMAT_TO_DATE);
 	}
 
+	/**
+	 * Date format : HH:mm:ss
+	 * 
+	 * @param source
+	 * @return
+	 */
 	public static Date ofTime(String source) {
 		return of(source, DateFormat.FORMAT_TO_TIME);
 	}
 
+	/**
+	 * Date format : yyyy-MM-dd hh:mm:ss
+	 * 
+	 * @param source
+	 * @return
+	 */
 	public static Date ofHourSmall(String source) {
 		return of(source, DateFormat.FORMAT_TO_HOUR_12);
 	}
 
-	public static Date ofNoSpilit(String source) {
+	/**
+	 * Date format : yyyyMMddhhmmss
+	 * 
+	 * @param source
+	 * @return
+	 */
+	public static Date ofNoSpliter(String source) {
 		return of(source, DateFormat.FORMAT_TO_NO_SPILIT);
+	}
+
+	public static Long str2UnixTimespan(String source, String format) {
+		return unixTimespan(of(source, format));
+	}
+
+	/**
+	 * string to Unix Timespan
+	 * 
+	 * @param source
+	 *            yyyy-MM-dd HH:mm:ss
+	 * @return
+	 */
+	public static Long str2UnixTimespan(String source) {
+		return unixTimespan(of(source));
+	}
+
+	/**
+	 * string to Unix Timespan
+	 * 
+	 * @param source
+	 *            yyyy-MM-dd HH:mm:ss
+	 * @return
+	 */
+	public static String str2UnixString(String source) {
+		return "" + str2UnixTimespan(source);
+	}
+
+	/**
+	 * get the Unix time span
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static Long unixTimespan(Date date) {
+		return date == null ? new Date().getTime() / 1000 : date.getTime() / 1000;
 	}
 
 	private Dates() {

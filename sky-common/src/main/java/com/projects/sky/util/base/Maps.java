@@ -7,6 +7,11 @@ import java.util.Set;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+/**
+ * The Map Util
+ * 
+ * @author zealot
+ */
 public final class Maps {
 
 	public static <K, V> V get(Map<K, V> map, K key) {

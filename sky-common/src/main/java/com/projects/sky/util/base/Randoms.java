@@ -2,25 +2,19 @@ package com.projects.sky.util.base;
 
 import java.util.Random;
 
+/**
+ * Random Util
+ * 
+ * @author zealot
+ */
 public final class Randoms {
-
-	private static Random get() {
-		return new Random();
-	}
+	private static final Random INSTANCE = new Random();
 
 	public static int randomInteger() {
-		return get().nextInt();
-	}
-
-	private static void check(int n) {
-		if (n <= 0) {
-			throw new IllegalArgumentException("参数 n = " + n + " 非法，值必须大于0");
-		}
+		return INSTANCE.nextInt();
 	}
 
 	public static int[] randomIntegers(int n) throws Exception {
-		check(n);
-
 		int[] result = new int[n];
 
 		for (int i = 0; i < n; i++) {
@@ -31,7 +25,7 @@ public final class Randoms {
 	}
 
 	public static int randomInteger(int n) {
-		return get().nextInt(n);
+		return INSTANCE.nextInt(n);
 	}
 
 	public static int randomInteger(int start, int end) throws Exception {
@@ -39,16 +33,14 @@ public final class Randoms {
 			throw new Exception("参数start 与 end 非法");
 		}
 
-		return start + get().nextInt(end - start);
+		return start + INSTANCE.nextInt(end - start);
 	}
 
 	public static boolean randomBoolean() {
-		return get().nextBoolean();
+		return INSTANCE.nextBoolean();
 	}
 
 	public static boolean[] randomBooleans(int n) throws Exception {
-		check(n);
-
 		boolean[] result = new boolean[n];
 
 		for (int i = 0; i < n; i++) {
@@ -59,12 +51,10 @@ public final class Randoms {
 	}
 
 	public static float randomFloat() {
-		return get().nextFloat();
+		return INSTANCE.nextFloat();
 	}
 
 	public static float[] randomFloats(int n) throws Exception {
-		check(n);
-
 		float[] result = new float[n];
 
 		for (int i = 0; i < n; i++) {
@@ -75,12 +65,10 @@ public final class Randoms {
 	}
 
 	public static double randomDouble() {
-		return get().nextDouble();
+		return INSTANCE.nextDouble();
 	}
 
-	public static double[] randomDoubles(int n) throws Exception {
-		check(n);
-
+	public static double[] randomDoubles(int n) {
 		double[] result = new double[n];
 
 		for (int i = 0; i < n; i++) {

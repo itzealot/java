@@ -1,5 +1,6 @@
 package com.projects.sky.util.io;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static com.projects.sky.util.common.Closeables.close;
 
 import java.io.BufferedReader;
@@ -186,15 +187,15 @@ public final class Files {
 	 * {@link #append(String, List)}
 	 * 
 	 * @param file
-	 * @param contents
+	 * @param lines
 	 */
 	@Deprecated
-	public static void appendWithFileWriter(String file, List<String> contents) {
+	public static void appendWithFileWriter(String file, List<String> lines) {
 		FileWriter writer = null;
 
 		try {
 			writer = new FileWriter(file, true);
-			for (String content : contents) {
+			for (String content : lines) {
 				writer.write(content);
 				writer.write("\n");
 			}
@@ -209,18 +210,18 @@ public final class Files {
 	 * {@link #append(String, String)}
 	 * 
 	 * @param file
-	 * @param content
+	 * @param line
 	 */
 	@Deprecated
-	public static void appendWithFileWriter(String file, String content) {
-		appendWithFileWriter(file, Arrays.asList(content));
+	public static void appendWithFileWriter(String file, String line) {
+		appendWithFileWriter(file, Arrays.asList(line));
 	}
 
-	public static void appendWithRandomAccessFile(String file, String content) {
-		appendWithRandomAccessFile(file, Arrays.asList(content));
+	public static void appendWithRandomAccessFile(String file, String line) {
+		appendWithRandomAccessFile(file, Arrays.asList(line));
 	}
 
-	public static void appendWithRandomAccessFile(String file, List<String> contents) {
+	public static void appendWithRandomAccessFile(String file, List<String> lines) {
 		RandomAccessFile randomFile = null;
 
 		try {
@@ -229,12 +230,12 @@ public final class Files {
 			// 文件长度，字节数,将写文件指针移到文件尾。
 			randomFile.seek(randomFile.length());
 
-			for (String content : contents) {
+			for (String content : lines) {
 				randomFile.writeBytes(content);
 				randomFile.writeChar('\n');
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("append datas with RandomAccessFile into file error.", e);
 		} finally {
 			close(randomFile);
 		}
@@ -275,17 +276,36 @@ public final class Files {
 	 * @param file
 	 * @param datas
 	 */
+	public static <T> void writeWithJson(final String file, final List<T> datas) {
+		writeWithJson(new File(file), datas);
+	}
+
+	/**
+	 * 向文件中写入 json 数据
+	 * 
+	 * @param file
+	 * @param datas
+	 */
 	public static <T> void writeWithJson(final File file, final List<T> datas) {
-		if (datas == null || datas.isEmpty()) {
-			return;
-		}
+		writeWithJson(file, datas, Charset.forName("UTF-8"));
+	}
+
+	/**
+	 * 向文件中写入 json 数据
+	 * 
+	 * @param file
+	 * @param datas
+	 */
+	public static <T> void writeWithJson(final File file, final List<T> datas, Charset ch) {
+		checkNotNull(file, "file can not be null");
+		checkNotNull(datas, "datas can not be null");
 
 		BufferedWriter writer = null;
 		FileOutputStream fos = null;
 
 		try {
 			fos = new FileOutputStream(file);
-			writer = new BufferedWriter(new OutputStreamWriter(fos, Charset.forName("UTF-8")));
+			writer = new BufferedWriter(new OutputStreamWriter(fos, ch));
 
 			String json = new Gson().toJson(datas);
 			writer.write(json);
@@ -297,16 +317,6 @@ public final class Files {
 		}
 
 		LOG.info("finish write datas with json into file, size is :{}.", datas.size());
-	}
-
-	/**
-	 * 向文件中写入 json 数据
-	 * 
-	 * @param file
-	 * @param datas
-	 */
-	public static <T> void writeWithJson(final String file, final List<T> datas) {
-		writeWithJson(new File(file), datas);
 	}
 
 	private Files() {

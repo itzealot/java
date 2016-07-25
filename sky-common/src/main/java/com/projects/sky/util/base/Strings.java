@@ -23,10 +23,10 @@ public final class Strings {
 	}
 
 	public String join(final String... strings) {
-		return strings == null ? null : join_(strings);
+		return strings == null ? null : join0(strings);
 	}
 
-	private String join_(final String... strings) {
+	String join0(final String... strings) {
 		StringBuffer buffer = new StringBuffer();
 
 		for (String str : strings) {
@@ -69,7 +69,7 @@ public final class Strings {
 	 * @return
 	 */
 	public static String toSBC(String source) {
-		return source == null ? null : toSBC_(source);
+		return source == null ? null : toSBC0(source);
 	}
 
 	/**
@@ -78,7 +78,7 @@ public final class Strings {
 	 * @param source
 	 * @return
 	 */
-	private static String toSBC_(String source) {
+	static String toSBC0(String source) {
 		StringBuffer buffer = new StringBuffer();
 
 		for (int i = 0, len = source.length(); i < len; i++) {
@@ -101,7 +101,7 @@ public final class Strings {
 	 * @return
 	 */
 	public static String toDBC(String source) {
-		return source == null ? null : toDBC_(source);
+		return source == null ? null : toDBC0(source);
 	}
 
 	/**
@@ -110,7 +110,7 @@ public final class Strings {
 	 * @param source
 	 * @return
 	 */
-	private static String toDBC_(String source) {
+	static String toDBC0(String source) {
 		StringBuffer buffer = new StringBuffer();
 
 		for (int i = 0, len = source.length(); i < len; i++) {
@@ -177,32 +177,6 @@ public final class Strings {
 		return lists;
 	}
 
-	/**
-	 * 原串 source 是否包含 目标串 dest，支持特殊字符匹配.<br />
-	 * --1). * is all.<br />
-	 * --2). _ is one char.<br />
-	 * --3). # is one number.<br />
-	 * --4). $ is one word.<br />
-	 * 
-	 * @param source
-	 *            String
-	 * @param dest
-	 * @return
-	 */
-	public boolean contains(String source, String dest, String special) {
-		int index1 = source.indexOf(special);
-
-		// 包含特殊字符
-		if (index1 != -1) {
-			while (true) {
-				source.substring(0, index1);
-				source.substring(index1 + 1);
-			}
-		}
-
-		return source.contains(dest);
-	}
-
 	public static String md5(String source) {
 		return Validates.isEmpty(source) ? source : md5_(source);
 	}
@@ -254,16 +228,15 @@ public final class Strings {
 
 			return hexValue.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return "";
 		}
 	}
 
 	public static int indexOf(String[] strs, String str) {
-		return Validates.isEmpty(strs) || Validates.isEmpty(str) ? -1 : indexOf_(strs, str);
+		return Validates.isEmpty(strs) || Validates.isEmpty(str) ? -1 : indexOf0(strs, str);
 	}
 
-	private static int indexOf_(String strs[], String str) {
+	static int indexOf0(String strs[], String str) {
 		for (int i = 0, len = strs.length; i < len; i++) {
 			if (str.equals(strs[i])) {
 				return i;
