@@ -27,7 +27,6 @@ public class ConnectionFactory extends BasePoolableObjectFactory<Socket> {
 	public Socket makeObject() throws Exception {
 		Socket socket = new Socket();
 		socket.connect(address);
-
 		return socket;
 	}
 
@@ -36,15 +35,7 @@ public class ConnectionFactory extends BasePoolableObjectFactory<Socket> {
 	}
 
 	public boolean validateObject(Socket socket) {
-		if (!socket.isConnected()) {
-			return false;
-		}
-
-		if (socket.isClosed()) {
-			return false;
-		}
-
-		return true;
+		return socket.isConnected() && !socket.isClosed();
 	}
 
 }

@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * JavaWeb 抽象 HttpServlet，默认只需实现 doGet 方法，doPost 方法调用的是 doGet
+ * JavaWeb Abstract HttpServlet
  * 
- * @author zt
+ * @author zealot
  *
  */
 public abstract class SkyHttpServlet extends HttpServlet {
@@ -18,13 +18,16 @@ public abstract class SkyHttpServlet extends HttpServlet {
 	private static final long serialVersionUID = -7882853287189277573L;
 
 	/**
-	 * doGet 方法，对请求进行处理
+	 * doGet 方法，对请求进行处理，默认实现调用 {@link SkyHttpServlet#doPost}
 	 */
-	protected abstract void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		doPost(request, response);
 	}
+
+	/**
+	 * doPost 方法，对请求进行处理
+	 */
+	protected abstract void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException;
 }

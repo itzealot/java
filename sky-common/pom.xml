@@ -66,6 +66,11 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.5</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
 		<!-- import apache-commons dependency end. -->
 
 		<!-- import joda-time dependency start. -->
@@ -75,14 +80,6 @@
 			<version>2.9.1</version>
 		</dependency>
 		<!-- import joda-time dependency end. -->
-
-		<!-- import commons-configuration dependency start. -->
-		<dependency>
-			<groupId>commons-configuration</groupId>
-			<artifactId>commons-configuration</artifactId>
-			<version>1.6</version>
-		</dependency>
-		<!-- import commons-configuration dependency end. -->
 
 	</dependencies>
 </project>

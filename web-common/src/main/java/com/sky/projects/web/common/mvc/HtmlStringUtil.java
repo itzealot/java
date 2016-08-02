@@ -1,12 +1,17 @@
 package com.sky.projects.web.common.mvc;
 
+/**
+ * Html String Util
+ * 
+ * @author zealot
+ */
 public final class HtmlStringUtil {
+
 	/**
-	 * 对特殊的html字符进行编码，并返回编码后的字符串
+	 * 对特殊的html字符进行转义，返回转义后的字符串
 	 * 
 	 * @param message
-	 *            含特殊字符的HTML原字符串
-	 * @return 返回html中能够显示的字符串
+	 * @return 返回转义后的字符串
 	 */
 	public static String filter(String message) {
 		if (message == null || message.isEmpty()) {
@@ -14,8 +19,7 @@ public final class HtmlStringUtil {
 		}
 
 		StringBuffer result = new StringBuffer();
-
-		for (int i = 0, length = message.length(); i < length; i++) {
+		for (int i = 0, len = message.length(); i < len; i++) {
 			switch (message.charAt(i)) {
 			case '<':
 				result.append("&lt;");

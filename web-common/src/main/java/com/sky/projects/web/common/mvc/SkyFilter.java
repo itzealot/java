@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * JavaWeb 抽象 Filter
+ * JavaWeb Abstract Filter
  * 
- * @author zt
+ * @author zealot
  *
  */
 public abstract class SkyFilter implements javax.servlet.Filter {
@@ -22,15 +22,20 @@ public abstract class SkyFilter implements javax.servlet.Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
-
-		doFilter(req, res, chain);
+		doFilter((HttpServletRequest) request, (HttpServletResponse) response, chain);
 	}
 
+	/**
+	 * doFilter method
+	 * 
+	 * @param request
+	 * @param response
+	 * @param chain
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	public abstract void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException;
 
 	public abstract void destroy();
-
 }
