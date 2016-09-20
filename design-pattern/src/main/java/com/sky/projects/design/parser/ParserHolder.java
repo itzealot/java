@@ -8,6 +8,11 @@ import java.util.Set;
 import com.sky.projects.design.parser.support.IntParser;
 import com.sky.projects.design.parser.support.StringParser;
 
+/**
+ * 解析器持有类
+ * 
+ * @author zealot
+ */
 public class ParserHolder {
 	private ParserHolder() {
 	}

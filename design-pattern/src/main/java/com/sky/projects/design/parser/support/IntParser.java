@@ -2,6 +2,11 @@ package com.sky.projects.design.parser.support;
 
 import com.sky.projects.design.parser.Parser;
 
+/**
+ * Int 解析器
+ * 
+ * @author zealot
+ */
 public class IntParser implements Parser<Integer> {
 
 	@Override

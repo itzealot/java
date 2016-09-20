@@ -1,5 +1,10 @@
 package com.sky.projects.design.parser;
 
+/**
+ * 解析器接口
+ * 
+ * @author zealot
+ */
 public interface Parser<T> {
 	/**
 	 * parse

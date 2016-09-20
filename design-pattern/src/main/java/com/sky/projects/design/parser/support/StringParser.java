@@ -2,6 +2,11 @@ package com.sky.projects.design.parser.support;
 
 import com.sky.projects.design.parser.Parser;
 
+/**
+ * String 解析器
+ * 
+ * @author zealot
+ */
 public class StringParser implements Parser<String> {
 
 	@Override
