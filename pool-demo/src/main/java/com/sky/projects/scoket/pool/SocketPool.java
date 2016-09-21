@@ -1,4 +1,4 @@
-package com.sky.projects.pool;
+package com.sky.projects.scoket.pool;
 
 import java.io.Closeable;
 import java.net.Socket;
@@ -12,13 +12,13 @@ import org.apache.commons.pool.impl.GenericObjectPool.Config;
  * @author zt
  *
  */
-public class ConnectionPoolFactory {
+public class SocketPool {
 
 	// 试用对象池
 	private GenericObjectPool<Socket> pool;
 
-	public ConnectionPoolFactory(Config config, String ip, int port) {
-		ConnectionFactory factory = new ConnectionFactory(ip, port);
+	public SocketPool(Config config, String ip, int port) {
+		SocketPoolFactory factory = new SocketPoolFactory(ip, port);
 
 		pool = new GenericObjectPool<Socket>(factory, config);
 	}
@@ -31,7 +31,6 @@ public class ConnectionPoolFactory {
 		try {
 			pool.returnObject(socket);
 		} catch (Exception e) {
-			// TODO
 		} finally {
 			close(socket);
 		}
@@ -42,7 +41,8 @@ public class ConnectionPoolFactory {
 			try {
 				clo.close();
 			} catch (Exception ex) {
-				// TODO
+			} finally {
+				clo = null;
 			}
 		}
 	}

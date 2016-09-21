@@ -26,7 +26,6 @@ public class HiveConnectionFactory implements ConnectionFactory<Connection> {
 			Class.forName(HiveConfig.DEFAULT_DRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
 			// TODO
-			e.printStackTrace();
 		}
 
 	}
@@ -60,23 +59,23 @@ public class HiveConnectionFactory implements ConnectionFactory<Connection> {
 	@Override
 	public boolean validateObject(PooledObject<Connection> p) {
 		Connection connection = p.getObject();
-		if (connection != null)
-			try {
+		try {
+			if (connection != null)
 				return ((!connection.isClosed()) && (connection.isValid(1)));
-			} catch (SQLException e) {
-				return false;
-			}
+		} catch (SQLException e) {
+			return false;
+		}
 		return false;
 	}
 
 	@Override
 	public void activateObject(PooledObject<Connection> p) throws Exception {
-
+		// TODO
 	}
 
 	@Override
 	public void passivateObject(PooledObject<Connection> p) throws Exception {
-
+		// TODO
 	}
 
 	@Override

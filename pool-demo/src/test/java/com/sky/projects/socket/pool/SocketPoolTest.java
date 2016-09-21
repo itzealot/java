@@ -1,20 +1,22 @@
-package com.sky.projects.pool;
+package com.sky.projects.socket.pool;
 
 import java.net.Socket;
 
 import org.apache.commons.pool.impl.GenericObjectPool.Config;
 
+import com.sky.projects.scoket.pool.SocketPool;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class ConnectionPoolFactoryTest extends TestCase {
-	public ConnectionPoolFactoryTest(String testName) {
+public class SocketPoolTest extends TestCase {
+	public SocketPoolTest(String testName) {
 		super(testName);
 	}
 
 	public static Test suite() {
-		return new TestSuite(ConnectionPoolFactoryTest.class);
+		return new TestSuite(SocketPoolTest.class);
 	}
 
 	public void testApp() {
@@ -23,7 +25,7 @@ public class ConnectionPoolFactoryTest extends TestCase {
 		config.maxActive = 16;
 		config.maxWait = 30000;
 
-		ConnectionPoolFactory poolFactory = new ConnectionPoolFactory(config, "127.0.0.1", 49152);
+		SocketPool poolFactory = new SocketPool(config, "127.0.0.1", 49152);
 		Socket socket = null;
 
 		try {

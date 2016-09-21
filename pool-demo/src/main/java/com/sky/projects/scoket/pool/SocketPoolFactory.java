@@ -1,4 +1,4 @@
-package com.sky.projects.pool;
+package com.sky.projects.scoket.pool;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -6,27 +6,24 @@ import java.net.Socket;
 import org.apache.commons.pool.BasePoolableObjectFactory;
 
 /**
- * <p>
- * 对象工厂，即包含对对象的基本操作(create, destroy, validate).
- * </p>
- * <p>
- * 继承 {@link BasePoolableObjectFactory}
- * </p>
+ * 对象工厂，即包含对对象的基本操作(create, destroy, validate). 继承
+ * {@link BasePoolableObjectFactory}
  * 
  * @author zt
  *
  */
-public class ConnectionFactory extends BasePoolableObjectFactory<Socket> {
+public class SocketPoolFactory extends BasePoolableObjectFactory<Socket> {
 
 	private InetSocketAddress address;
 
-	public ConnectionFactory(String ip, int port) {
+	public SocketPoolFactory(String ip, int port) {
 		address = new InetSocketAddress(ip, port);
 	}
 
 	public Socket makeObject() throws Exception {
 		Socket socket = new Socket();
 		socket.connect(address);
+
 		return socket;
 	}
 
@@ -35,7 +32,15 @@ public class ConnectionFactory extends BasePoolableObjectFactory<Socket> {
 	}
 
 	public boolean validateObject(Socket socket) {
-		return socket.isConnected() && !socket.isClosed();
+		if (!socket.isConnected()) {
+			return false;
+		}
+
+		if (socket.isClosed()) {
+			return false;
+		}
+
+		return true;
 	}
 
 }

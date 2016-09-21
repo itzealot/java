@@ -21,4 +21,12 @@ public class SSHsTest extends TestCase {
 
 		System.out.println(SSHs.resultOf(host, password, cmd));
 	}
+
+	public void testApp2() {
+		String host = "192.168.1.10";
+		String password = "Rzx!@!*baizhao";
+		String cmd = "ifconfig";
+
+		System.out.println(SSHs.resultOf(host, password, cmd));
+	}
 }
