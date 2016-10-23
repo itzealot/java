@@ -17,6 +17,7 @@ package com.sky.projects.pool.kafka;
 
 import java.util.Properties;
 
+import com.sky.projects.pool.ConnectionException;
 import com.sky.projects.pool.ConnectionPool;
 import com.sky.projects.pool.PoolBase;
 import com.sky.projects.pool.PoolConfig;
@@ -73,17 +74,17 @@ public class KafkaConnectionPool extends PoolBase<Producer<byte[], byte[]>>
 	}
 
 	@Override
-	public Producer<byte[], byte[]> getConnection() {
+	public Producer<byte[], byte[]> getConnection() throws ConnectionException {
 		return super.getResource();
 	}
 
 	@Override
-	public void returnConnection(Producer<byte[], byte[]> conn) {
+	public void returnConnection(Producer<byte[], byte[]> conn) throws ConnectionException {
 		super.returnResource(conn);
 	}
 
 	@Override
-	public void invalidateConnection(Producer<byte[], byte[]> conn) {
+	public void invalidateConnection(Producer<byte[], byte[]> conn) throws ConnectionException {
 		super.invalidateResource(conn);
 	}
 }

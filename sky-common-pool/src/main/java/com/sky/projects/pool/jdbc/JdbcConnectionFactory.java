@@ -53,7 +53,6 @@ class JdbcConnectionFactory implements ConnectionFactory<Connection> {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public JdbcConnectionFactory(final Properties properties) {
@@ -123,13 +122,11 @@ class JdbcConnectionFactory implements ConnectionFactory<Connection> {
 	@Override
 	public void activateObject(PooledObject<Connection> p) throws Exception {
 		// TODO
-
 	}
 
 	@Override
 	public void passivateObject(PooledObject<Connection> p) throws Exception {
 		// TODO
-
 	}
 
 	@Override

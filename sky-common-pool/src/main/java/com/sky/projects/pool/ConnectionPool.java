@@ -31,19 +31,19 @@ public interface ConnectionPool<T> extends Serializable {
 	 * 
 	 * @return
 	 */
-	public T getConnection();
+	public T getConnection() throws ConnectionException;
 
 	/**
 	 * 还回连接到池中
 	 * 
 	 * @param conn
 	 */
-	public void returnConnection(T conn);
+	public void returnConnection(T conn) throws ConnectionException;
 
 	/**
 	 * 废弃连接
 	 * 
 	 * @param conn
 	 */
-	public void invalidateConnection(T conn);
+	public void invalidateConnection(T conn) throws ConnectionException;
 }

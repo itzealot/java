@@ -3,6 +3,7 @@ package com.sky.projects.pool.hive;
 import java.sql.Connection;
 import java.util.Properties;
 
+import com.sky.projects.pool.ConnectionException;
 import com.sky.projects.pool.ConnectionPool;
 import com.sky.projects.pool.PoolBase;
 import com.sky.projects.pool.PoolConfig;
@@ -37,17 +38,17 @@ public class HiveConnectionPool extends PoolBase<Connection> implements Connecti
 	}
 
 	@Override
-	public Connection getConnection() {
+	public Connection getConnection() throws ConnectionException {
 		return super.getResource();
 	}
 
 	@Override
-	public void returnConnection(Connection conn) {
+	public void returnConnection(Connection conn) throws ConnectionException {
 		super.returnResource(conn);
 	}
 
 	@Override
-	public void invalidateConnection(Connection conn) {
+	public void invalidateConnection(Connection conn) throws ConnectionException {
 		super.invalidateResource(conn);
 	}
 

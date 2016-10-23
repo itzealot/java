@@ -20,6 +20,7 @@ import java.util.Properties;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.client.HConnection;
 
+import com.sky.projects.pool.ConnectionException;
 import com.sky.projects.pool.ConnectionPool;
 import com.sky.projects.pool.PoolBase;
 import com.sky.projects.pool.PoolConfig;
@@ -113,17 +114,17 @@ public class HbaseConnectionPool extends PoolBase<HConnection> implements Connec
 	}
 
 	@Override
-	public HConnection getConnection() {
+	public HConnection getConnection() throws ConnectionException {
 		return super.getResource();
 	}
 
 	@Override
-	public void returnConnection(HConnection conn) {
+	public void returnConnection(HConnection conn) throws ConnectionException {
 		super.returnResource(conn);
 	}
 
 	@Override
-	public void invalidateConnection(HConnection conn) {
+	public void invalidateConnection(HConnection conn) throws ConnectionException {
 		super.invalidateResource(conn);
 	}
 

@@ -64,7 +64,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * 
 	 * @return
 	 */
-	protected T getResource() {
+	protected T getResource() throws ConnectionException {
 		try {
 			return internalPool.borrowObject();
 		} catch (Exception e) {
@@ -77,7 +77,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * 
 	 * @param resource
 	 */
-	protected void returnResource(final T resource) {
+	protected void returnResource(final T resource) throws ConnectionException {
 		if (null != resource)
 			try {
 				internalPool.returnObject(resource);
@@ -166,7 +166,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * 
 	 * @return
 	 */
-	public boolean isClosed() {
+	public boolean isClosed() throws ConnectionException {
 		try {
 			return this.internalPool.isClosed();
 		} catch (Exception e) {
@@ -179,7 +179,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * 
 	 * @return
 	 */
-	private boolean isInactived() {
+	private boolean isInactived() throws ConnectionException {
 		try {
 			return this.internalPool == null || this.internalPool.isClosed();
 		} catch (Exception e) {
@@ -192,7 +192,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * 
 	 * @param count
 	 */
-	protected void addObjects(final int count) {
+	protected void addObjects(final int count) throws ConnectionException {
 		try {
 			for (int i = 0; i < count; i++) {
 				this.internalPool.addObject();
@@ -205,7 +205,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	/**
 	 * 清除对象池
 	 */
-	public void clear() {
+	public void clear() throws ConnectionException {
 		try {
 			this.internalPool.clear();
 		} catch (Exception e) {
@@ -216,7 +216,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	/**
 	 * 关闭对象池
 	 */
-	public void close() {
+	public void close() throws ConnectionException {
 		try {
 			this.internalPool.close();
 		} catch (Exception e) {

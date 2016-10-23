@@ -42,7 +42,6 @@ class HbaseConnectionFactory implements ConnectionFactory<HConnection> {
 	private final Configuration hadoopConfiguration;
 
 	public HbaseConnectionFactory(final Configuration hadoopConfiguration) {
-
 		this.hadoopConfiguration = hadoopConfiguration;
 	}
 
@@ -95,21 +94,17 @@ class HbaseConnectionFactory implements ConnectionFactory<HConnection> {
 
 	@Override
 	public void destroyObject(PooledObject<HConnection> p) throws Exception {
-
 		HConnection connection = p.getObject();
 
 		if (connection != null)
-
 			connection.close();
 	}
 
 	@Override
 	public boolean validateObject(PooledObject<HConnection> p) {
-
 		HConnection connection = p.getObject();
 
 		if (connection != null)
-
 			return ((!connection.isAborted()) && (!connection.isClosed()));
 
 		return false;
@@ -117,20 +112,17 @@ class HbaseConnectionFactory implements ConnectionFactory<HConnection> {
 
 	@Override
 	public void activateObject(PooledObject<HConnection> p) throws Exception {
-		// TODO Auto-generated method stub
-
+		// TODO
 	}
 
 	@Override
 	public void passivateObject(PooledObject<HConnection> p) throws Exception {
-		// TODO Auto-generated method stub
-
+		// TODO
 	}
 
 	@Override
 	public HConnection createConnection() throws Exception {
-		HConnection connection = HConnectionManager.createConnection(hadoopConfiguration);
-		return connection;
+		return HConnectionManager.createConnection(hadoopConfiguration);
 	}
 
 }
