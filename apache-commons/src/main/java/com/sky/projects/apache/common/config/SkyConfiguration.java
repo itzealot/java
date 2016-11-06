@@ -45,7 +45,7 @@ public final class SkyConfiguration {
 		try {
 			config = new PropertiesConfiguration(path);
 		} catch (ConfigurationException e) {
-			LOG.error("load configuration path error, {}", e);
+			LOG.error("load configuration path error.", e);
 			throw new IllegalArgumentException("load configuration error.", e);
 		}
 	}
