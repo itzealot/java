@@ -106,11 +106,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * @return
 	 */
 	public int getNumActive() {
-		if (isInactived()) {
-			return -1;
-		}
-
-		return this.internalPool.getNumActive();
+		return isInactived() ? -1 : this.internalPool.getNumActive();
 	}
 
 	/**
@@ -119,10 +115,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * @return
 	 */
 	public int getNumIdle() {
-		if (isInactived()) {
-			return -1;
-		}
-		return this.internalPool.getNumIdle();
+		return isInactived() ? -1 : this.internalPool.getNumIdle();
 	}
 
 	/**
@@ -131,10 +124,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * @return
 	 */
 	public int getNumWaiters() {
-		if (isInactived()) {
-			return -1;
-		}
-		return this.internalPool.getNumWaiters();
+		return isInactived() ? -1 : this.internalPool.getNumWaiters();
 	}
 
 	/**
@@ -143,10 +133,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * @return
 	 */
 	public long getMeanBorrowWaitTimeMillis() {
-		if (isInactived()) {
-			return -1;
-		}
-		return this.internalPool.getMeanBorrowWaitTimeMillis();
+		return isInactived() ? -1 : this.internalPool.getMeanBorrowWaitTimeMillis();
 	}
 
 	/**
@@ -155,10 +142,7 @@ public abstract class PoolBase<T> implements Closeable, Serializable {
 	 * @return
 	 */
 	public long getMaxBorrowWaitTimeMillis() {
-		if (isInactived()) {
-			return -1;
-		}
-		return this.internalPool.getMaxBorrowWaitTimeMillis();
+		return isInactived() ? -1 : this.internalPool.getMaxBorrowWaitTimeMillis();
 	}
 
 	/**

@@ -25,7 +25,7 @@ public class HiveConnectionFactory implements ConnectionFactory<Connection> {
 		try {
 			Class.forName(HiveConfig.DEFAULT_DRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
-			// TODO
+			throw new ConnectionException("hive driver error", e);
 		}
 
 	}

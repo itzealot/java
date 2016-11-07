@@ -45,11 +45,13 @@ class KafkaConnectionFactory implements ConnectionFactory<Producer<byte[], byte[
 	public KafkaConnectionFactory(final String brokers, final String type, final String acks, final String codec,
 			final String batch) {
 		Properties props = new Properties();
+
 		props.setProperty(KafkaConfig.BROKERS_LIST_PROPERTY, brokers);
 		props.setProperty(KafkaConfig.PRODUCER_TYPE_PROPERTY, type);
 		props.setProperty(KafkaConfig.REQUEST_ACKS_PROPERTY, acks);
 		props.setProperty(KafkaConfig.COMPRESSION_CODEC_PROPERTY, codec);
 		props.setProperty(KafkaConfig.BATCH_NUMBER_PROPERTY, batch);
+
 		this.config = new ProducerConfig(props);
 	}
 
