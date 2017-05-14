@@ -1,4 +1,4 @@
-package com.zt.design.behavior.state;
+package com.sky.projects.design.behavior.state;
 
 /**
  * 状态变换的接口
@@ -7,8 +7,9 @@ package com.zt.design.behavior.state;
  *
  */
 public interface State {
+
 	/**
-	 * 为Context设置状态
+	 * 变更Context的状态
 	 * 
 	 * @param context
 	 */

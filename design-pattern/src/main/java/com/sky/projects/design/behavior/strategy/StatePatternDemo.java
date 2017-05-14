@@ -1,4 +1,8 @@
-package com.zt.design.behavior.strategy;
+package com.sky.projects.design.behavior.strategy;
+
+import com.sky.projects.design.behavior.strategy.impl.OperationAdd;
+import com.sky.projects.design.behavior.strategy.impl.OperationMultiply;
+import com.sky.projects.design.behavior.strategy.impl.OperationSubstract;
 
 /**
  * 23. 策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改.<br />
@@ -24,7 +28,7 @@ package com.zt.design.behavior.strategy;
  * 
  * 23.10 注意事项：如果一个系统的策略多于四个，就需要考虑使用混合模式，解决策略类膨胀的问题
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StatePatternDemo {

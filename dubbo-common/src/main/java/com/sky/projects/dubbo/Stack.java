@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.List;
 
+/**
+ * Stack
+ * 
+ * @author zealot
+ */
 public class Stack<E> {
 	private int mSize = 0;
 

@@ -27,17 +27,13 @@ public final class Bytes {
 
 	public static byte[] copyOf(byte[] src, int length) {
 		byte[] dest = new byte[length];
-
 		System.arraycopy(src, 0, dest, 0, Math.min(src.length, length));
-
 		return dest;
 	}
 
 	public static byte[] short2Bytes(short v) {
 		byte[] ret = { 0, 0 };
-
 		short2Bytes(v, ret);
-
 		return ret;
 	}
 

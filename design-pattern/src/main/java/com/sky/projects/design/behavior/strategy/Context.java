@@ -1,9 +1,9 @@
-package com.zt.design.behavior.strategy;
+package com.sky.projects.design.behavior.strategy;
 
 /**
  * 根据传入的策略实现类，执行策略的方法
  * 
- * @author zt
+ * @author zealot
  */
 public class Context {
 

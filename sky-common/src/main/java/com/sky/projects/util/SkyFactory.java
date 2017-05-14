@@ -16,9 +16,4 @@ public interface SkyFactory<T> {
 	 */
 	T newInstance();
 
-	/**
-	 * 
-	 * @return
-	 */
-	T newInstance(Object... args);
 }

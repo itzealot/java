@@ -1,4 +1,7 @@
-package com.zt.design.behavior.state;
+package com.sky.projects.design.behavior.state;
+
+import com.sky.projects.design.behavior.state.impl.StartState;
+import com.sky.projects.design.behavior.state.impl.StopState;
 
 /**
  * 21. 状态模式（State Pattern）中，类的行为是基于它的状态改变的.<br />
@@ -42,6 +45,7 @@ package com.zt.design.behavior.state;
  *
  */
 public class StatePatternDemo {
+
 	/**
 	 * 使用 Context 来查看当状态 State 改变时的行为变化
 	 * 
@@ -53,7 +57,6 @@ public class StatePatternDemo {
 		StartState startState = new StartState();
 		startState.doAction(context);
 
-		// To use the State's toString
 		System.out.println(context.getState().toString());
 
 		StopState stopState = new StopState();

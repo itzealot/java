@@ -1,11 +1,11 @@
-package com.zt.design.behavior.strategy;
+package com.sky.projects.design.behavior.strategy;
 
 import java.io.Serializable;
 
 /**
  * 策略接口
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public interface Strategy extends Serializable {

@@ -10,11 +10,8 @@ public class ClassUtil {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getDeclaredMethods();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static Method[] publicMethods(String className) {
@@ -22,24 +19,17 @@ public class ClassUtil {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getMethods();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static Field[] fields(String className) {
-
 		try {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getDeclaredFields();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static Field[] publicFields(String className) {
@@ -47,11 +37,8 @@ public class ClassUtil {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getFields();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static Annotation[] annotations(String className) {
@@ -59,11 +46,8 @@ public class ClassUtil {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getAnnotations();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public static Annotation[] declaredAnnotations(String className) {
@@ -71,11 +55,8 @@ public class ClassUtil {
 			Class<?> clazz = Class.forName(className);
 			return clazz.getDeclaredAnnotations();
 		} catch (ClassNotFoundException e) {
-			// TODO
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	/**

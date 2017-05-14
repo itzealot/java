@@ -1,12 +1,11 @@
 package com.sky.projects.web.common;
 
-import org.junit.Test;
-
 import com.sky.projects.web.common.mvc.HtmlStringUtil;
 
-public class TestHtmlStringUtil {
+import junit.framework.TestCase;
 
-	@Test
+public class TestHtmlStringUtil extends TestCase {
+
 	public void testFilter() {
 		System.out.println(HtmlStringUtil.filter("<a>哈哈</a>"));
 	}
