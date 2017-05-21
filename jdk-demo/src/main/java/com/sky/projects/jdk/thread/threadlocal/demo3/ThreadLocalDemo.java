@@ -14,7 +14,7 @@ import com.sky.projects.jdk.thread.threadlocal.B;
  * --TIMED_WAITING : 具有指定等待时间的某一等待线程的线程状态. <br />
  * --WAITING : 某一等待线程的线程状态.<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class ThreadLocalDemo {

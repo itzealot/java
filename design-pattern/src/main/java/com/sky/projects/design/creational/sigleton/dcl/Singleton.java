@@ -13,20 +13,19 @@ package com.sky.projects.design.creational.sigleton.dcl;
  * 
  * 3.4.5 描述：这种方式采用双锁机制，安全且在多线程情况下能保持高性能。 getInstance() 的性能对应用程序很关键。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Singleton {
-	/*
+	/**
 	 * 1. volatile 关键字 ：用在多线程，同步变量。
 	 * 
 	 * 2. 线程为了提高效率，将某成员变量(如A)拷贝了一份(如B)，线程中对A的访问其实访问的是B。只在某些动作时才进行A和B的同步，
-	 * 因此存在A和B不一致的情况。volatile就是用来避免这种情况的。volatile告诉jvm，
-	 * 它所修饰的变量不保留拷贝，直接访问主内存中的(也就是上面说的A)。
+	 * 因此存在A和B不一致的情况。volatile就是用来避免这种情况的。volatile告诉jvm，它所修饰的变量不保留拷贝，直接访问主内存中的(也就是上面说的A)。
 	 * 
 	 * 3. 这里用来修饰一个单例的实例变量。
 	 */
-	private volatile static Singleton singleton;
+	private static volatile Singleton singleton;
 
 	/**
 	 * 获取单例实例

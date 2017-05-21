@@ -8,7 +8,7 @@ import com.sky.projects.jdk.thread.Threads;
 /**
  * 不能改动此 TestThread 类
  * 
- * @author zengtao
+ * @author zealot
  */
 public class TestThread extends Thread {
 	private TestDo testDo;

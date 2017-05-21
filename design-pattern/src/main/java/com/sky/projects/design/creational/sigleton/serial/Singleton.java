@@ -7,10 +7,10 @@ import java.io.Serializable;
  * 
  * 可被串行化的单例
  * 
- * @author zt
+ * @author zealot
  */
+@SuppressWarnings("serial")
 public class Singleton implements Serializable {
-	private static final long serialVersionUID = 9085535754030569982L;
 
 	private static Singleton instance = new Singleton();
 

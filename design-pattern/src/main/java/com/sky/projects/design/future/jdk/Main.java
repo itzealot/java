@@ -18,8 +18,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		Callable<String> callable = new RealData("1");
 
-		// 根据 Callable<V> 实现类构造 FutureTask<V>
-		// FutureTask<V> 作为单独线程运行
+		// 根据 Callable<V> 实现类构造 FutureTask<V>,FutureTask<V> 作为单独线程运行
 		FutureTask<String> future = new FutureTask<>(callable);
 
 		ExecutorService service = Executors.newFixedThreadPool(1);

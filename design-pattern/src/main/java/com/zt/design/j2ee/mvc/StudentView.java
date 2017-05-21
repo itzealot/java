@@ -3,7 +3,7 @@ package com.zt.design.j2ee.mvc;
 /**
  * 创建视图
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StudentView {

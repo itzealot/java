@@ -34,8 +34,7 @@ public class SocketUtil {
 			log.warn("server ip = " + ip + " :port = " + port + "连接不成功");
 			return false;
 		} finally {
-			ResourceUtil.close(inputStream, outputStream);
-			ResourceUtil.close(socket);
+			ResourceUtil.close(inputStream, outputStream, socket);
 		}
 	}
 }

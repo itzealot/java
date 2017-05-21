@@ -13,16 +13,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class Master {
 
-	// 任务多了，线程安全
-	private Queue<Object> queue = new ConcurrentLinkedQueue<>();
+	// 任务队列，线程安全
+	private Queue<Integer> queue = new ConcurrentLinkedQueue<>();
 
 	// Worker 进程队列
 	private Map<String, Thread> threads = new HashMap<>();
 
 	// 子任务处理结果集
-	private Map<String, Object> results = new ConcurrentHashMap<String, Object>();
+	private Map<String, Integer> results = new ConcurrentHashMap<>();
 
-	public Master(Worker worker, int workerCounts) {
+	public Master(Worker<Integer> worker, int workerCounts) {
 		// 初始化 Worker，共享任务队列与结果集 Map
 		worker.setQueue(queue);
 		worker.setResults(results);
@@ -53,11 +53,11 @@ public class Master {
 	 * 
 	 * @param obj
 	 */
-	public void submit(Object obj) {
+	public void submit(Integer obj) {
 		queue.add(obj);
 	}
 
-	public Map<String, Object> getResults() {
+	public Map<String, Integer> getResults() {
 		return results;
 	}
 

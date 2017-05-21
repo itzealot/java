@@ -3,7 +3,7 @@ package com.zt.design.j2ee.transferobj;
 /**
  * 创建传输对象
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StudentVO {

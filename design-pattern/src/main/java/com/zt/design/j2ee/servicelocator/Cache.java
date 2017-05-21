@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 缓存
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Cache {

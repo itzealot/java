@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 业务对象
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StudentBO {

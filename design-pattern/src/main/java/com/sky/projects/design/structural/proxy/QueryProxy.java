@@ -1,7 +1,7 @@
 package com.sky.projects.design.structural.proxy;
 
 import com.sky.projects.design.structural.proxy.dynamic.QueryDao;
-import com.sky.projects.design.structural.proxy.dynamic.supprot.QueryDaoImpl;
+import com.sky.projects.design.structural.proxy.dynamic.impl.QueryDaoImpl;
 
 /**
  * 静态代理，实现被代理者相同的接口，持有被代理的引用
@@ -13,9 +13,6 @@ public class QueryProxy implements QueryDao {
 
 	public QueryProxy(QueryDao dao) {
 		this.dao = dao;
-	}
-
-	public QueryProxy() {
 	}
 
 	@Override

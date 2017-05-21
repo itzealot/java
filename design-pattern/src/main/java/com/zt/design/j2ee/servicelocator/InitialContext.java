@@ -3,7 +3,7 @@ package com.zt.design.j2ee.servicelocator;
 /**
  * 为 JNDI 查询创建 InitialContext
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class InitialContext {

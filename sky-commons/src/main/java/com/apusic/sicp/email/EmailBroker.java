@@ -1,11 +1,11 @@
 package com.apusic.sicp.email;
 
-import com.apusic.sicp.SicpBusinessException;
+import com.apusic.sicp.SkyBusinessException;
 
 /**
  * send Email by EmailBroker interface.
  * 
- * @author zt
+ * @author zealot
  *
  */
 public interface EmailBroker {
@@ -15,7 +15,7 @@ public interface EmailBroker {
 	 * 
 	 * @param email
 	 *            Email
-	 * @throws SicpBusinessException
+	 * @throws SkyBusinessException
 	 */
-	public void sendEmail(Email email) throws SicpBusinessException;
+	void sendEmail(Email email) throws SkyBusinessException;
 }

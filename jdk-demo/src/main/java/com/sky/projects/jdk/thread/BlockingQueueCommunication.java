@@ -29,7 +29,7 @@ public class BlockingQueueCommunication {
 /**
  * 使用阻塞队列实现间隔访问输出
  * 
- * @author zengtao
+ * @author zealot
  */
 class BufferData {
 	// 初始化容量为1的阻塞队列 queueA

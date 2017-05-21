@@ -3,9 +3,15 @@ package com.sky.projects.design.structural.proxy.dynamic;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import com.sky.projects.design.structural.proxy.dynamic.supprot.QueryDaoImpl;
+import com.sky.projects.design.structural.proxy.dynamic.impl.QueryDaoImpl;
 
+/**
+ * 动态代理实现类
+ * 
+ * @author zealot
+ */
 public class QueryProxyHandler implements InvocationHandler {
+
 	private QueryDao real;
 
 	@Override
@@ -14,6 +20,7 @@ public class QueryProxyHandler implements InvocationHandler {
 		if (real == null) {
 			real = new QueryDaoImpl();
 		}
+
 		// 使用真实主题完成实际的操作
 		return real.request();
 	}

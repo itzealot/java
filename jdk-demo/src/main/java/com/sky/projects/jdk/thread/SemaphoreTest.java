@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 /**
  * 测试 Semaphore 类，即同步信号量
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class SemaphoreTest {

@@ -3,7 +3,7 @@ package com.zt.design.j2ee.mvc;
 /**
  * 创建控制器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StudentController {

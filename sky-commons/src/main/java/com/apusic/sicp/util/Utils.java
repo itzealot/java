@@ -1,9 +1,6 @@
 package com.apusic.sicp.util;
 
 public final class Utils {
-	private Utils() {
-	}
-
 	public static byte[] int2Bytes(int value) {
 		byte[] b = new byte[4];
 		for (int i = 0; i < 4; i++) {
@@ -24,4 +21,8 @@ public final class Utils {
 	public static final boolean byte2Boolean(byte val) {
 		return (val == 0x00) ? false : true;
 	}
+
+	private Utils() {
+	}
+
 }

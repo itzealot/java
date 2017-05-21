@@ -3,7 +3,7 @@ package com.zt.design.j2ee.busydelegate;
 /**
  * JMS服务实现类 JMSService
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class JMSService implements BusinessService {

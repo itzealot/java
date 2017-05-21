@@ -8,7 +8,7 @@ import com.sky.projects.jdk.thread.Threads;
 /**
  * 生产者与消费者
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class TestProducterAndConsumer {

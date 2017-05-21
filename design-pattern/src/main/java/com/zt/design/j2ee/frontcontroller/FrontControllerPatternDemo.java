@@ -9,7 +9,7 @@ package com.zt.design.j2ee.frontcontroller;
  * 的应用程序，也可以是基于桌面的应用程序。 调度器（Dispatcher） - 前端控制器可能使用一个调度器对象来调度请求到相应的具体处理程序。
  * 视图（View） - 视图是为请求而创建的对象。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class FrontControllerPatternDemo {

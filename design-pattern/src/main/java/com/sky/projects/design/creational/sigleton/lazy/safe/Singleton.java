@@ -16,10 +16,11 @@ package com.sky.projects.design.creational.sigleton.lazy.safe;
  * 3.2.6 缺点：必须加锁 synchronized 才能保证单例，但加锁会影响效率。 getInstance()
  * 的性能对应用程序不是很关键（该方法使用不太频繁）。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Singleton {
+
 	private static Singleton instance = null;
 
 	/**

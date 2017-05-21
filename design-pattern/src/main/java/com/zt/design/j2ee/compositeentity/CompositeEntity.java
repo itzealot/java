@@ -3,7 +3,7 @@ package com.zt.design.j2ee.compositeentity;
 /**
  * 创建组合实体
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class CompositeEntity {

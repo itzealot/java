@@ -3,7 +3,7 @@ package com.zt.design.j2ee.frontcontroller;
 /**
  * 调度器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Dispatcher {

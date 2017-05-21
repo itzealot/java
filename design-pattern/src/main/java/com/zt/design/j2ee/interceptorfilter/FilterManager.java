@@ -3,7 +3,7 @@ package com.zt.design.j2ee.interceptorfilter;
 /**
  * 过滤管理器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class FilterManager {

@@ -3,8 +3,6 @@ package com.apusic.sicp.util;
 import java.util.List;
 
 public final class StringUtil {
-	private StringUtil() {
-	}
 
 	public static String[] append(String strs[], String str) {
 		if (strs == null || strs.length == 0) {
@@ -41,6 +39,9 @@ public final class StringUtil {
 			dec = append(dec, s);
 		}
 		return dec;
+	}
+
+	private StringUtil() {
 	}
 
 }

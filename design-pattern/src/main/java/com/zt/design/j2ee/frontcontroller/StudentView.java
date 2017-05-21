@@ -3,7 +3,7 @@ package com.zt.design.j2ee.frontcontroller;
 /**
  * Student 视图
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StudentView {

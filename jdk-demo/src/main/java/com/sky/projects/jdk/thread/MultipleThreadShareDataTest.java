@@ -3,7 +3,7 @@ package com.sky.projects.jdk.thread;
 /**
  * 使用实现的同一个Runnable接口的类实现共享数据
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class MultipleThreadShareDataTest {

@@ -8,12 +8,12 @@ import java.util.Queue;
  * 
  * @author zealot
  */
-public class Worker implements Runnable {
+public abstract class Worker<T> implements Runnable, Handler<T, T> {
 
 	// 任务队列
-	private Queue<Object> queue;
+	private Queue<T> queue;
 	// 结果集队列
-	private Map<String, Object> results;
+	private Map<String, T> results;
 
 	public Worker() {
 	}
@@ -21,42 +21,36 @@ public class Worker implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			Object input = queue.poll();
+			T obj = queue.poll();
 
-			if (input == null) {
+			if (obj == null) {
 				break;
 			}
 
 			// 处理任务
-			Object result = handle(input);
-			System.out.println("finish deal with input : " + input);
+			T result = handle(obj);
+			System.out.println("finish deal with input : " + obj);
 
-			results.put(Integer.toString(input.hashCode()), result);
+			// 保存结果集
+			results.put(Integer.toString(obj.hashCode()), result);
 		}
 	}
 
-	public Object handle(Object input) {
-		return new Handler<Object>() {
-			@Override
-			public Object handle(Object input) {
-				return null;
-			}
-		};
-	}
+	public abstract T handle(T input);
 
-	public Queue<Object> getQueue() {
+	public Queue<T> getQueue() {
 		return queue;
 	}
 
-	public void setQueue(Queue<Object> queue) {
+	public void setQueue(Queue<T> queue) {
 		this.queue = queue;
 	}
 
-	public Map<String, Object> getResults() {
+	public Map<String, T> getResults() {
 		return results;
 	}
 
-	public void setResults(Map<String, Object> results) {
+	public void setResults(Map<String, T> results) {
 		this.results = results;
 	}
 

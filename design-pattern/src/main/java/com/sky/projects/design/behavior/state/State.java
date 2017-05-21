@@ -3,7 +3,7 @@ package com.sky.projects.design.behavior.state;
 /**
  * 状态变换的接口
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public interface State {

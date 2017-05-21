@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 测试java.util.concurrent.locks 包下的Lock.<br />
  * 来那个线程执行的代码片段需要实现同步互斥的效果，必须使用同一个Lock对象.<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class TestLock {

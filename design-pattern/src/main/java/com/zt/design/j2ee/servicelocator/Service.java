@@ -3,7 +3,7 @@ package com.zt.design.j2ee.servicelocator;
 /**
  * 服务接口
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public interface Service {

@@ -9,9 +9,14 @@ import com.sky.projects.design.common.Threads;
  */
 public class FutureData implements Data {
 
-	private RealData data = null;
+	// 真实数据
+	private RealData data;
 	private volatile boolean isReady = false;
 
+	/**
+	 * 设置真实的数据，如果已经设置则直接返回
+	 */
+	@Override
 	public synchronized void setRealData(RealData data) {
 		if (isReady) {
 			return;
@@ -22,13 +27,12 @@ public class FutureData implements Data {
 		this.isReady = true;
 
 		// 唤醒阻塞方法
-		notifyAll();
+		this.notifyAll();
 	}
 
 	@Override
 	public synchronized String getResult() {
-		// 使用 while 循环，如果没有准备好则一直阻塞
-		// 使用 if 如果有执行 notify or notifyAll 方法则或跳过
+		// 使用 while 循环，如果没有准备好则一直阻塞，使用 if 如果有执行 notify or notifyAll 方法则或跳过
 		while (!isReady) {
 			// 不使用 synchronized 会出错
 			Threads.wait(this);

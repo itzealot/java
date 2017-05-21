@@ -3,7 +3,7 @@ package com.zt.design.j2ee.busydelegate;
 /**
  * 业务查询服务
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class BusinessLookUp {

@@ -1,7 +1,5 @@
 package com.sky.projects.design.gs.result;
 
-import com.sky.projects.design.future.demo.Data;
-
 /**
  * 请求对象
  * 
@@ -10,6 +8,11 @@ import com.sky.projects.design.future.demo.Data;
 public class Request {
 
 	private String name;
+
+	public Request(String name) {
+		super();
+		this.name = name;
+	}
 
 	// 参考 future 实现，请求的返回值
 	private Data response;
@@ -20,11 +23,6 @@ public class Request {
 
 	public synchronized Data getResponse() {
 		return response;
-	}
-
-	public Request(String name) {
-		super();
-		this.name = name;
 	}
 
 	public String getName() {

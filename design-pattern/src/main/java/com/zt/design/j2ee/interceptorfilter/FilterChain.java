@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 过滤器链
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class FilterChain {

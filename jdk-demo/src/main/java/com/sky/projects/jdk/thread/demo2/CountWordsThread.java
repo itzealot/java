@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
 /**
  * 大文件分多个线程处理，此处是单个线程处理的情况，如果需要多个线程，可以创建多个
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class CountWordsThread implements Runnable {

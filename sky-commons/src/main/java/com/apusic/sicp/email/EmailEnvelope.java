@@ -3,41 +3,23 @@ package com.apusic.sicp.email;
 import java.io.Serializable;
 
 /**
- * Email 信封实体 EmailEnvelope
+ * 信封实体 EmailEnvelope
  * 
- * @author zt
+ * @author zealot
  *
  */
+@SuppressWarnings("serial")
 public class EmailEnvelope implements Serializable {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 3064551609288965986L;
-
-	/**
-	 * 收件人
-	 */
+	/** 收件人 */
 	private String receiver;
-
-	/**
-	 * 发件人
-	 */
+	/** 发件人 */
 	private String sender;
-
-	/**
-	 * 主题
-	 */
+	/** 主题 */
 	private String subject;
-
-	/**
-	 * 抄送
-	 */
+	/** 抄送 */
 	private String cc;
-
-	/**
-	 * 暗送
-	 */
+	/** 暗送 */
 	private String bcc;
 
 	public String getReceiver() {

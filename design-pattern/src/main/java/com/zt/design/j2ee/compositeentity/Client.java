@@ -3,7 +3,7 @@ package com.zt.design.j2ee.compositeentity;
 /**
  * 创建使用组合实体的客户端类
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Client {

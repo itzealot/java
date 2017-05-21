@@ -1,6 +1,7 @@
 package com.apusic.sicp.util;
 
 public final class Throwables {
+
 	public static final boolean hasTypeInCauses(Throwable throwable, Class<?> findType) {
 		Throwable cause = throwable;
 

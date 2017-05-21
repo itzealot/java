@@ -8,7 +8,7 @@ import javax.management.remote.JMXConnector;
 /**
  * 服务器监控接口
  * 
- * @author zt
+ * @author zealot
  * 
  */
 public interface ServerMonitorService {
@@ -41,6 +41,5 @@ public interface ServerMonitorService {
 	 * @return
 	 * @throws IOException
 	 */
-	public JMXConnector createConnect(String host, String port,
-			String userName, String userPwd) throws IOException;
+	public JMXConnector createConnect(String host, String port, String userName, String userPwd) throws IOException;
 }

@@ -25,7 +25,7 @@ package com.sky.projects.design.creational.sigleton.record;
  * 
  * 这个时候，这种方式相比第 3 种方式就显得很合理。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class Singleton {

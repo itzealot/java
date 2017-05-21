@@ -11,7 +11,7 @@ package com.zt.design.j2ee.servicelocator;
  * 缓存（Cache） - 缓存存储服务的引用，以便复用它们。<br />
  * 客户端（Client） - Client 是通过 ServiceLocator 调用服务的对象。<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class ServiceLocatorPatternDemo {

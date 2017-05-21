@@ -2,7 +2,7 @@ package com.zt.design.j2ee.compositeentity;
 
 /**
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class DependentObject2 {

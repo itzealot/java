@@ -9,7 +9,7 @@ package com.zt.design.j2ee.busydelegate;
  * 查找服务对象负责获取相关的业务实现，并提供业务对象对业务代表对象的访问。 业务服务（Business Service） -
  * 业务服务接口。实现了该业务服务的实体类，提供了实际的业务实现逻辑。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class BusinessDelegatePatternDemo {

@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 4. 读锁 lock.readLock().lock(); 解读锁 ： lock.readLock().unlock();.<br />
  * 4. 写锁 lock.writeLock().lock(); 解写锁 ： lock.writeLock().unlock();.<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class TestReadAndWriteLock {
@@ -52,7 +52,7 @@ public class TestReadAndWriteLock {
  * 实现读与写的互斥访问，读与读之间同步访问.<br />
  * 读与写应该在同一个类中.<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 class BuffData {

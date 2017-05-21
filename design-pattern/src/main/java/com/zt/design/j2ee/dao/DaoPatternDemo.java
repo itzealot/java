@@ -9,7 +9,7 @@ package com.zt.design.j2ee.dao;
  * 该类实现了上述的接口。该类负责从数据源获取数据，数据源可以是数据库，也可以是 xml，或者是其他的存储机制。 模型对象/数值对象（Model
  * Object/Value Object） - 该对象是简单的 POJO，包含了 get/set 方法来存储通过使用 DAO 类检索到的数据。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class DaoPatternDemo {

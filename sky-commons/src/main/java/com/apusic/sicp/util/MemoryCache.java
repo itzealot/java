@@ -7,7 +7,7 @@ import org.apache.commons.collections.map.LRUMap;
 /**
  * 用户名->角色名列表Cache
  * 
- * @author zt
+ * @author zealot
  * 
  */
 public class MemoryCache {
@@ -37,8 +37,7 @@ public class MemoryCache {
 
 	public synchronized Object get(String key) {
 		CacheItem item = items.get(key);
-		if (item != null
-				&& (item.cacheTime + expired < System.currentTimeMillis())) {
+		if (item != null && (item.cacheTime + expired < System.currentTimeMillis())) {
 			items.remove(key);
 			return null;
 		}

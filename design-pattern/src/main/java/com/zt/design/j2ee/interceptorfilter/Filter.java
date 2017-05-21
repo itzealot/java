@@ -3,7 +3,7 @@ package com.zt.design.j2ee.interceptorfilter;
 /**
  * Filter
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public interface Filter {

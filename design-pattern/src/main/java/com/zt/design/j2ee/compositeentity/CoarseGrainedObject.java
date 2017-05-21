@@ -3,7 +3,7 @@ package com.zt.design.j2ee.compositeentity;
 /**
  * 创建粗粒度对象
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class CoarseGrainedObject {

@@ -11,7 +11,7 @@ package com.zt.design.j2ee.transferobj;
  * 传输对象（Transfer Object） - 简单的 POJO，只有设置/获取属性的方法。<br />
  * 客户端（Client） - 客户端可以发送请求或者发送传输对象到业务对象。<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class TransferObjectPatternDemo {

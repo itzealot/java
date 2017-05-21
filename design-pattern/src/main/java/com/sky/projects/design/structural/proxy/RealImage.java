@@ -3,7 +3,7 @@ package com.sky.projects.design.structural.proxy;
 /**
  * 被代理的对象：真实的图像输出类且实现 Image 接口
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class RealImage implements Image {
@@ -18,6 +18,7 @@ public class RealImage implements Image {
 		loadFromDisk(fileName);
 	}
 
+	@Override
 	public void display() {
 		System.out.println("Displaying " + fileName);
 	}

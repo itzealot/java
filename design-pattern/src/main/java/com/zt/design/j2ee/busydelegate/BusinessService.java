@@ -3,7 +3,7 @@ package com.zt.design.j2ee.busydelegate;
 /**
  * 服务接口
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public interface BusinessService {

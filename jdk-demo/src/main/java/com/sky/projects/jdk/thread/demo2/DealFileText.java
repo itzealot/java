@@ -12,7 +12,7 @@ import java.util.TreeMap;
 /**
  * 处理文件中的文本
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class DealFileText {

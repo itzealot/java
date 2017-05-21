@@ -10,7 +10,7 @@ package com.zt.design.j2ee.compositeentity;
  * 依赖对象（Dependent Object） - 依赖对象是一个持续生命周期依赖于粗粒度对象的对象。 策略（Strategies） -
  * 策略表示如何实现组合实体。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class CompositeEntityPatternDemo {

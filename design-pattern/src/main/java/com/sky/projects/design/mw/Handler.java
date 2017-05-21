@@ -1,6 +1,17 @@
 package com.sky.projects.design.mw;
 
-public interface Handler<T> {
+/**
+ * 处理接口
+ * 
+ * @author zealot
+ */
+public interface Handler<T1, T2> {
 
-	public T handle(T input);
+	/**
+	 * 处理数据并返回结果
+	 * 
+	 * @param input
+	 * @return
+	 */
+	T2 handle(T1 input);
 }

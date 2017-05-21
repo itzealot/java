@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.apusic.ebiz.framework.core.dao.QueryServiceHibernateImpl;
-import com.apusic.sicp.SicpRuntimeException;
+import com.apusic.sicp.SkyRuntimeException;
 import com.apusic.sicp.util.Page;
 import com.apusic.sicp.util.PageQueryParameter;
 import com.apusic.sicp.util.service.SicpQueryService;
@@ -85,7 +85,7 @@ public class SicpQueryServiceImpl extends QueryServiceHibernateImpl implements
 			List<?> orders = (List<?>) orderEntriesField.get(criteria);
 			orders.clear();
 		} catch (Exception e) {
-			throw new SicpRuntimeException(e.getMessage(), e);
+			throw new SkyRuntimeException(e.getMessage(), e);
 		}
 	}
 

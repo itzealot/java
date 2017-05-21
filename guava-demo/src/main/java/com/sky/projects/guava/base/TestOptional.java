@@ -14,7 +14,7 @@ import com.google.common.base.Optional;
  * 
  * Company: 伯乐园.<br />
  * 
- * @author zengtao
+ * @author zealot
  * @date 2015年9月8日
  */
 public class TestOptional {

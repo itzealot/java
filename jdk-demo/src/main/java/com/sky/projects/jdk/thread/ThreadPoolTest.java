@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 创建线程池.任务交给线程池，直接调用执行方法
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class ThreadPoolTest {

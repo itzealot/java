@@ -3,7 +3,7 @@ package com.zt.design.j2ee.busydelegate;
 /**
  * 创建业务代表
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class BusinessDelegate {

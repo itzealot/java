@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * 线程安全的 ArrayList，CopyOnWriteArrayList 迭代的时候可执行删除数据
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class CopyOnWriteArrayListTest {

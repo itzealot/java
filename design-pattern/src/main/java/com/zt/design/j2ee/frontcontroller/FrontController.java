@@ -3,7 +3,7 @@ package com.zt.design.j2ee.frontcontroller;
 /**
  * 前端控制器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class FrontController {

@@ -41,7 +41,7 @@ import com.sky.projects.design.behavior.state.impl.StopState;
  * 
  * 21.10 注意事项：在行为受状态约束的时候使用状态模式，而且状态不超过 5 个。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class StatePatternDemo {

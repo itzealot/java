@@ -11,7 +11,7 @@ package com.zt.design.j2ee.interceptorfilter;
  * 过滤管理器（Filter Manager） - 过滤管理器管理过滤器和过滤器链。 <br />
  * 客户端（Client） - Client 是向 Target 对象发送请求的对象。
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class FrontControllerPatternDemo {

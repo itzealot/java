@@ -26,7 +26,7 @@ import com.google.common.collect.ImmutableSortedSet;
  * Description: .<br />
  * Company: 伯乐园.<br />
  * 
- * @author zengtao
+ * @author zealot
  * @date 2015年9月14日
  */
 public class TestImmutableSet {

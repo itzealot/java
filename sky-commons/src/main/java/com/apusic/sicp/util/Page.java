@@ -4,16 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class Page extends PageQueryParameter implements Serializable {
-	private static final long serialVersionUID = 8513585862557274553L;
+	public static final Page EMPTY_PAGE = new Page(0, 0);
 
-	/**
-	 * 总记录条数
-	 */
+	/** 总记录条数 */
 	private int total;
-	/**
-	 * 当前页记录
-	 */
+	/** 当前页记录 */
 	private List<?> records = new ArrayList<Object>();;
 
 	public Page(PageQueryParameter pageQueryParameter) {
@@ -23,8 +20,6 @@ public class Page extends PageQueryParameter implements Serializable {
 	public Page(int pageNo, int pageSize) {
 		super(pageNo, pageSize);
 	}
-
-	public static final Page EMPTY_PAGE = new Page(0, 0);
 
 	/**
 	 * 取得总页数

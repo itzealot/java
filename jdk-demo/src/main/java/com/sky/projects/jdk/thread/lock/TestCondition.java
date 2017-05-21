@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 使用Condition 类进行线程间的通信，类似于wait, notify, notifyAll方法.<br />
  * Condition 即 通信的条件.<br />
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class TestCondition {
@@ -39,7 +39,7 @@ public class TestCondition {
 /**
  * 使用Lock，Condition， flag 来实现进程间的间隔访问通信
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 class ConditionCommunication {

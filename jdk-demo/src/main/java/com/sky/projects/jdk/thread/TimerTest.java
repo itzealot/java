@@ -62,7 +62,7 @@ public class TimerTest {
 /**
  * 自定义计算器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 class MyTimeTask extends TimerTask {

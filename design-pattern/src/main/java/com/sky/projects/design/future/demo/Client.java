@@ -1,5 +1,10 @@
 package com.sky.projects.design.future.demo;
 
+/**
+ * 客户端(获取请求)
+ * 
+ * @author zealot
+ */
 public class Client {
 
 	/**
@@ -15,7 +20,7 @@ public class Client {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				RealData realData = new RealData();
+				RealData realData = new RealData(req);
 				data.setRealData(realData);
 			}
 		}).start();

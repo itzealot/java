@@ -3,7 +3,7 @@ package com.zt.design.j2ee.interceptorfilter;
 /**
  * Debug 过滤器
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class DebugFilter implements Filter {

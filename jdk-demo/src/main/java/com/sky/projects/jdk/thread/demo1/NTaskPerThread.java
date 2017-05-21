@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * N个任务,平均分给M线程处理
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class NTaskPerThread {
@@ -57,7 +57,7 @@ public class NTaskPerThread {
 	/**
 	 * 内部类， 任务，含编号属性
 	 * 
-	 * @author zengtao
+	 * @author zealot
 	 *
 	 */
 	public class Task {
@@ -85,7 +85,7 @@ public class NTaskPerThread {
 	/**
 	 * 任务线程类
 	 * 
-	 * @author zengtao
+	 * @author zealot
 	 *
 	 */
 	public class TaskThread extends Thread {

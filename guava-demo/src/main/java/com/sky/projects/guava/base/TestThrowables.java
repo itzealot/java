@@ -31,7 +31,7 @@ import com.google.common.base.Throwables;
  * Description: .<br />
  * Company: 伯乐园.<br />
  * 
- * @author zengtao
+ * @author zealot
  * @date 2015年9月20日
  */
 public class TestThrowables {

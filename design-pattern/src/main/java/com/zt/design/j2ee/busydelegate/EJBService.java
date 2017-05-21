@@ -3,7 +3,7 @@ package com.zt.design.j2ee.busydelegate;
 /**
  * EJB服务实现类 EJBService
  * 
- * @author zengtao
+ * @author zealot
  *
  */
 public class EJBService implements BusinessService {

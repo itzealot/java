@@ -40,7 +40,7 @@ public class ThreeConditionCommunication {
 	 * 使用Lock，Condition， flag来实现进程间的间隔访问通信.<br />
 	 * 三个线程间间隔访问通信
 	 * 
-	 * @author zengtao
+	 * @author zealot
 	 *
 	 */
 	static class ConditionCommunication {
