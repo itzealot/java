@@ -9,7 +9,7 @@ package com.sky.projects.jdk.pack.info.demo;
  * 
  * 类
  * 
- * @author a
+ * @author zealot
  *
  */
 class PackageInfo {
@@ -24,7 +24,7 @@ class PackageInfo {
 /**
  * 泛型
  * 
- * @author a
+ * @author zealot
  *
  * @param <T>
  */
@@ -43,7 +43,7 @@ class PackageInfoGeneric<T extends Throwable> {
 /**
  * 接口
  * 
- * @author a
+ * @author zealot
  *
  */
 interface packageInfoInteger {
@@ -53,7 +53,7 @@ interface packageInfoInteger {
 /**
  * 常量
  * 
- * @author a
+ * @author zealot
  *
  */
 class PackageConstants {

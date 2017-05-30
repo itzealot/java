@@ -17,7 +17,7 @@ public class TestCondition {
 	public static void main(String[] args) {
 		final ConditionCommunication communication = new ConditionCommunication();
 		new Thread(new Runnable() {
-
+			@Override
 			public void run() {
 				while (true) {
 					communication.method1(10);
@@ -26,7 +26,7 @@ public class TestCondition {
 		}).start();
 
 		new Thread(new Runnable() {
-
+			@Override
 			public void run() {
 				while (true) {
 					communication.method2(50);
@@ -62,7 +62,6 @@ class ConditionCommunication {
 		lock.lock();
 
 		try {
-
 			// 为false等待；否则执行
 			if (!flag) {
 				try {

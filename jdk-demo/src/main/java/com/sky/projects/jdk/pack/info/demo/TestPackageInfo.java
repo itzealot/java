@@ -7,13 +7,12 @@ import java.io.IOException;
  * 1、为标注在包上Annotation提供便利；<br>
  * 2、声明包的私有类和常量；<br>
  * 
- * @author JoyoungZhang@gmail.com
+ * @author zealot
  * 
  */
 public class TestPackageInfo {
 
 	public static void main(String[] args) {
-
 		// To get the package object
 		Package p = Package.getPackage("com.zt.test.demo1");
 		/**
@@ -58,12 +57,8 @@ public class TestPackageInfo {
 
 /**
  * 调用package-info.java中的接口
- * 
- * @author a
- *
  */
 class Sub implements packageInfoInteger {
-
 	@Override
 	public void test() {
 		System.out.println("sub");

@@ -10,7 +10,7 @@ public interface Cliable {
 	 * 
 	 * @return
 	 */
-	public Options initOptions();
+	Options initOptions();
 
 	/**
 	 * 校验 CommandLine
@@ -18,12 +18,12 @@ public interface Cliable {
 	 * @param commandLine
 	 * @return
 	 */
-	public boolean validateOptions(CommandLine commandLine);
+	boolean validateOptions(CommandLine commandLine);
 
 	/**
 	 * 启动 CommandLine
 	 * 
 	 * @param commandLine
 	 */
-	public void start(CommandLine commandLine);
+	void start(CommandLine commandLine);
 }

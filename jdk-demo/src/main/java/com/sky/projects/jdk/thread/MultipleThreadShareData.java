@@ -4,7 +4,7 @@ import java.util.Random;
 
 class MultipleThreadShareData implements Runnable {
 	private volatile int data = 0;
-	private static Object lock = new Object();
+	private static final Object LOCK = new Object();
 
 	public void run() {
 		while (true) {
@@ -13,7 +13,7 @@ class MultipleThreadShareData implements Runnable {
 			 * 
 			 * 同步代码块即保证多线程环境下对共享资源访问实现互斥访问
 			 */
-			synchronized (lock) {
+			synchronized (LOCK) {
 				data++;
 				show();
 			}

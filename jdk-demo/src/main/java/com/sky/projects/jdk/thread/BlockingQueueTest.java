@@ -12,6 +12,7 @@ public class BlockingQueueTest {
 		// 2 个线程存数据(生产者)
 		for (int i = 0; i < 2; i++) {
 			new Thread(new Runnable() {
+				@Override
 				public void run() {
 					while (true) {
 						Threads.sleep((long) Math.random() * 1000);
@@ -32,6 +33,7 @@ public class BlockingQueueTest {
 
 		// 一个线程取数据(消费者)
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				while (true) {
 					Threads.sleep(600);

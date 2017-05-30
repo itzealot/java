@@ -22,7 +22,6 @@ public class CacheDemo {
 	 * @return
 	 */
 	public Object getData(String key) {
-
 		// 1. 上读锁，其他读进程可以进行以下操作
 		lock.readLock().lock();
 		Object object = null;
@@ -46,7 +45,6 @@ public class CacheDemo {
 						object = "aaa";
 					}
 				} finally {
-
 					// 3.4 释放写锁(独占锁)
 					lock.writeLock().unlock();
 				}

@@ -23,8 +23,7 @@ public class DaemonTest {
 
 		Thread deamonThread = new Thread(new DeamonThread());
 
-		// 守护线程
-		// Set deamon true
+		// 守护线程,Set deamon true
 		deamonThread.setDaemon(true);
 		deamonThread.start();
 

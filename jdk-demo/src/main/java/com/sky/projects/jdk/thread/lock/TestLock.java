@@ -34,8 +34,7 @@ public class TestLock {
 			}
 			System.out.println();
 		} finally {
-
-			/**
+			/*
 			 * 3. 当前线程解锁，为防止在执行2时出现异常，使用finally来解锁.<br />
 			 * 无论何时都会调用lock.unlock()方法 解锁
 			 */
@@ -45,7 +44,7 @@ public class TestLock {
 
 	public static void main(String[] args) {
 		new Thread(new Runnable() {
-
+			@Override
 			public void run() {
 				while (true) {
 					new TestLock().output("zhangsan");
@@ -59,7 +58,7 @@ public class TestLock {
 		}).start();
 
 		new Thread(new Runnable() {
-
+			@Override
 			public void run() {
 				while (true) {
 					new TestLock().output("LISI");
