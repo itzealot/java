@@ -8,7 +8,8 @@ package com.sky.projects.jdk.lambda;
  */
 @FunctionalInterface
 public interface FunctionalDefaultMethods {
-	public void method();
+
+	void method();
 
 	/**
 	 * 接口的默认方法

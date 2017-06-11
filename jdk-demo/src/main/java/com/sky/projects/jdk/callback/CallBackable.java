@@ -14,5 +14,5 @@ public interface CallBackable {
 	 * @param status
 	 *            状态
 	 */
-	public void process(String status);
+	void call(String status);
 }

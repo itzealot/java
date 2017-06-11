@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * 重复注解，相同的注解可以在同一地方声明多次。
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class RepeatingAnnotations {
