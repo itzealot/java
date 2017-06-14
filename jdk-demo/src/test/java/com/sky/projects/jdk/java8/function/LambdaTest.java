@@ -71,24 +71,35 @@ public class LambdaTest extends TestCase {
 	 * lambda function
 	 */
 	public void testAcceptable() {
-		new Acceptable<Acceptable<String>>() {
-			@Override
-			public void accept(Acceptable<String> t) {
-				t.accept("message");
-			}
-		}.accept(messaege -> System.out.println(messaege));
+		Acceptable<String> acceptable = messaege -> System.out.println(messaege);
+
+		accept(acceptable, "message");
 	}
 
 	/**
-	 * lambda function
+	 * lambda function with 2 params
 	 */
 	public void testAcceptable2() {
-		new Acceptable<Acceptable2<String, Long>>() {
-			@Override
-			public void accept(Acceptable2<String, Long> t) {
-				t.accept("message", 1L);
-			}
-		}.accept((messaege, value) -> System.out.println("msg=" + messaege + ", val=" + value));
+		Acceptable2<String, Long> acceptable = (messaege, value) -> System.out
+				.println("msg=" + messaege + ", val=" + value);
+		accept(acceptable, "messaege", 2L);
 	}
 
+	public <T> void accept(Acceptable<T> acceptable, T message) {
+		acceptable.accept(message);
+	}
+
+	public <T1, T2> void accept(Acceptable2<T1, T2> acceptable, T1 t1, T2 t2) {
+		acceptable.accept(t1, t2);
+	}
+
+	public void testMyFunction() {
+		MyFunction function = () -> System.out.println("start run");
+		accept(function);
+	}
+
+	public void accept(MyFunction function) {
+		function.run();
+		System.out.println(function.toString());
+	}
 }

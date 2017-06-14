@@ -54,4 +54,24 @@ public class LambdaTest {
 		Assert.assertEquals("array is not equal", strings, strings2);
 	}
 
+	@Test
+	public void testFunctionalInterfaceWithStaticMethod() {
+		int sum = FunctionalInterfaceWithStaticMethod.sum(new int[] { 1, 2, 3, 4, 5 });
+		System.out.println("sum=" + sum);
+
+		FunctionalInterfaceWithStaticMethod f = () -> {
+			System.out.println("apply");
+		};
+
+		f.apply();
+	}
+
+	@Test
+	public void testInterfaceWithDefaultMethod() {
+		InterfaceWithDefaultMethod i = (o) -> {
+			System.out.println(o);
+		};
+		i.apply(null);
+		i.say("default method");
+	}
 }
