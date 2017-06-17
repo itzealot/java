@@ -13,6 +13,7 @@ public class QueryDaoImpl implements QueryDao {
 		try {
 			// 重操作，可能包含数据库连接等耗时操作
 			Thread.sleep(1000);
+			System.out.println("impl.......");
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
@@ -21,6 +22,15 @@ public class QueryDaoImpl implements QueryDao {
 	@Override
 	public String request() {
 		return this.toString() + " Request String";
+	}
+
+	public void deal() {
+		System.out.println("deal real message.......");
+	}
+
+	@Override
+	public String deal(String msg) {
+		return "deal:" + msg;
 	}
 
 }
