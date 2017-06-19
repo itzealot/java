@@ -17,7 +17,7 @@ import java.util.jar.JarFile;
 /**
  * 扫描包下的所有类
  * 
- * @author a
+ * @author zealot
  *
  */
 public class ScanClassInPackageUtil {
@@ -43,6 +43,7 @@ public class ScanClassInPackageUtil {
 			if (clazz.getSuperclass() != null) {
 				System.out.println("SuperClass name : " + clazz.getSuperclass().getName());
 			}
+
 			System.out.println();
 		}
 	}
@@ -61,13 +62,11 @@ public class ScanClassInPackageUtil {
 		String packageDirName = packName.replace('.', '/');
 		Enumeration<URL> dirs = null;
 		try {
-
 			// 获取当前线程的类加载器并获取包目录下的所有资源URL的枚举
 			dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
 
 			// 遍历资源URL的枚举列表
 			while (dirs.hasMoreElements()) {
-
 				// 获取下一个URL枚举节点
 				URL url = dirs.nextElement();
 
@@ -76,7 +75,6 @@ public class ScanClassInPackageUtil {
 
 				// 扫描file包中的类
 				if ("file".equals(protocol)) {
-
 					// 获取文件路径
 					String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
 
@@ -92,6 +90,7 @@ public class ScanClassInPackageUtil {
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
+
 		return clazzs;
 	}
 
