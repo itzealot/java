@@ -58,14 +58,13 @@ class ConditionCommunication {
 	 * @param i
 	 */
 	public void method1(int i) {
-		// 上锁
-		lock.lock();
+		lock.lock(); // 上锁
 
 		try {
 			// 为false等待；否则执行
 			if (!flag) {
 				try {
-					// 阻塞；类似于wait 方法
+					// 阻塞；类似于 wait 方法
 					condition.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -75,15 +74,16 @@ class ConditionCommunication {
 			// 相应处理方法
 			System.out.println("method1....................................");
 			Thread.sleep(new Random().nextInt(100));
+
 			// 修改标志位为false
 			flag = false;
+
 			// 发信号，唤醒；类似于notify, notifyAll 方法
 			condition.signal();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			// 解锁
-			lock.unlock();
+			lock.unlock(); // 解锁
 		}
 	}
 
@@ -93,15 +93,12 @@ class ConditionCommunication {
 	 * @param i
 	 */
 	public void method2(int i) {
-		// 上锁
-		lock.lock();
+		lock.lock(); // 上锁
 
 		try {
-			// 为真等待；否则执行下面的方法
-			if (flag) {
+			if (flag) { // 为真等待；否则执行下面的方法
 				try {
-					// 阻塞；类似于wait 方法
-					condition.await();
+					condition.await(); // 阻塞；类似于wait 方法
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -118,8 +115,7 @@ class ConditionCommunication {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			// 解锁
-			lock.unlock();
+			lock.unlock(); // 解锁
 		}
 	}
 }

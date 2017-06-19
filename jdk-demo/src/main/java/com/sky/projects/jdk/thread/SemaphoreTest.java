@@ -13,37 +13,34 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreTest {
 
 	public static void main(String[] args) {
-		// 线程池
-		ExecutorService threadPool = Executors.newCachedThreadPool();
+		ExecutorService threadPool = Executors.newCachedThreadPool(); // 线程池
 
-		// 创建含初始值为3的信号量
-		final Semaphore semaphore = new Semaphore(3);
+		int permits = 3; // 创建含初始值为3的信号量
+		final Semaphore semaphore = new Semaphore(permits);
 
-		// 新建10个线程
+		// 提交10个任务
 		for (int i = 0; i < 10; i++) {
-			// 执行线程池
-			threadPool.execute(new Runnable() {
-				public void run() {
-					try {
-						// 申请信号量，即 P 操作
-						semaphore.acquire();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+			threadPool.execute(() -> {// 执行任务
+				try {
+					semaphore.acquire(); // 申请信号量，即P操作
 
-					System.out.println("Thread : " + Thread.currentThread().getName() + " 进入，当前已有 "
-							+ (3 - semaphore.availablePermits()) + " 并发");
+					printMsgAndPermits(permits, semaphore);
 
-					// 释放信号量，即V操作
-					semaphore.release();
+					semaphore.release(); // 释放信号量，即V操作
 
-					System.out.println("Thread : " + Thread.currentThread().getName() + " 已离开，当前已有 "
-							+ (3 - semaphore.availablePermits()) + " 并发");
+					printMsgAndPermits(permits, semaphore);
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
 				}
 			});
 		}
 
 		// 关闭线程池
 		threadPool.shutdown();
+	}
+
+	private static void printMsgAndPermits(int permits, final Semaphore semaphore) {
+		System.out.println("Thread:" + Thread.currentThread().getName() + " 进入，当前已有 "
+				+ (permits - semaphore.availablePermits()) + " 并发");
 	}
 }

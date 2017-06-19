@@ -16,8 +16,7 @@ public final class Threads {
 		try {
 			return future.get();
 		} catch (Exception e) {
-			// TODO
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 			return null;
 		}
 	}

@@ -29,7 +29,6 @@ public class TimerTest {
 	public static void test2() {
 		// 计时器过多少时间开始启动(10000 ms), 每隔多少秒继续启动(3000 ms)
 		new Timer().schedule(new TimerTask() {
-
 			@Override
 			public void run() {
 				System.out.println("bombing");
@@ -46,11 +45,9 @@ public class TimerTest {
 
 		while (true) {
 			// 获取系统秒时间
-			Calendar calendar = GregorianCalendar.getInstance();
+			Calendar calendar = Calendar.getInstance();
 			System.out.println(calendar.get(Calendar.SECOND));
-
-			// 休息一秒
-			Threads.sleep(1000);
+			Threads.sleep(1000);// 休息一秒
 		}
 	}
 
@@ -70,7 +67,6 @@ class MyTimeTask extends TimerTask {
 	@Override
 	public void run() {
 		System.out.println("bombing");
-
 		// 间隔2秒启动定时器
 		new Timer().schedule(new MyTimeTask(), 2000);
 	}

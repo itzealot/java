@@ -39,8 +39,8 @@ public class ThreadPoolTest {
 
 		// 等待任务执行完成，关闭线程池
 		threadPool.shutdown();
-		// 立即结束
-		// threadPool.shutdownNow();
+
+		// threadPool.shutdownNow(); // 立即结束
 	}
 
 	/**
@@ -109,11 +109,7 @@ public class ThreadPoolTest {
 		// 新建ScheduledExecutorService 线程池
 		ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(3);
 
-		threadPool.schedule(new Runnable() {
-			public void run() {
-				System.out.println("boombing");
-			}
-		}, delay, unit);
+		threadPool.schedule(() -> System.out.println("boombing"), delay, unit);
 
 		// 任务执行完成，关闭线程池
 		threadPool.shutdown();
@@ -135,11 +131,7 @@ public class ThreadPoolTest {
 		// 新建ScheduledExecutorService 线程池
 		ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(3);
 
-		threadPool.scheduleAtFixedRate(new Runnable() {
-			public void run() {
-				System.out.println("boombing");
-			}
-		}, delay, bombing, unit);
+		threadPool.scheduleAtFixedRate(() -> System.out.println("boombing"), delay, bombing, unit);
 	}
 
 	public static void main(String[] args) {

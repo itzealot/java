@@ -3,59 +3,68 @@ package com.sky.projects.jdk.thread;
 /**
  * 线程A,B间的通信，形成互斥访问
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class TwoThread {
 	// 锁为静态成员变量，持有的是相同的对象
-	private static Object lock = new Object();
+	private static final Object LOCK = new Object();
 
 	// 指定由谁运行
-	private static boolean flag = false;
+	private static boolean runningA = false;
 
-	public static void main(String[] args) {
-		new Thread() {
-			public void run() {
-				while (true) {
-					synchronized (lock) {// 同步代码块，互斥访问
-						if (flag) {
+	static class RunnerA implements Runnable {
+		@Override
+		public void run() {
+			while (true) {
+				if (runningA) {
+					synchronized (LOCK) {// 同步代码块，互斥访问
+						if (runningA) {
 							System.out.println("Thread-1");
 							Threads.sleep(1000);
 
-							flag = false;
-							lock.notify();// 唤醒等待的线程
+							runningA = false;
+							LOCK.notify(); // 唤醒等待的线程
 
 							try {
-								lock.wait();
+								LOCK.wait();
 							} catch (InterruptedException e) {
-								e.printStackTrace();
+								Thread.currentThread().interrupt();
 							}
 						}
 					}
 				}
 			}
-		}.start();
+		}
+	}
 
-		new Thread() {
-			public void run() {
-				while (true) {
-					synchronized (lock) {
-						if (!flag) {
+	static class RunnerB implements Runnable {
+		@Override
+		public void run() {
+			while (true) {
+				if (!runningA) {
+					synchronized (LOCK) {
+						if (!runningA) {
 							System.out.println("Thread-2");
 							Threads.sleep(1000);
 
-							flag = true;
-							lock.notify();// 唤醒等待线程
+							runningA = true;
+							LOCK.notify(); // 唤醒等待线程
 
 							try {
-								lock.wait();
-							} catch (Exception e) {
-								e.printStackTrace();
+								LOCK.wait();
+							} catch (InterruptedException e) {
+								Thread.currentThread().interrupt();
 							}
 						}
 					}
 				}
 			}
-		}.start();
+		}
+	}
+
+	public static void main(String[] args) {
+		new Thread(new RunnerA(), "RunnerA").start();
+		new Thread(new RunnerB(), "RunnerB").start();
 	}
 }
