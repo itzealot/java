@@ -11,7 +11,7 @@ import javassist.util.proxy.MethodHandler;
  *
  */
 public class JavassistHandler implements MethodHandler {
-
+	// 需要实现代理对象的引用
 	private Object target;
 
 	public JavassistHandler(Object target) {
@@ -20,7 +20,12 @@ public class JavassistHandler implements MethodHandler {
 
 	@Override
 	public Object invoke(Object self, Method thisMethod, Method proceed, Object[] args) throws Throwable {
-		return thisMethod.invoke(target, args);
-	}
+		// TODO 方法调用前
 
+		Object resutl = thisMethod.invoke(target, args);
+
+		// TODO 方法调用后
+
+		return resutl;
+	}
 }

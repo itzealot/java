@@ -11,8 +11,22 @@ import javassist.util.proxy.MethodHandler;
 import javassist.util.proxy.ProxyFactory;
 import javassist.util.proxy.ProxyObject;
 
+/**
+ * JavassistProxyFactory
+ * 
+ * @author zealot
+ *
+ */
 public final class JavassistProxyFactory {
 
+	/**
+	 * 根据实现类及MethodHandler实现类创建代理
+	 * 
+	 * @param target
+	 *            需要创建代理的实现类
+	 * @param handler
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T createProxy(T target, MethodHandler handler) {
 		ProxyFactory factory = new ProxyFactory();
@@ -20,7 +34,7 @@ public final class JavassistProxyFactory {
 		// set interface
 		// factory.setInterfaces(target.getClass().getInterfaces());
 
-		// decorate method
+		// deprecated method
 		// factory.setHandler(handler);
 
 		// 设置 super class，如果被代理类中需要调用未抽象出接口的方法，选择调用该方法
