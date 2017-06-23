@@ -11,9 +11,9 @@ public class ArratBlockingQueueUsingSynchronized<T> implements BlockingQueue<T> 
 
 	private final Object[] datas;
 	private final int capacity;
-	private int nextPutIndex = 0;
-	private int nextTakeIndex = 0;
-	private int size = 0;
+	private int nextPutIndex;
+	private int nextTakeIndex;
+	private int size;
 
 	public ArratBlockingQueueUsingSynchronized() {
 		this(32);
