@@ -34,7 +34,7 @@ public class Client implements CallBackable {
 	}
 
 	@Override
-	public void process(String status) {
+	public void call(String status) {
 		System.out.println("客户端：服务端回调状态为：" + status);
 	}
 

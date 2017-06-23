@@ -1,10 +1,5 @@
 package com.sky.projects.design.structural.proxy.dynamic;
 
-/**
- * 查询接口
- * 
- * @author zealot
- */
 public interface QueryDao {
 
 	/**
@@ -13,4 +8,11 @@ public interface QueryDao {
 	 * @return
 	 */
 	String request();
+
+	/**
+	 * deal message
+	 * 
+	 * @param msg
+	 */
+	String deal(String msg);
 }

@@ -9,11 +9,7 @@ public class ByteLengthString {
 	 * @return
 	 */
 	public static int getCharLength(int ch) {
-		if (ch >= 0x00 && ch <= 0xFF) {
-			return 1;
-		}
-
-		return 2;
+		return ch >= 0x00 && ch <= 0xFF ? 1 : 2;
 	}
 
 	public static String getStringByByteLength(String source, int byteLength) {

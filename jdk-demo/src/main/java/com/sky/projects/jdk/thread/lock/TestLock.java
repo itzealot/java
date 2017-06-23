@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  */
 public class TestLock {
-	/**
+	/*
 	 * 用于控制互斥访问的所对象
 	 */
 	Lock lock = new ReentrantLock();
@@ -23,7 +23,6 @@ public class TestLock {
 	 * @param name
 	 */
 	public void output(String name) {
-
 		// 1. 当前线程上锁
 		lock.lock();
 

@@ -3,11 +3,11 @@ package com.sky.projects.jdk.thread.traditional;
 /**
  * 线程管理
  * 
- * @author zt
+ * @author zealot
  */
 public class ThreadManager {
 	// 锁
-	private static Object lock = new Object();
+	private static final Object LOCK = new Object();
 	// 是否运行 thread10
 	private static boolean flag = false;
 
@@ -19,16 +19,16 @@ public class ThreadManager {
 			@Override
 			public void run() {
 				while (true) {
-					synchronized (lock) {
+					synchronized (LOCK) {
 						if (flag) {
 							Task.excute("Thread-1", 10); // 执行任务
 
 							flag = false;// 修改位false
 
-							lock.notify();// 唤醒等待的线程；即唤醒 thread20
+							LOCK.notify();// 唤醒等待的线程；即唤醒 thread20
 
 							try {
-								lock.wait(); // 自己进入等待；即 thread10 等待
+								LOCK.wait(); // 自己进入等待；即 thread10 等待
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
@@ -42,15 +42,15 @@ public class ThreadManager {
 			@Override
 			public void run() {
 				while (true) {
-					synchronized (lock) {
+					synchronized (LOCK) {
 						if (!flag) {
 							// 执行任务
 							Task.excute("Thread-2", 20);
 
 							flag = true;
-							lock.notify();// 唤醒等待的线程；即唤醒 thread10
+							LOCK.notify();// 唤醒等待的线程；即唤醒 thread10
 							try {
-								lock.wait(); // 自己进入等待；即 thread20 等待
+								LOCK.wait(); // 自己进入等待；即 thread20 等待
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}

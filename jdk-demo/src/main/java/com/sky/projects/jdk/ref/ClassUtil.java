@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class ClassUtil {
+
 	public static Method[] methods(String className) {
 		try {
 			Class<?> clazz = Class.forName(className);
@@ -68,7 +69,7 @@ public class ClassUtil {
 	 *            方法名称
 	 * @return 返回执行结果
 	 */
-	public static Object execute(Class<?> calzz, String methodName, Object[] args, Class<?>... parameterTypes) {
+	public static Object invoke(Class<?> calzz, String methodName, Object[] args, Class<?>... parameterTypes) {
 		Method m = null;
 		Object action = null;
 		Object result = null;
@@ -106,7 +107,7 @@ public class ClassUtil {
 			Class<?> calzz = Class.forName(className);
 
 			// 2. 执行方法并返回结果
-			result = execute(calzz, methodName, args, parameterTypes);
+			result = invoke(calzz, methodName, args, parameterTypes);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

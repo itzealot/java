@@ -26,6 +26,6 @@ public class Server {
 		String status = "200";
 
 		// 执行回调函数
-		call.process(status);
+		call.call(status);
 	}
 }

@@ -6,7 +6,7 @@ import java.lang.reflect.Parameter;
 /**
  * 参数名字
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class ParameterNames {
