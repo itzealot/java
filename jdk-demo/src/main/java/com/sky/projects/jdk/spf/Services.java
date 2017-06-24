@@ -6,12 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 服务访问API，是客户端用来获取服务的实例
  * 
- * @author zt
+ * @author zealot
  *
  */
 public final class Services {
-	private Services() {
-	}
 
 	// 常引用
 	private static final Map<String, Provider> providers = new ConcurrentHashMap<>();
@@ -48,4 +46,6 @@ public final class Services {
 		return providers;
 	}
 
+	private Services() {
+	}
 }

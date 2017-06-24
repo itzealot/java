@@ -18,6 +18,7 @@ public class TestMethodInInternalGC {
 	 * 
 	 * 当常量池饱和时，GC 总能顺利回收常量池数据，确保程序稳定继续运行
 	 */
+	@SuppressWarnings("unused")
 	public static void finalConstGC() {
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
 			String t = String.valueOf(i).intern(); // 加入常量池

@@ -1,7 +1,6 @@
 package com.sky.projects.jdk.thread;
 
 import java.util.Random;
-import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
@@ -15,11 +14,9 @@ public class CallableAndFutureTest {
 		ExecutorService threadPool = Executors.newSingleThreadExecutor();
 
 		// 2. 线程池执行任务并返回结果(任务实现 Callable<T> 接口)
-		Future<String> future = threadPool.submit(new Callable<String>() {
-			public String call() throws Exception {
-				Thread.sleep(1000);
-				return "hello";
-			}
+		Future<String> future = threadPool.submit(() -> {
+			Thread.sleep(1000);
+			return "hello";
 		});
 
 		System.out.println("wait the result....");
@@ -28,7 +25,7 @@ public class CallableAndFutureTest {
 		try {
 			System.out.println("get the result : " + future.get());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 
 		// 4. 结束线程池
@@ -50,21 +47,18 @@ public class CallableAndFutureTest {
 		// 3. 提交10个任务
 		for (int i = 0; i < 10; i++) {
 			final int seq = i;
-			completionService.submit(new Callable<Integer>() {
-				public Integer call() throws Exception {
-					// Sleep 随机时间
-					Threads.sleep(new Random().nextInt(5000));
-					return seq;
-				}
+			completionService.submit(() -> {
+				Threads.sleep(new Random().nextInt(5000));
+				return seq;
 			});
 		}
 
 		// 4. 执行任务并返回返回结果
 		for (int i = 0; i < 10; i++) {
 			try {
-				System.out.println(completionService.take().get());
+				System.out.println("results:" + completionService.take().get());
 			} catch (Exception e) {
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
 			}
 		}
 

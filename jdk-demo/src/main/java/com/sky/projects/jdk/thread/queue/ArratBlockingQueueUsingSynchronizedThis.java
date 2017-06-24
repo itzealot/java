@@ -7,37 +7,36 @@ package com.sky.projects.jdk.thread.queue;
  *
  * @param <T>
  */
-public class ArratBlockingQueueUsingSynchronized<T> implements BlockingQueue<T> {
+public class ArratBlockingQueueUsingSynchronizedThis<T> implements BlockingQueue<T> {
 
+	// 循环队列
 	private final Object[] datas;
 	private final int capacity;
 	private int nextPutIndex;
 	private int nextTakeIndex;
 	private int size;
 
-	public ArratBlockingQueueUsingSynchronized() {
+	public ArratBlockingQueueUsingSynchronizedThis() {
 		this(32);
 	}
 
-	public ArratBlockingQueueUsingSynchronized(int capacity) {
+	public ArratBlockingQueueUsingSynchronizedThis(int capacity) {
 		super();
 		this.capacity = capacity;
 		this.datas = new Object[this.capacity];
 	}
 
 	@Override
-	public T peek() {
-		synchronized (datas) {// 共享数据是 datas，必须使用其作为锁
-			while (isEmpty()) { // 队列为空则消费者阻塞
-				try {
-					datas.wait();
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
-				}
+	public synchronized T peek() {
+		while (isEmpty()) { // 队列为空则消费者阻塞
+			try {
+				this.wait(); // 此时锁为当前对象，使用 this.wait
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 			}
-
-			return dequeue();
 		}
+
+		return dequeue();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,7 +46,7 @@ public class ArratBlockingQueueUsingSynchronized<T> implements BlockingQueue<T> 
 		size--;
 		System.out.println(Thread.currentThread().getName() + " finish peek a data=" + e + ", size=" + size);
 		nextTakeIndex = (nextTakeIndex + 1) % capacity;
-		datas.notify(); // 唤醒一个等待进程
+		this.notify(); // 唤醒一个等待进程，此时锁为当前对象
 		return e;
 	}
 
@@ -62,14 +61,12 @@ public class ArratBlockingQueueUsingSynchronized<T> implements BlockingQueue<T> 
 	}
 
 	@Override
-	public void put(T e) throws InterruptedException {
-		synchronized (datas) {// 共享数据是 datas，必须使用其作为锁
-			while (isFull()) { // 队列已满则生产者阻塞
-				datas.wait();
-			}
-
-			enqueue(e);
+	public synchronized void put(T e) throws InterruptedException {
+		while (isFull()) { // 队列已满则生产者阻塞
+			this.wait(); // 此时锁为当前对象，使用 this.wait
 		}
+
+		enqueue(e);
 	}
 
 	private void enqueue(T e) {
@@ -80,7 +77,7 @@ public class ArratBlockingQueueUsingSynchronized<T> implements BlockingQueue<T> 
 		}
 		System.out.println(Thread.currentThread().getName() + " finish put a data=" + e + ", size=" + size);
 		nextPutIndex = (nextPutIndex + 1) % capacity;
-		datas.notify(); // 唤醒一个等待进程
+		this.notify(); // 唤醒一个等待进程
 	}
 
 	private boolean isFull() {

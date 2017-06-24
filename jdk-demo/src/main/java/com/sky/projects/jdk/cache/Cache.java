@@ -34,10 +34,10 @@ public class Cache {
 				// 3.1. 释放掉以前上的读锁
 				lock.readLock().unlock();
 
-				// 3.2. 上写锁，即为独占锁，其他读线程、写线程都不能进行读写
-				lock.writeLock().lock();
-
 				try {
+					// 3.2. 上写锁，即为独占锁，其他读线程、写线程都不能进行读写
+					lock.writeLock().lock();
+
 					// 3.3 相当于没获取到值时，从数据库中查找
 					// 若数据为 null，需要从数据库中查找并写入缓存 cache 中
 					if (object == null) {

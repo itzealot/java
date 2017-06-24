@@ -9,6 +9,7 @@ package com.sky.projects.jdk.jvm;
  * 
  * @author zealot
  */
+@SuppressWarnings("unused")
 public class TestWordReuse {
 
 	public static void main(String[] args) {

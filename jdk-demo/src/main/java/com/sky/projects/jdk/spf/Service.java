@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 服务提供者框架的服务接口，由提供者实现
  * 
- * @author zt
+ * @author zealot
  *
  */
 public interface Service extends Serializable {

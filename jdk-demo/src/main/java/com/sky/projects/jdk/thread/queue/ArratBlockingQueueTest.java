@@ -27,7 +27,7 @@ public class ArratBlockingQueueTest {
 		// 生产者创建固定大小的线程池
 		ExecutorService producers = Executors.newFixedThreadPool(producerSize);
 
-		BlockingQueue<String> queue = new ArratBlockingQueueUsingSynchronized<>();
+		BlockingQueue<String> queue = new ArratBlockingQueueUsingSynchronizedThis<>();
 
 		System.out.println(String.format("run consumers, size:%d", consumerSize));
 		for (int i = 0; i < consumerSize; i++) {

@@ -2,6 +2,11 @@ package com.sky.projects.jdk.lambda;
 
 import java.util.function.Supplier;
 
+/**
+ * 
+ * @author zealot
+ *
+ */
 public interface DefaultableFactory {
 
 	/**

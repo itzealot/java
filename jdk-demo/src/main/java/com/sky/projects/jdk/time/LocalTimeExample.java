@@ -42,7 +42,6 @@ public class LocalTimeExample {
 		// 10000th second time= 02:46:40
 		LocalTime specificSecondTime = LocalTime.ofSecondOfDay(10000);
 		System.out.println("10000th second time= " + specificSecondTime);
-
 	}
 
 }

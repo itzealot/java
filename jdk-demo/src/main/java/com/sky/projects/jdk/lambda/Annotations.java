@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * 
  * 现在几乎可以为任何东西添加注解：局部变量、泛型类、父类与接口的实现，就连方法的异常也能添加注解
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class Annotations {

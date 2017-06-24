@@ -1,72 +1,100 @@
 package com.sky.projects.jdk.thread.lock;
 
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import com.sky.projects.jdk.thread.Threads;
+
 /**
- * 测试java.util.concurrent.locks 包下的Lock.<br />
- * 来那个线程执行的代码片段需要实现同步互斥的效果，必须使用同一个Lock对象.<br />
+ * 使用 Lock的实现类ReentrantLock实现同步互斥访问，前提是必须使用同一个Lock对象
  * 
  * @author zealot
  *
  */
 public class TestLock {
-	/*
-	 * 用于控制互斥访问的所对象
-	 */
-	Lock lock = new ReentrantLock();
+
+	/** 用于控制互斥访问的所对象 */
+	private final Lock lock = new ReentrantLock();
 
 	/**
-	 * 使用Lock 来互斥访问，输出信息.<br />
-	 * lock.unlock()方法 解锁 需放置在finally 块中.<br />
+	 * 使用Lock 来互斥访问，lock.unlock方法解锁 需放置在finally 块中.<br />
 	 * 
 	 * @param name
 	 */
-	public void output(String name) {
-		// 1. 当前线程上锁
-		lock.lock();
-
+	public void outputWithSyn(String name) {
 		try {
-			// 2. 执行方法
-			for (int i = 0; i < 3; i++) {
-				System.out.print(name);
-			}
-			System.out.println();
+			lock.lock(); // 上锁
+
+			output(name);
 		} finally {
-			/*
-			 * 3. 当前线程解锁，为防止在执行2时出现异常，使用finally来解锁.<br />
-			 * 无论何时都会调用lock.unlock()方法 解锁
-			 */
+			// 解锁，需放入到 finally 中
 			lock.unlock();
 		}
 	}
 
+	public void output(String name) {
+		for (int i = 0; i < 10; i++) {
+			System.out.print(name);
+			Threads.sleep(i);
+		}
+		System.out.println();
+	}
+
 	public static void main(String[] args) {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					new TestLock().output("zhangsan");
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+		TestLock testLock = new TestLock();
+		// print(testLock);
+		synPrint(testLock);
+	}
+
+	/**
+	 * 使用Lock进行同步打印
+	 * 
+	 * @since 1.8
+	 * @param testLock
+	 */
+	public static void synPrint(TestLock testLock) {
+		new Thread(() -> {
+			Random random = new Random();
+
+			while (true) {
+				testLock.outputWithSyn("222");
+				Threads.sleep(random.nextInt(500) + 200);
 			}
 		}).start();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					new TestLock().output("LISI");
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+		new Thread(() -> {
+			Random random = new Random();
+
+			while (true) {
+				testLock.outputWithSyn("111");
+				Threads.sleep(random.nextInt(500) + 400);
+			}
+		}).start();
+	}
+
+	/**
+	 * 非同步打印信息
+	 * 
+	 * @since 1.8
+	 * @param testLock
+	 */
+	public static void print(TestLock testLock) {
+		new Thread(() -> {
+			Random random = new Random();
+
+			while (true) {
+				testLock.output("222");
+				Threads.sleep(random.nextInt(500) + 500);
+			}
+		}).start();
+
+		new Thread(() -> {
+			Random random = new Random();
+
+			while (true) {
+				testLock.output("111");
+				Threads.sleep(random.nextInt(500) + 500);
 			}
 		}).start();
 	}

@@ -5,7 +5,7 @@ package com.sky.projects.jdk.observer;
  * 2. 若不使用观察者模式提供的通用结构，需要实现类似功能，则只能在另一个线程中不断减退对象所依赖的状态。<br />
  * 3. 主题接口 ： 指被观察的对象。于其状态发生改变或者某事件发生时，将这个变化通知观察者。其维护观察者所需要依赖的状态。<br />
  * 
- * @author zt
+ * @author zealot
  *
  */
 public interface Subjectable {

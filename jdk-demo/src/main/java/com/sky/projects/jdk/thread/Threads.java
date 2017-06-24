@@ -2,6 +2,11 @@ package com.sky.projects.jdk.thread;
 
 import java.util.concurrent.Future;
 
+/**
+ * 
+ * @author zealot
+ *
+ */
 public final class Threads {
 
 	public static void sleep(long millis) {
@@ -12,7 +17,7 @@ public final class Threads {
 		}
 	}
 
-	public static String get(Future<String> future) {
+	public static <T> T get(Future<T> future) {
 		try {
 			return future.get();
 		} catch (Exception e) {

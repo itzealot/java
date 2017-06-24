@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 /**
  * 方法引用
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class Car {

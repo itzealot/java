@@ -1,5 +1,10 @@
 package com.sky.projects.jdk.lambda;
 
+/**
+ * 
+ * @author zealot
+ *
+ */
 public interface Defautlable {
 
 	/**

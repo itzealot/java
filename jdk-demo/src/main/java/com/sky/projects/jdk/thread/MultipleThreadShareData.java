@@ -2,10 +2,18 @@ package com.sky.projects.jdk.thread;
 
 import java.util.Random;
 
-class MultipleThreadShareData implements Runnable {
-	private volatile int data = 0;
+/**
+ * 
+ * @author zealot
+ *
+ */
+public class MultipleThreadShareData implements Runnable {
 	private static final Object LOCK = new Object();
 
+	// 共享数据
+	private int data = 0;
+
+	@Override
 	public void run() {
 		while (true) {
 			/*
@@ -17,7 +25,6 @@ class MultipleThreadShareData implements Runnable {
 				data++;
 				show();
 			}
-
 			Threads.sleep(500 + new Random().nextInt(500));
 		}
 	}

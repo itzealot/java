@@ -31,7 +31,6 @@ public class CacheDemo {
 
 			// 3. cache Map 中中没有相应数据，从数据库中读取数据并写入到cache Map中
 			if (object == null) {
-
 				// 3.1 释放掉以前上的读锁
 				lock.readLock().unlock();
 
@@ -56,6 +55,7 @@ public class CacheDemo {
 			// 4. 关闭读锁
 			lock.readLock().unlock();
 		}
+
 		return object;
 	}
 }
