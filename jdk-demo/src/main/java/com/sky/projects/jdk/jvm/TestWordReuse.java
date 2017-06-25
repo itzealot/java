@@ -45,7 +45,7 @@ public class TestWordReuse {
 		}
 
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class TestWordReuse {
 		}
 
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class TestWordReuse {
 
 		int a = 0;
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class TestWordReuse {
 
 		int a = 0; // 复用 c 的字
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class TestWordReuse {
 
 		int a = 0; // 复用 b 的字
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 
 	/**
@@ -114,6 +114,6 @@ public class TestWordReuse {
 		int a = 0; // 复用 c 的字
 		int d = 0; // 复用 b 的字
 		System.gc();
-		System.out.println("first explict gc over.");
+		System.out.println("first explicit gc over.");
 	}
 }

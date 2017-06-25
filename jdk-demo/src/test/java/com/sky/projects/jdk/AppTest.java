@@ -64,6 +64,6 @@ public class AppTest extends TestCase {
 		public String toString() {
 			return "Student [id=" + id + "]";
 		}
-
 	}
+
 }

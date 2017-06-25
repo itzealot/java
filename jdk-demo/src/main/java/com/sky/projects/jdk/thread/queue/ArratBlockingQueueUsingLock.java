@@ -70,13 +70,7 @@ public class ArratBlockingQueueUsingLock<T> implements BlockingQueue<T> {
 		return e;
 	}
 
-	@Override
-	public int size() {
-		return size;
-	}
-
-	@Override
-	public boolean isEmpty() {
+	private boolean isEmpty() {
 		return size == 0;
 	}
 

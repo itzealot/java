@@ -8,19 +8,15 @@ public class BlockingQueueCommunication {
 	public static void main(String[] args) {
 		final BufferData data = new BufferData();
 
-		new Thread(new Runnable() {
-			public void run() {
-				while (true) {
-					data.methoA(10);
-				}
+		new Thread(() -> {
+			while (true) {
+				data.methoA(10);
 			}
 		}).start();
 
-		new Thread(new Runnable() {
-			public void run() {
-				while (true) {
-					data.methoB(20);
-				}
+		new Thread(() -> {
+			while (true) {
+				data.methoB(20);
 			}
 		}).start();
 	}

@@ -50,13 +50,7 @@ public class ArratBlockingQueueUsingSynchronizedThis<T> implements BlockingQueue
 		return e;
 	}
 
-	@Override
-	public int size() {
-		return size;
-	}
-
-	@Override
-	public boolean isEmpty() {
+	private boolean isEmpty() {
 		return size == 0;
 	}
 
