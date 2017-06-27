@@ -8,7 +8,7 @@ import java.util.TimerTask;
 /**
  * 定时器
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class MyTimerTask extends TimerTask {
@@ -22,15 +22,13 @@ public class MyTimerTask extends TimerTask {
 	@Override
 	public void run() {
 		// 以下信息将自动一秒执行一次
-		System.out.println("备份程序运行……");
 		printchar();
 	}
 
 	/**
-	 * 启动定时器
+	 * 启动定时器，一秒执行一次
 	 */
 	public void start() {
-		// 一秒执行一次
 		timer.scheduleAtFixedRate(this, new Date(), 1000);
 	}
 

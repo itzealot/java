@@ -13,12 +13,13 @@ public class RegexTest extends TestCase {
 	 * 使用()来区别组,group(0)<=>group()
 	 */
 	public void testGroup() {
+		// 两个组,组A:([a-z]+),组B:(\\d+)
 		final Pattern p = Pattern.compile("([a-z]+)(\\d+)");
 		System.out.println(p.matcher("1").matches());
 
 		Matcher m = p.matcher("i love123, mis456, hate789");
 
-		// 遍历匹配项
+		// 遍历匹配项，使用正则表达式可能存在多个匹配成功
 		while (m.find()) {
 			parintGroupInfo(m);
 		}
@@ -27,6 +28,11 @@ public class RegexTest extends TestCase {
 		System.out.println("groupCount:" + m.groupCount());
 	}
 
+	/**
+	 * 打印对于组的匹配信息
+	 * 
+	 * @param m
+	 */
 	private void parintGroupInfo(Matcher m) {
 		for (int i = 0; i <= m.groupCount(); i++) {
 			System.out.println("m.group(" + i + "):" + m.group(i));

@@ -15,7 +15,7 @@ import org.springframework.util.PropertiesPersister;
 /**
  * 配置文件des加密，然后读取配置文件时解密
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
@@ -35,7 +35,6 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 
 			// 遍历所有
 			for (int i = 0; i < this.locations.length; i++) {
-
 				// 所有的资源信息
 				Resource location = this.locations[i];
 
@@ -43,7 +42,9 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 				if (logger.isInfoEnabled()) {
 					logger.info("Loading properties file from " + location);
 				}
+				
 				InputStream is = null;
+				
 				try {
 
 					// 通过locations 获取输入流
@@ -60,7 +61,6 @@ public class DecryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
 
 					// 是加密了的文件
 					if ("dbconn.properties".equals(location.getFilename())) {
-
 						// 加密解密的工具类
 						DESUtil des = new DESUtil("1234567");
 
