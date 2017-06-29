@@ -6,31 +6,15 @@ package com.sky.projects.design.structural.adapter;
  * @author zealot
  *
  */
-public class MediaAdapter implements MediaPlayer {
-
-	private AdvancedMediaPlayer palyer;
+public interface MediaAdapter {
 
 	/**
-	 * 构造函数<br />
-	 * 根据audio's type 创建高级媒体播放器对象
+	 * 获取播放器
 	 * 
-	 * @param audioType
+	 * @return
 	 */
-	public MediaAdapter(String audioType) {
-		if (audioType.equalsIgnoreCase("vlc")) {
-			palyer = new VlcPlayer();
-		} else if (audioType.equalsIgnoreCase("mp4")) {
-			palyer = new Mp4Player();
-		}
-	}
+	NewPlayer getPlayer();
 
-	@Override
-	public void play(String audioType, String fileName) {
-		// 播放vlc 与 mp4
-		if (audioType.equalsIgnoreCase("vlc")) {
-			palyer.playVlc(fileName);
-		} else if (audioType.equalsIgnoreCase("mp4")) {
-			palyer.playMp4(fileName);
-		}
-	}
+	AudioEnum getAudioEnum();
+
 }

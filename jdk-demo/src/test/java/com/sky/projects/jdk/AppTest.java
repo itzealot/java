@@ -29,6 +29,10 @@ public class AppTest extends TestCase {
 		System.out.println("我love".length());
 	}
 
+	public void test() {
+		System.out.println("TP-LINK_8236".toLowerCase().contains("TP-Link_82".toLowerCase()));
+	}
+	
 	public void testTreeMap() {
 		Map<Student, String> map = new TreeMap<>();
 
