@@ -9,8 +9,12 @@ public abstract class AbstractLogger {
 	// 记录当前日志的日志级别
 	protected int level;
 
-	// 下一个日志对象
+	// 日志链表
 	protected AbstractLogger nextLogger;
+
+	public AbstractLogger(int level) {
+		this.level = level;
+	}
 
 	/**
 	 * 打印日志链中的日志信息，传入的日志级别大于等于日志链中的日志级别，则打印

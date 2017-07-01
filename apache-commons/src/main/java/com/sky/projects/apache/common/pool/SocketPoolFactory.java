@@ -7,31 +7,35 @@ import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPool.Config;
 
 /**
- * 对象池连接管理工厂
+ * ConnectionPoolFactory
  * 
- * @author zt
+ * @author zealot
  *
  */
-public class ConnectionPoolFactory {
+public class SocketPoolFactory {
 
 	// 试用对象池
-	private GenericObjectPool<Socket> pool;
+	private final GenericObjectPool<Socket> pool;
 
-	public ConnectionPoolFactory(Config config, String ip, int port) {
-		ConnectionFactory factory = new ConnectionFactory(ip, port);
-
-		pool = new GenericObjectPool<Socket>(factory, config);
+	public SocketPoolFactory(Config config, String ip, int port) {
+		pool = new GenericObjectPool<Socket>(new SocketFactory(ip, port), config);
 	}
 
-	public Socket get() throws Exception {
-		return pool.borrowObject();
+	public Socket get() {
+		try {
+			return pool != null ? pool.borrowObject() : null;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public void release(Socket socket) {
+		if (socket == null) {
+			return;
+		}
 		try {
 			pool.returnObject(socket);
 		} catch (Exception e) {
-			// TODO
 		} finally {
 			close(socket);
 		}
@@ -42,7 +46,6 @@ public class ConnectionPoolFactory {
 			try {
 				clo.close();
 			} catch (Exception ex) {
-				// TODO
 			}
 		}
 	}

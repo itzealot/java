@@ -10,7 +10,7 @@ import com.sky.projects.design.behavior.chain.AbstractLogger;
 public class ConsoleLogger extends AbstractLogger {
 
 	public ConsoleLogger(int level) {
-		this.level = level;
+		super(level);
 	}
 
 	@Override

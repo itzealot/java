@@ -10,7 +10,7 @@ import com.sky.projects.design.behavior.chain.AbstractLogger;
 public class FileLogger extends AbstractLogger {
 
 	public FileLogger(int level) {
-		this.level = level;
+		super(level);
 	}
 
 	@Override

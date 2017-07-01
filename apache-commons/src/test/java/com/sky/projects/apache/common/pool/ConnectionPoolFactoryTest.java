@@ -23,7 +23,7 @@ public class ConnectionPoolFactoryTest extends TestCase {
 		config.maxActive = 16;
 		config.maxWait = 30000;
 
-		ConnectionPoolFactory poolFactory = new ConnectionPoolFactory(config, "127.0.0.1", 49152);
+		SocketPoolFactory poolFactory = new SocketPoolFactory(config, "127.0.0.1", 49152);
 		Socket socket = null;
 
 		try {

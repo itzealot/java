@@ -6,36 +6,36 @@ import java.net.Socket;
 import org.apache.commons.pool.BasePoolableObjectFactory;
 
 /**
- * <p>
- * 对象工厂，即包含对对象的基本操作(create, destroy, validate).
- * </p>
- * <p>
- * 继承 {@link BasePoolableObjectFactory}
- * </p>
+ * 对象工厂，即包含对对象的基本操作(create, destroy, validate)
+ * 继承{@link BasePoolableObjectFactory}
  * 
- * @author zt
+ * @author zealot
  *
  */
-public class ConnectionFactory extends BasePoolableObjectFactory<Socket> {
+public class SocketFactory extends BasePoolableObjectFactory<Socket> {
 
-	private InetSocketAddress address;
+	private final InetSocketAddress address;
 
-	public ConnectionFactory(String ip, int port) {
+	public SocketFactory(String ip, int port) {
 		address = new InetSocketAddress(ip, port);
 	}
 
+	@Override
 	public Socket makeObject() throws Exception {
 		Socket socket = new Socket();
 		socket.connect(address);
 		return socket;
 	}
 
+	@Override
 	public void destroyObject(Socket obj) throws Exception {
-		obj.close();
+		if (obj != null)
+			obj.close();
 	}
 
+	@Override
 	public boolean validateObject(Socket socket) {
-		return socket.isConnected() && !socket.isClosed();
+		return socket != null ? socket.isConnected() && !socket.isClosed() : false;
 	}
 
 }

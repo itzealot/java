@@ -1,6 +1,17 @@
 package com.sky.projects.jdk;
 
+import java.util.Map.Entry;
+import java.util.Properties;
+
 public class ByteLengthString {
+
+	public static void main(String[] args) {
+		Properties properties = System.getProperties();
+
+		for (Entry<Object, Object> entry : properties.entrySet()) {
+			System.out.println("key:" + entry.getKey() + ", value:" + entry.getValue());
+		}
+	}
 
 	/**
 	 * 计算字节长度，这里假设一个英文字符占一个字节；一个中文字符占两个字节
