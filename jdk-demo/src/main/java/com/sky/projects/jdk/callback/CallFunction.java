@@ -3,10 +3,11 @@ package com.sky.projects.jdk.callback;
 /**
  * 回调接口类
  * 
- * @author zt
+ * @author zealot
  *
  */
-public interface CallBackable {
+@FunctionalInterface
+public interface CallFunction {
 
 	/**
 	 * 回调函数，返回状态

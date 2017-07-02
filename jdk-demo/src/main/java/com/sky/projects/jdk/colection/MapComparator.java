@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 
- * @author zt
+ * @author zealot
  */
 public class MapComparator<K, V extends Comparable<V>> implements Comparator<Map<K, V>> {
 	private K key = null;

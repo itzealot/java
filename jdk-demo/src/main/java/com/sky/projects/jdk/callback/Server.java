@@ -5,7 +5,7 @@ import com.sky.projects.jdk.thread.Threads;
 /**
  * 模拟服务端类
  * 
- * @author zt
+ * @author zealot
  *
  */
 public class Server {
@@ -16,7 +16,7 @@ public class Server {
 	 * @param call
 	 * @param msg
 	 */
-	public void getClientMsg(CallBackable call, String msg) {
+	public void getClientMsg(CallFunction call, String msg) {
 		System.out.println("服务端：服务端接收到客户端发送的消息为:" + msg);
 
 		// 模拟服务端需要对数据处理
