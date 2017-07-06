@@ -5,16 +5,16 @@ public interface PropertiesListenerFactory {
 	/**
 	 * 添加观察者
 	 * 
-	 * @param observer
+	 * @param listener
 	 */
-	void attach(PropertiesListener observer);
+	void attach(PropertiesListener listener);
 
 	/**
 	 * 删除观察者
 	 * 
-	 * @param observer
+	 * @param listener
 	 */
-	void detach(PropertiesListener observer);
+	void detach(PropertiesListener listener);
 
 	/**
 	 * 当发生 setProperty 时通知观察者

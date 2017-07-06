@@ -122,8 +122,17 @@ class State<T> {
 	}
 
 	public void clear() {
-		this.outputs.clear();
-		this.edgeList.clear();
+		if (this.outputs != null) {
+			this.outputs.clear();
+		}
+
+		if (this.edgeList != null) {
+			this.edgeList.clear();
+		}
+
+		if (this.fail != null) {
+			this.fail.clear();
+		}
 
 		this.edgeList = null;
 		this.fail = null;

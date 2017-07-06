@@ -202,8 +202,6 @@ public class AhoCorasick<T> {
 	 * clear temp data，此处只是清除根节点下的引用，若需要清除整棵树的引用，需要遍历整棵树，利用Stack结构进行
 	 */
 	public void clear() {
-		State<T> rooter = this.root;
-		rooter.clear();
 		this.prepared = false;
 
 		// clear fail reference
@@ -213,10 +211,14 @@ public class AhoCorasick<T> {
 			next = next.getFail();
 			temp.clear();
 		}
+
+		clear0(this.root);
 	}
 
 	/***
 	 * 递归删除构建的数，此方法如果栈深度不够，可能会抛出异常，建议设置 -Xss 大小，如:-Xss5M
+	 * 
+	 * 该方法好像存在问题
 	 * 
 	 * @param state
 	 */

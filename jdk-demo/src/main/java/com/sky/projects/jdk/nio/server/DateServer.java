@@ -20,12 +20,10 @@ public class DateServer {
 		// 启动服务端
 		Selector selector = Selector.open(); // 通过open()方法找到Selector
 		for (int i = 0; i < ports.length; i++) {
-			ServerSocketChannel initSer = null;
-			initSer = ServerSocketChannel.open(); // 打开服务器的通道
+			ServerSocketChannel initSer = ServerSocketChannel.open(); // 打开服务器的通道
 			initSer.configureBlocking(false); // 服务器配置为非阻塞
 			ServerSocket initSock = initSer.socket();
-			InetSocketAddress address = null;
-			address = new InetSocketAddress(ports[i]); // 实例化绑定地址
+			InetSocketAddress address = new InetSocketAddress(ports[i]); // 实例化绑定地址
 			initSock.bind(address); // 进行服务的绑定
 			initSer.register(selector, SelectionKey.OP_ACCEPT); // 等待连接
 			System.out.println("服务器运行，在" + ports[i] + "端口监听。");

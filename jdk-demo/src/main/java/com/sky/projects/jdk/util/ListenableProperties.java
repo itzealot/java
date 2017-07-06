@@ -14,13 +14,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ListenableProperties extends Properties implements PropertiesListenerFactory {
 
 	private static final long serialVersionUID = 5311206864671369034L;
+	// 监听者列表
+	protected List<PropertiesListener> listeners = new CopyOnWriteArrayList<>();
 
 	public ListenableProperties(Properties properties) {
 		super(properties);
 	}
-
-	// 监听者列表
-	protected List<PropertiesListener> listeners = new CopyOnWriteArrayList<>();
 
 	@Override
 	public void attach(PropertiesListener listener) {
