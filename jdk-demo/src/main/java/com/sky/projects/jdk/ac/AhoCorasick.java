@@ -204,6 +204,9 @@ public class AhoCorasick<T> {
 	public void clear() {
 		this.prepared = false;
 
+		// clear
+		this.root.clear();
+		
 		// clear fail reference
 		State<T> next = this.root.getFail();
 		while (next != null) {
@@ -211,8 +214,6 @@ public class AhoCorasick<T> {
 			next = next.getFail();
 			temp.clear();
 		}
-
-		clear0(this.root);
 	}
 
 	/***
@@ -222,6 +223,7 @@ public class AhoCorasick<T> {
 	 * 
 	 * @param state
 	 */
+	@Deprecated
 	public void clear0(State<T> state) {
 		if (state == null) {
 			return;

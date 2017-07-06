@@ -14,6 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hessian_version>4.0.7</hessian_version>
 		<jetty_version>6.1.26</jetty_version>
+		<parallec_version>0.10.5</parallec_version>
 	</properties>
 
 	<dependencies>
@@ -72,5 +73,19 @@
 			<version>${jetty_version}</version>
 		</dependency>
 		<!-- hessian end -->
+		
+		<!-- parallec dependency start -->
+		<dependency>
+			<groupId>io.parallec</groupId>
+			<artifactId>parallec-core</artifactId>
+			<version>${parallec_version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.jayway.jsonpath</groupId>
+					<artifactId>json-path</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- parallec dependency end -->
 	</dependencies>
 </project>
