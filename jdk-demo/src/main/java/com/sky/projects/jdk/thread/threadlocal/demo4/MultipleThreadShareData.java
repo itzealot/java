@@ -14,22 +14,18 @@ public class MultipleThreadShareData {
 		Thread[] threads = new Thread[4];
 
 		for (int i = 0; i < 2; i++) {
-			threads[i] = new Thread(new Runnable() {
-				public void run() {
-					while (true) {
-						ShareData.increase();
-						Threads.sleep(10);
-					}
+			threads[i] = new Thread(() -> {
+				while (true) {
+					ShareData.increase();
+					Threads.sleep(10);
 				}
 			});
 		}
 		for (int i = 2; i < 4; i++) {
-			threads[i] = new Thread(new Runnable() {
-				public void run() {
-					while (true) {
-						ShareData.decreace();
-						Threads.sleep(20);
-					}
+			threads[i] = new Thread(() -> {
+				while (true) {
+					ShareData.decreace();
+					Threads.sleep(20);
 				}
 			});
 		}

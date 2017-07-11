@@ -6,13 +6,13 @@ import com.sky.projects.jdk.thread.threadlocal.A;
 import com.sky.projects.jdk.thread.threadlocal.B;
 
 /**
- * 线程的状态，枚举常量 State. <br />
- * --BLOCKED : 受阻塞并且正在等待监视器锁的某一线程的线程状态. <br />
- * --NEW : 至今尚未启动的线程的状态. <br />
- * --RUNNABLE : 可运行线程的线程状态. <br />
- * --TERMINATED : 已终止线程的线程状态. <br />
- * --TIMED_WAITING : 具有指定等待时间的某一等待线程的线程状态. <br />
- * --WAITING : 某一等待线程的线程状态.<br />
+ * 线程的状态，枚举常量 State. <br>
+ * --BLOCKED : 受阻塞并且正在等待监视器锁的某一线程的线程状态. <br>
+ * --NEW : 至今尚未启动的线程的状态. <br>
+ * --RUNNABLE : 可运行线程的线程状态. <br>
+ * --TERMINATED : 已终止线程的线程状态. <br>
+ * --TIMED_WAITING : 具有指定等待时间的某一等待线程的线程状态. <br>
+ * --WAITING : 某一等待线程的线程状态.<br>
  * 
  * @author zealot
  *

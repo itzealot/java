@@ -2,10 +2,10 @@ package com.sky.projects.jdk.thread.threadlocal.demo4;
 
 public class ShareData {
 	// 全局变量，实现共享
-	public static int j = 0;
+	private static int j = 0;
 
 	// 全局锁，实现共享
-	public static Object lock = new Object();
+	private static Object lock = new Object();
 
 	public static void decreace() {
 		synchronized (lock) {
