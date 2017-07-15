@@ -7,25 +7,25 @@ import com.sky.projects.design.behavior.visitor.ComputerPartVisitor;
  * 
  * @author zealot
  */
-public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
+public class DisplayComputerPartVisitor implements ComputerPartVisitor {
 
 	@Override
 	public void visit(Computer computer) {
-		System.out.println("Displaying Computer.");
+		System.out.println("display Computer.");
 	}
 
 	@Override
 	public void visit(Mouse mouse) {
-		System.out.println("Displaying Mouse.");
+		System.out.println("display Mouse.");
 	}
 
 	@Override
 	public void visit(Keyboard keyboard) {
-		System.out.println("Displaying Keyboard.");
+		System.out.println("display Keyboard.");
 	}
 
 	@Override
 	public void visit(Monitor monitor) {
-		System.out.println("Displaying Monitor.");
+		System.out.println("display Monitor.");
 	}
 }

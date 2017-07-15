@@ -8,12 +8,10 @@ import java.util.Queue;
  * 
  * @author zealot
  */
-public abstract class Worker<T> implements Runnable, Handler<T, T> {
+public abstract class Worker<T> implements Runnable {
 
-	// 任务队列
-	private Queue<T> queue;
-	// 结果集队列
-	private Map<String, T> results;
+	private Queue<T> queue; // 任务队列
+	private Map<String, T> results; // 结果集队列
 
 	public Worker() {
 	}
@@ -27,8 +25,7 @@ public abstract class Worker<T> implements Runnable, Handler<T, T> {
 				break;
 			}
 
-			// 处理任务
-			T result = handle(obj);
+			T result = handle(obj); // 处理任务
 			System.out.println("finish deal with input : " + obj);
 
 			// 保存结果集
@@ -36,7 +33,13 @@ public abstract class Worker<T> implements Runnable, Handler<T, T> {
 		}
 	}
 
-	public abstract T handle(T input);
+	/**
+	 * 处理任务并返回结果
+	 * 
+	 * @param input
+	 * @return
+	 */
+	protected abstract T handle(T input);
 
 	public Queue<T> getQueue() {
 		return queue;

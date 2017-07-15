@@ -8,7 +8,6 @@ import java.util.Vector;
  * ThreadSafe
  * 
  * @author zealot
- *
  */
 public class ConcreteSubject implements Subjectable {
 
@@ -33,7 +32,8 @@ public class ConcreteSubject implements Subjectable {
 	public void info() {
 		Event event = new Event();
 
-		synchronized (observers) { // 此处加锁是防止在通知的时候出现数组越界问题，如刚添加观察者，又被删除，结果length还是之前的
+		// 此处加锁是防止在通知的时候出现数组越界问题，如刚添加观察者，又被删除，结果length还是之前的
+		synchronized (observers) {
 			for (int i = 0, length = observers.size(); i < length; i++) {
 				observers.get(i).update(event);
 			}

@@ -8,7 +8,7 @@ package com.sky.projects.design.mw;
 public class PlusWorker extends Worker<Integer> {
 
 	@Override
-	public Integer handle(Integer input) {
+	protected Integer handle(Integer input) {
 		return input * input * input;
 	}
 }

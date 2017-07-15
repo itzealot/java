@@ -10,7 +10,6 @@ import com.sky.projects.design.behavior.visitor.impl.Mouse;
  * 访问计算机的接口.<br />
  * 
  * @author zealot
- *
  */
 public interface ComputerPartVisitor {
 

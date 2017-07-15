@@ -6,13 +6,14 @@ package com.sky.projects.design.parser;
  * @author zealot
  */
 public interface Parser<T> {
+
 	/**
 	 * parse
 	 * 
 	 * @param messages
 	 * @return
 	 */
-	public T parse(T[] messages);
+	T parse(T[] messages);
 
 	/**
 	 * join
@@ -21,7 +22,7 @@ public interface Parser<T> {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public T join(T... objs);
+	T join(T... objs);
 
 	/**
 	 * split
@@ -29,5 +30,5 @@ public interface Parser<T> {
 	 * @param t
 	 * @return
 	 */
-	public T[] split(T message);
+	T[] split(T message);
 }
