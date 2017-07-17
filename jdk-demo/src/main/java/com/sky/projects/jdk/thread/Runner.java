@@ -5,6 +5,7 @@ public class Runner implements Runnable, AutoCloseable {
 	private volatile boolean running = true;
 	private volatile int counts = 1;
 
+	@Override
 	public void run() {
 		while (running) {
 			doRun();
