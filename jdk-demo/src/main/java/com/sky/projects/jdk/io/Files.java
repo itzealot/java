@@ -1,12 +1,16 @@
 package com.sky.projects.jdk.io;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.util.List;
+
+import com.google.common.collect.Lists;
 
 public final class Files {
 
@@ -115,16 +119,72 @@ public final class Files {
 		}
 	}
 
-	private static void close(AutoCloseable... clos) {
-		if (clos != null) {
-			for (AutoCloseable c : clos) {
-				if (c != null) {
+	/**
+	 * 返回 path 路径及子路径的文件
+	 * 
+	 * @param path
+	 * @param suffix
+	 * @return
+	 */
+	public static List<File> listFiles(String path, String suffix) {
+		if (path == null || path.isEmpty()) {
+			return null;
+		}
+
+		File file = new File(path);
+
+		if (file.exists()) {
+			List<File> results = Lists.newArrayList();
+			if (file.isDirectory()) { // path为目录
+				File[] files = file.listFiles(new FileFilter() {
+					@Override
+					public boolean accept(File pathname) {
+						return pathname.isFile() && pathname.getName().endsWith(suffix);
+					}
+				});
+
+				if (files != null && files.length != 0)
+					append(results, files);
+
+				// 获取path的所有子目录
+				File[] dirs = file.listFiles(new FileFilter() {
+					@Override
+					public boolean accept(File pathname) {
+						return pathname.isDirectory();
+					}
+				});
+
+				// 遍历所有子目录，获取对应的后缀文件
+				for (int i = 0, len = dirs.length; i < len; i++) {
+					List<File> subFiles = listFiles(dirs[i].getAbsolutePath(), suffix);
+
+					if (subFiles != null && !subFiles.isEmpty())
+						results.addAll(subFiles);
+				}
+
+				return results;
+			} else if (file.isFile() && path.endsWith(suffix)) {
+				results.add(file);
+				return results;
+			}
+		}
+
+		return null;
+	}
+
+	private static void append(List<File> results, File[] files) {
+		for (int i = 0, len = files.length; i < len; i++) {
+			results.add(files[i]);
+		}
+	}
+
+	private static void close(AutoCloseable... acs) {
+		if (acs != null) {
+			for (AutoCloseable ac : acs) {
+				if (ac != null) {
 					try {
-						c.close();
+						ac.close();
 					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-						c = null;
 					}
 				}
 			}
