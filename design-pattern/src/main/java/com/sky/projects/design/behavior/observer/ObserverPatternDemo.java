@@ -48,20 +48,14 @@ public class ObserverPatternDemo {
 		Subject subject = new Subject();
 
 		// 16进制观察者
-		new HexaObserver(subject);
+		subject.add(new HexaObserver());
 
 		// 2进制观察者
-		new OctalObserver(subject);
+		subject.add(new OctalObserver());
 
 		// 16进制观察者
-		new BinaryObserver(subject);
+		subject.add(new BinaryObserver());
 
-		System.out.println("First state change: 15");
 		subject.setState(15);
-
-		System.out.println();
-
-		System.out.println("Second state change: 10");
-		subject.setState(10);
 	}
 }

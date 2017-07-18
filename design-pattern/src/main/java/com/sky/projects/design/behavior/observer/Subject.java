@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * subject 对象带有绑定观察者到 Client 对象和从 Client 对象解绑观察者的方法
+ * 内部维护一个观察者列表，当状态变更时通知对应的观察者
  * 
  * @author zealot
- *
  */
 public class Subject {
 
 	// 观测者列表
-	private List<Observer> observers = new ArrayList<>();
-
+	private List<StateObserver> observers = new ArrayList<>();
 	private int state;
 
 	/**
@@ -21,16 +19,16 @@ public class Subject {
 	 * 
 	 * @param observer
 	 */
-	public void attach(Observer observer) {
+	public void add(StateObserver observer) {
 		observers.add(observer);
 	}
 
 	/**
 	 * 更新观察者列表中所有的观察者
 	 */
-	public void notifyAllObservers() {
-		for (Observer observer : observers) {
-			observer.update();
+	private void notifyObservers(int state) {
+		for (StateObserver observer : observers) {
+			observer.notify(state);
 		}
 	}
 
@@ -39,12 +37,12 @@ public class Subject {
 	}
 
 	/**
-	 * 设置新状态并更新所有观察者信息
+	 * 状态变更时通知观察者
 	 * 
 	 * @param state
 	 */
 	public void setState(int state) {
 		this.state = state;
-		notifyAllObservers();
+		notifyObservers(state);
 	}
 }

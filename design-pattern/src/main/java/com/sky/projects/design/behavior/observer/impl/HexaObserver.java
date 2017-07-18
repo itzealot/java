@@ -1,24 +1,17 @@
 package com.sky.projects.design.behavior.observer.impl;
 
-import com.sky.projects.design.behavior.observer.Observer;
-import com.sky.projects.design.behavior.observer.Subject;
+import com.sky.projects.design.behavior.observer.StateObserver;
 
 /**
- * 十六进制观测者
+ * 十六进制观察者
  * 
  * @author zealot
  */
-public class HexaObserver extends Observer {
-
-	public HexaObserver(Subject subject) {
-		super(subject);
-		// 给当前的主题添加观察者
-		this.subject.attach(this);
-	}
+public class HexaObserver implements StateObserver {
 
 	@Override
-	public void update() {
+	public void notify(int state) {
 		// 将subject的状态更新为以十六进制表示
-		System.out.println("Hex String: " + Integer.toHexString(subject.getState()).toUpperCase());
+		System.out.println("Hex String:" + Integer.toHexString(state).toUpperCase());
 	}
 }

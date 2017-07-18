@@ -39,7 +39,7 @@ public abstract class AbstractLogger {
 	 * 
 	 * @param message
 	 */
-	abstract protected void write(String message);
+	protected abstract void write(String message);
 
 	public void setNextLogger(AbstractLogger nextLogger) {
 		this.nextLogger = nextLogger;

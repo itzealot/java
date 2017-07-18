@@ -7,7 +7,6 @@ import com.sky.projects.design.behavior.visitor.ComputerPartVisitor;
  * 计算机
  * 
  * @author zealot
- *
  */
 public class Computer implements ComputerPart {
 

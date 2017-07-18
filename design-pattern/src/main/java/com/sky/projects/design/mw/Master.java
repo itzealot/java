@@ -22,6 +22,11 @@ public class Master {
 	// 子任务处理结果集
 	private Map<String, Integer> results = new ConcurrentHashMap<>();
 
+	/**
+	 * 
+	 * @param worker
+	 * @param workerCounts
+	 */
 	public Master(Worker<Integer> worker, int workerCounts) {
 		// 初始化 Worker，共享任务队列与结果集 Map
 		worker.setQueue(queue);

@@ -11,7 +11,7 @@ import com.sky.projects.design.behavior.visitor.ComputerPartVisitor;
 public class Keyboard implements ComputerPart {
 
 	@Override
-	public void accept(ComputerPartVisitor computerPartVisitor) {
-		computerPartVisitor.visit(this);
+	public void accept(ComputerPartVisitor visitor) {
+		visitor.visit(this);
 	}
 }

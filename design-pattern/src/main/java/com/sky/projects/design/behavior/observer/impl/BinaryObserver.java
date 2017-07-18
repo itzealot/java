@@ -1,25 +1,17 @@
 package com.sky.projects.design.behavior.observer.impl;
 
-import com.sky.projects.design.behavior.observer.Observer;
-import com.sky.projects.design.behavior.observer.Subject;
+import com.sky.projects.design.behavior.observer.StateObserver;
 
 /**
- * 二进制观测者
+ * 二进制观察者
  * 
  * @author zealot
- *
  */
-public class BinaryObserver extends Observer {
-
-	public BinaryObserver(Subject subject) {
-		super(subject);
-		// 给当前的主题添加观察者
-		this.subject.attach(this);
-	}
+public class BinaryObserver implements StateObserver {
 
 	@Override
-	public void update() {
+	public void notify(int state) {
 		// 将subject的状态更新为以二进制表示
-		System.out.println("Binary String: " + Integer.toBinaryString(subject.getState()));
+		System.out.println("Binary String:" + Integer.toBinaryString(state));
 	}
 }

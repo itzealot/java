@@ -1,7 +1,7 @@
 package com.sky.projects.design.behavior.visitor;
 
 import com.sky.projects.design.behavior.visitor.impl.Computer;
-import com.sky.projects.design.behavior.visitor.impl.ComputerPartDisplayVisitor;
+import com.sky.projects.design.behavior.visitor.impl.DisplayComputerPartVisitor;
 
 /**
  * 25. 在访问者模式（VisitorPattern）中，我们使用了一个访问者类，它改变了元素类的执行算法。
@@ -35,6 +35,6 @@ public class VisitorPatternDemo {
 
 	public static void main(String[] args) {
 		ComputerPart computer = new Computer();
-		computer.accept(new ComputerPartDisplayVisitor());
+		computer.accept(new DisplayComputerPartVisitor());
 	}
 }

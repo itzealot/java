@@ -4,7 +4,7 @@ import com.sky.projects.design.behavior.state.impl.StartState;
 import com.sky.projects.design.behavior.state.impl.StopState;
 
 /**
- * 21. 状态模式（State Pattern）中，类的行为是基于它的状态改变的.<br />
+ * 21. 状态模式（State Pattern）中，类的行为是基于它的状态改变的.<br>
  * 21.1 意图：允许对象在内部状态发生改变时改变它的行为，对象看起来好像修改了它的类。
  * 
  * 21.2 主要解决：对象的行为依赖于它的状态（属性），并且可以根据它的状态改变而改变它的相关行为。
@@ -46,22 +46,16 @@ import com.sky.projects.design.behavior.state.impl.StopState;
  */
 public class StatePatternDemo {
 
-	/**
-	 * 使用 Context 来查看当状态 State 改变时的行为变化
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
+		// 使用 Context 来查看当状态 State 改变时的行为变化
 		Context context = new Context();
 
-		StartState startState = new StartState();
-		startState.doAction(context);
+		// 执行操作后，状态变更
+		new StartState().doAction(context);
+		System.out.println("current state:" + context.getState().toString());
 
-		System.out.println(context.getState().toString());
-
-		StopState stopState = new StopState();
-		stopState.doAction(context);
-
-		System.out.println(context.getState().toString());
+		// 执行操作后，状态变更
+		new StopState().doAction(context);
+		System.out.println("current state:" + context.getState().toString());
 	}
 }
