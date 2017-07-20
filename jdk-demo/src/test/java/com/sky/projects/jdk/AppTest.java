@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class AppTest extends TestCase {
+
 	public AppTest(String testName) {
 		super(testName);
 	}
@@ -32,7 +33,7 @@ public class AppTest extends TestCase {
 	public void test() {
 		System.out.println("TP-LINK_8236".toLowerCase().contains("TP-Link_82".toLowerCase()));
 	}
-	
+
 	public void testTreeMap() {
 		Map<Student, String> map = new TreeMap<>();
 
@@ -68,6 +69,12 @@ public class AppTest extends TestCase {
 		public String toString() {
 			return "Student [id=" + id + "]";
 		}
+	}
+
+	public void testLen() {
+		assertEquals(1, "1".getBytes().length);
+		assertEquals(4, "1213".getBytes().length);
+		assertEquals(3, "你".getBytes().length);
 	}
 
 }
