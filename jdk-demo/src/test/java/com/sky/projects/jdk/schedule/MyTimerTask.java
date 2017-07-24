@@ -29,7 +29,12 @@ public class MyTimerTask extends TimerTask {
 	 * 启动定时器，一秒执行一次
 	 */
 	public void start() {
-		timer.scheduleAtFixedRate(this, new Date(), 1000);
+		/**
+		 * @param task:TimerTask
+		 * @param Date:firstTime
+		 * @param long:period
+		 */
+		timer.scheduleAtFixedRate(this, new Date(new Date().getTime() + 5000), 1000);
 	}
 
 	/**

@@ -3,9 +3,9 @@ package com.sky.projects.jdk.thread;
 import java.util.concurrent.Future;
 
 /**
+ * Threads
  * 
  * @author zealot
- *
  */
 public final class Threads {
 
