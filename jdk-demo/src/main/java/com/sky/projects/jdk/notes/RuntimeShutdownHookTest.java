@@ -9,7 +9,6 @@ import com.sky.projects.jdk.thread.Threads;
  * 添加的钩子，当系统执行完这些钩子后，jvm才会关闭。 所以这些钩子可以在jvm关闭的时候进行内存清理、对象销毁等操作。
  * 
  * @author zealot
- *
  */
 public class RuntimeShutdownHookTest {
 

@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 
 public class RegexTest extends TestCase {
 
-	Pattern p = Pattern.compile("\\d+");
+	Pattern numbers = Pattern.compile("\\d+");
 
 	/**
 	 * 使用()来区别组,group(0)<=>group()
@@ -67,7 +67,7 @@ public class RegexTest extends TestCase {
 	 */
 	public void testSplit() {
 		// 尾部空白符不算
-		String[] splits = p.split("i love 123, mis 456, hate 789");
+		String[] splits = numbers.split("i love 123, mis 456, hate 789");
 		// len:3
 		System.out.println("len:" + splits.length);
 		for (String str : splits) {
@@ -76,37 +76,40 @@ public class RegexTest extends TestCase {
 
 		System.out.println("-------");
 		// 尾部空白符也算
-		splits = p.split("i love 123, mis 456, hate 789", -1);
+		splits = numbers.split("i love 123, mis 456, hate 789", -1);
 		// len:4
 		System.out.println("len:" + splits.length);
 		for (String str : splits) {
 			System.out.println(str);
 		}
+		System.out.println("-------");
 	}
 
 	/**
-	 * Matcher.matcher : 匹配整个字符串
+	 * Matcher.matches : 匹配整个字符串
 	 */
 	public void testMatcher() {
-		System.out.println(p.matcher("love22").matches()); // false
-		System.out.println(p.matcher("22").matches()); // true
+		System.out.println(numbers.matcher("love22").matches()); // false
+		System.out.println(numbers.matcher("22").matches()); // true
+		System.out.println(numbers.matcher("-22").matches()); // false
+		System.out.println(numbers.matcher("+22").matches()); // false
 	}
 
 	/**
 	 * Matcher.lookingAt : 对前面的字符串进行匹配,只有匹配到的字符串在最前面才返回 true
 	 */
 	public void testLookingAt() {
-		System.out.println(p.matcher("22love").lookingAt()); // true
-		System.out.println(p.matcher("love22").lookingAt()); // false
+		System.out.println(numbers.matcher("22love").lookingAt()); // true
+		System.out.println(numbers.matcher("love22").lookingAt()); // false
 	}
 
 	/**
 	 * Matcher.find : 对字符串进行匹配,匹配到的字符串可以在任何位置.
 	 */
 	public void testFind() {
-		System.out.println(p.matcher("love22u").find()); // true
-		System.out.println(p.matcher("love22").find()); // true
-		System.out.println(p.matcher("love").find()); // false
+		System.out.println(numbers.matcher("love22u").find()); // true
+		System.out.println(numbers.matcher("love22").find()); // true
+		System.out.println(numbers.matcher("love").find()); // false
 	}
 
 	/**
@@ -115,7 +118,7 @@ public class RegexTest extends TestCase {
 	 * group : 返回匹配到的子字符串 <br>
 	 */
 	public void testStart() {
-		Matcher m = p.matcher("22love22love");
+		Matcher m = numbers.matcher("22love22love");
 
 		System.out.println("find:");
 		while (m.find()) { // 多个
